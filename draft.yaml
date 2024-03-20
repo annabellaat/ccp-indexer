@@ -1,0 +1,232 @@
+models:
+  # ...
+  Collection:
+    name: string
+    slug: string unique
+    description: string
+    
+    collection_id: unsignedInteger nullable
+    relationships:
+      hasMany: Entity, Collection
+      belongsTo: Collection
+
+  Entity:
+    archivist: string nullable
+    thumbnail: boolean default:false nullable
+    work: text nullable
+    material: text nullable
+    code: string nullable
+    category: text nullable
+    title: string nullable
+    slug: string unique nullable
+    alternate-title: text nullable
+    date: datetime nullable
+    place: string nullable
+    description: text nullable
+    reference: string nullable
+    open_access_link: string nullable
+    language: text nullable
+    company: text nullable
+    series: text nullable
+    opening_remarks: text nullable
+    closing_remarks: text nullable
+    speaker: text nullable
+    lecturer: text nullable
+    moderator: string nullable
+    participants: text nullable
+    film: string nullable
+    play: string nullable
+    screenwriter: string nullable
+    scriptwriter: string nullable
+    writer: string nullable
+    playwright: string nullable
+    librettist: string nullable
+    adaptor: string nullable
+    adapted_from: text nullable
+    based_on: text nullable
+    translator: string nullable
+    concept: string nullable
+    director: text nullable
+    associate_director: text nullable
+    assistant_director: text nullable
+    assistant_to_the_director: text nullable
+    direction_consultant: text nullable
+    program_director: text nullable
+    project_director: text nullable
+    artistic_director: text nullable
+    artistic_consultant: text nullable
+    fashion_director: text nullable
+    ballet_master: text nullable
+    regisseur: text nullable
+    dramaturg: text nullable
+    creative_director: text nullable
+    director_of_photography: text nullable
+    camera: text nullable
+    musical_director: text nullable
+    musical_arranger: text nullable
+    stage_director: text nullable
+    assistant_stage_director: text nullable
+    composer: text nullable
+    music: text nullable
+    lyricist: text nullable
+    performers: text nullable
+    ventriloquist: text nullable
+    cast: text nullable
+    narrator: text nullable
+    host: text nullable
+    executive_producer: string:100 nullable
+    associate_producer: string:100 nullable
+    producer: text nullable
+    production_designer: string:100 nullable
+    production_supervisor: string:100 nullable
+    production_manager: string:100 nullable
+    associate_production_manager: string:100 nullable
+    deputy_production_manager: string:100 nullable
+    assistant_production_manager: string:100 nullable
+    production_coordinator: string:100 nullable
+    editor: string:100 nullable
+    visual_effects: string:100 nullable
+    production_and_costume_consultant: string:100 nullable
+    set_consultant: string:100 nullable
+    set_designer: string:100 nullable
+    set_design_assistant: string:100 nullable
+    costume_designer: string:100 nullable
+    costume_consultant: string:100 nullable
+    make_up_artist: string:100 nullable
+    production_stylist: string:100 nullable
+    fashion_designer: string:100 nullable
+    lighting_designer: string:100 nullable
+    associate_lighting_designer: string:100 nullable
+    lighting_design_consultant: string:100 nullable
+    lighting_design_assistant: string:100 nullable
+    sound_designer: string:100 nullable
+    assistant_sound_designer: string:100 nullable
+    sound_engineer: string:100 nullable
+    choreographer: string:100 nullable
+    guest_faculty: string:100 nullable
+    technical_director: string:100 nullable
+    assistant_technical_director: string:100 nullable
+    technical_direction_assistant: string:100 nullable
+    stage_manager: string:100 nullable
+    assistant_stage_manager: string:100 nullable
+    deputy_stage_manager: string:100 nullable
+    stage_management_assistant: string:100 nullable
+    audio_visual_designer: string:100 nullable
+    video_projection_designer: string:100 nullable
+    video_projection_design_assistant: string:100 nullable
+    video_operator: string:100 nullable
+    music_director: string:100 nullable
+    assistant_music_director: string:100 nullable
+    arranger: string:100 nullable
+    conductor: string:100 nullable
+    choirmaster: text nullable
+    orchestra: text nullable
+    tenor: text nullable
+    countertenor: text nullable
+    soprano: text nullable
+    bass_baritone: text nullable
+    baritone: text nullable
+    mezzo_soprano: text nullable
+    alto: text nullable
+    bandurria: text nullable
+    bass: text nullable
+    bass_guitar: text nullable
+    bassoon: text nullable
+    cello: text nullable
+    clarinet: text nullable
+    contrabass: text nullable
+    drums: text nullable
+    english_horn: text nullable
+    flute: text nullable
+    french_horn: text nullable
+    guitar: text nullable
+    harp: text nullable
+    keyboard: text nullable
+    oboe: text nullable
+    marimba: text nullable
+    percussion: text nullable
+    piano: text nullable
+    viola: text nullable
+    violin: text nullable
+    saxophone: text nullable
+    string_quartet: text nullable
+    timpani: text nullable
+    trombone: text nullable
+    trumpet: text nullable
+    tuba: text nullable
+    vocals: text nullable
+    musicians: text nullable
+    artist: text nullable
+    curator: string:100 nullable
+    author: text nullable
+    project_coordinator: text nullable
+    publisher: text nullable
+    contributing_writer: text nullable
+    photographer: string:100 nullable
+    camera_operator: string nullable
+    camera_setup: text nullable
+    shooting_schedule: text nullable
+
+    format: text nullable
+    technique: text nullable
+    measurement: text nullable
+    edition: string nullable
+    color: text nullable
+    inscription: text nullable
+
+    extension: text nullable
+    resolution: string:25 nullable
+    frame_rate: string:25 nullable
+    aspect_ratio: string:25 nullable
+    audio: string:25 nullable
+    duration: string:25 nullable
+    wholeness: text nullable
+    file_count: unsignedInteger nullable
+    total_size: string:25 nullable
+    color_space: text nullable
+    video_description: text nullable
+    audio_description: text nullable
+    notes: text nullable
+    
+    accession_year: year nullable
+    loan_history: text nullable
+    ccp_collection: text nullable
+    shelf_number: string:25 nullable
+    inventory_number: string:25 nullable
+    tape_number: string:25 nullable
+    hard_drive: string:25 nullable
+    server: string:25 nullable
+    access: text nullable
+    citation: string nullable
+    credit_line: string nullable
+    precup: string nullable
+
+
+    collection_id: unsignedInteger nullable
+    relationships:
+      belongsToMany: Request, Tag
+      belongsTo: Collection
+
+
+
+  Request:
+    name: string nullable
+    email: string nullable
+    status: string nullable
+
+    user_id: unsignedInteger
+    entity_id: unsignedInteger
+    relationships:
+      hasMany: Entity
+      belongsTo: User
+
+  Tag:
+    name: string
+    slug: string unique
+
+    relationships:
+      belongsToMany: Entity
+
+
+controllers:
+  # ...
