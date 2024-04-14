@@ -18,7 +18,7 @@ class Collection extends Model
      */
     protected $fillable = [
         'name',
-        'slug',
+        // 'slug',
         'description',
         'collection_id',
     ];

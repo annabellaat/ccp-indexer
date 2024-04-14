@@ -28,6 +28,12 @@ class CollectionResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
+                    // Forms\Components\TextInput::make('slug')
+                    // ->disabled()
+                    // ->dehydrated()
+                    // ->required()
+                    // ->maxLength(255)
+                    // ->unique(Collection::class, 'slug', ignoreRecord: true),
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->maxLength(65535)

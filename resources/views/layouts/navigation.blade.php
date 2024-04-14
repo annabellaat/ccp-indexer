@@ -41,7 +41,13 @@
             <a href="{{Route::is('home') ? '#showcase' : url('/collections')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">BROWSE</a>
           </li>
           <li class="flex-auto">
-            <a href="{{Route::is('home') ? '#request' : url('/entities/request')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-4 text-nowrap" aria-current="page">OPEN ACCESS</a>
+            <a href="{{Route::is('home') ? '#request' : url('/entities/request')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2 text-nowrap" aria-current="page">OPEN ACCESS</a>
+          </li>
+          <li class="flex-auto">
+            <svg viewBox="0 0 24 24" fill="white" class="w-9 h-9 mr-4">
+              <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+            </svg>
+
           </li>
         </ul>
       </div>
