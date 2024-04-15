@@ -86,7 +86,13 @@
     <body class="antialiased font-inter">
         <div class="bg-gray-100 d-flex flex-grow-1 flex-column">
             @include('layouts.navigation')
-            @yield('content')
+            <div class="">
+                @if(isset($slot))
+                    {{ $slot }}
+                @else
+                    @yield('content')
+                @endif
+            </div>
             @include('layouts.footer')
         </div>
         @stack('scripts')

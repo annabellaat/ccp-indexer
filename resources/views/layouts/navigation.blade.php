@@ -38,7 +38,7 @@
             <a href="{{Route::is('home') ? '#search' : url('/search')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">FEATURED</a>
           </li> -->
           <li class="flex-auto">
-            <a href="{{Route::is('home') ? '#showcase' : url('/collections')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">BROWSE</a>
+            <a href="{{route('browse')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">BROWSE</a>
           </li>
           <li class="flex-auto">
             <a href="{{Route::is('home') ? '#request' : url('/entities/request')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2 text-nowrap" aria-current="page">OPEN ACCESS</a>

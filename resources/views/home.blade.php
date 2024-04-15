@@ -128,7 +128,7 @@
             </div>
             <div class="grid-col justify-self-center md:justify-self-start grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-2 h-1/2 md:h-fit pb-20 md:pb-0">
                 <div class="grid-col">
-                    <a href="#" class="rounded-full text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-8 md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Browse collections</a>
+                    <a href="{{ route('browse') }}" class="rounded-full text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-8 md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Browse collections</a>
                 </div>
                 <div class="grid-col">
                     <a href="#" class="rounded-full text-xl text-gray-800 bg-gray-100 mx-4 px-24 md:text-lg lg:text-xl md:px-8 lg:px-24 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Log In</a>

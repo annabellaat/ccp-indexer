@@ -24,15 +24,15 @@ class EntityImporter extends Importer
             ImportColumn::make('archivist')
                 ->rules(['max:255']),
                 // ->requiredMapping(),
-            ImportColumn::make('thumbnail')
-                ->label('Legacy Thumbnail')
-                ->castStateUsing(function (string $state): ?int {
-                    if ($state == 'TRUE') {
-                        return 1;
-                    }else {
-                        return 0;
-                    }
-                }),
+            // ImportColumn::make('thumbnail')
+            //     ->label('Legacy Thumbnail')
+            //     ->castStateUsing(function (string $state): ?int {
+            //         if ($state == 'TRUE') {
+            //             return 1;
+            //         }else {
+            //             return 0;
+            //         }
+            //     }),
             ImportColumn::make('work')
                 ->rules(['max:65535']),
             ImportColumn::make('material')

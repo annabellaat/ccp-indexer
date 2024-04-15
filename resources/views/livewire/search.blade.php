@@ -17,7 +17,8 @@
             <ul class="h-1">
             @if($count > 0)
                 @foreach ($results as $result)
-                    <li class="list-group-item bg-gray-100 h-auto border border-gray-700 text-md md:text-lg rounded-sm text-center self-center align-middle tracking-wide md:tracking-wider py-4 px-4 -mb-px odd:bg-white even:bg-gray-100">{{ $result->title }}</li>
+                    <li class="list-group-item bg-gray-100 h-auto border border-gray-700 text-md md:text-lg rounded-sm text-center self-center align-middle tracking-wide md:tracking-wider py-4 px-4 -mb-px odd:bg-white even:bg-gray-100">
+                        <a href="{{ route('entity', ['entity' => $result, 'slug' => $result->slug]) }}">{{ $result->title }}</a></li>
                 @endforeach
                 @if($count > 10)
                     @if($count - 10 > 1)

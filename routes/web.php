@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\websiteController;
+use App\Livewire\BrowseEntity;
+use App\Livewire\EntityPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,6 @@ Route::get('/', [websiteController::class, 'homepage'])->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
 Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
+
+Route::get('/browse', BrowseEntity::class)->name('browse');
+Route::get('/entity/{entity}/{slug}', EntityPage::class)->name('entity');
