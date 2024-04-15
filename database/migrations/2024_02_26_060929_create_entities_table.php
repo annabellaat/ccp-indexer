@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
             $table->string('archivist')->nullable();
-            $table->boolean('thumbnail')->default(false);
             $table->text('work')->nullable();
             $table->text('material')->nullable();
             $table->string('code')->nullable();
@@ -199,6 +198,7 @@ return new class extends Migration
             $table->string('citation')->nullable();
             $table->string('credit_line')->nullable();
             $table->string('precup')->nullable();
+            $table->text('image')->nullable();
             $table->foreignId('collection_id')->nullable();
             $table->timestamps();
         });

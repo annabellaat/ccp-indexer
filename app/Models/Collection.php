@@ -16,12 +16,7 @@ class Collection extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        // 'slug',
-        'description',
-        'collection_id',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be cast to native types.

@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         \App\Models\User::create([
+             'name' => 'Jamie',
+             'email' => 'jamie@gmail.com',
+             'password' => bcrypt('123456'),
+         ]);
         $tags = [
             ['name' => 'Apartment', 'slug' => 'apartment'],
             ['name' => 'Bahay Kubo', 'slug' => 'bahay-kubo'],
@@ -323,7 +324,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // \App\Models\Tag::factory()->create([
-            
+
         // ]);
     }
 }

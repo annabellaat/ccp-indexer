@@ -3,13 +3,17 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Collection;
 
 class Hometabs extends Component
 {
     public $activeTab = 1;
     public $isactive = false;
 
+    public $random_collections = [];
+
     public function music() {
+
         $this->activeTab = 1;
         $this->isactive = true;
     }
@@ -32,8 +36,14 @@ class Hometabs extends Component
         $this->activeTab = 7;
     }
 
+    public function mount()
+    {
+      $this->random_collections = Collection::all();
+    }
+
     public function render()
     {
+
         $this->activeTab = $this->activeTab + 5 - 5;
         return view('livewire.hometabs');
     }

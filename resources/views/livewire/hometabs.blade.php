@@ -2,7 +2,7 @@
     'active_css' => 'text-amber-500 border-amber-500'
 ])
 <div>
-    <div class="bg-black w-full h-15 lg:h-16 sticky top-16 z-30"
+    <div class="bg-black w-full h-15 lg:h-16 sticky top-16 z-30 pr-1"
         x-data="{
             openTab: 1,
             activeClass: 'rounded-sm inline-block border-b-4 pb-3 rounded-t-lg text-[#d4ab1a] border-[#d4ab1a] font-interbold',
@@ -41,45 +41,28 @@
     <div class="grid w-full grid grid-cols-1 gap-1 gap-y-24 px-4 lg:px-30 py-20 md:grid-cols-2 text-black place-items-center place-content-center justify-ceter">
 
         @if($activeTab == 1)
+
+        @foreach($random_collections as $collection)
+
+
+
         <div class="w-2/3 lg:w-[60%]">
             <div class="">
-                <img src="{{asset('img/banner1.jpg')}}" alt="Collection 1" class="min-w-10 min-h-10 w-auto max-h-[500px] rounded-2xl">
+                <img src="{{ asset('/storage/'.$collection->image) }}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
                 <div class="max-w-xl w-auto">
                     <div class="text-4xl mt-10">
-                        Music Collection1 Name
+                        {{ $collection->name }}
                     </div>
                     <div class="text-2xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ...
+                        {{ $collection->description  }}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="w-2/3 lg:w-[60%]">
-            <div class="">
-                <img src="{{asset('img/library-image.jpg')}}" alt="showcase Featured Image" class="min-w-10 min-h-10 w-auto max-h-[550px] rounded-2xl">
-                <div class="max-w-xl w-auto">
-                    <div class="text-4xl mt-10">
-                        Music Collection2 Name
-                    </div>
-                    <div class="text-2xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ...
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-2/3 lg:w-[60%]">
-            <div class="">
-                <img src="{{asset('img/library-image.jpg')}}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
-                <div class="max-w-xl w-auto">
-                    <div class="text-4xl mt-10">
-                        Collection Name
-                    </div>
-                    <div class="text-2xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ...
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        @endforeach
+
+
         @endif
         @if($activeTab == 2)
         <div class="w-2/3 lg:w-[60%]">
@@ -99,7 +82,7 @@
         @endif
         @if($activeTab == 3)
 
-        
+
         @endif
         @if($activeTab == 4)
         @endif

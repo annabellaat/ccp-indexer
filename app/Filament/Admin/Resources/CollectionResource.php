@@ -42,6 +42,7 @@ class CollectionResource extends Resource
                     ->relationship('collection', 'name')
                     ->label('Parent Collection')
                     ->searchable(),
+                Forms\Components\FileUpload::make('image'),
             ]);
     }
 

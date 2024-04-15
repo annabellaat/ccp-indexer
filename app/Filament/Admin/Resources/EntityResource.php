@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\EntityResource\Pages;
 use App\Filament\Resources\EntityResource\RelationManagers;
-use App\Models\Entity;
+use App\Models\{Entity,Collection, Tag};
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -42,39 +42,40 @@ class EntityResource extends Resource
                     // ])
                     // ->collapsible(),
                     Forms\Components\TextInput::make('archivist')
+                        ->default(auth()->user()->name)
                         ->maxLength(255)
                         ->columnSpanFull(),
-                    
+
                     Forms\Components\Section::make('Classification')
                     ->schema ([
                         Forms\Components\Select::make('category')
                             ->options([
-                                'Architecture' => 'Architecture', 
-                                'Film & Broadcast' => 'Film & Broadcast', 
+                                'Architecture' => 'Architecture',
+                                'Film & Broadcast' => 'Film & Broadcast',
                                 'Dance' => 'Dance',
-                                'Event' => 'Event', 
-                                'Literature' => 'Literature', 
-                                'Music' => 'Music', 
-                                'Theater' => 'Theater', 
-                                'Visual Arts' => 'Visual Arts', 
-                                'Arts Eduction' =>'Arts Eduction', 
+                                'Event' => 'Event',
+                                'Literature' => 'Literature',
+                                'Music' => 'Music',
+                                'Theater' => 'Theater',
+                                'Visual Arts' => 'Visual Arts',
+                                'Arts Eduction' =>'Arts Eduction',
                                 'Literary Arts' => 'Literary Arts'
                             ]),
                         Forms\Components\Select::make('work')
                             ->options([
-                                'Audio' => 'Audio', 
+                                'Audio' => 'Audio',
                                 'Moving Image' => 'Moving Image',
-                                'Multisensory' => 'Multisensory', 
+                                'Multisensory' => 'Multisensory',
                                 'Photo, Print, Paper' => 'Photo, Print, Paper',
                                 'Plastic Arts' => 'Plastic Arts',
-                                'Publication' => 'Publication', 
+                                'Publication' => 'Publication',
                                 'Fabric, Weave' => 'Fabric, Weave',
                                 'Web' => 'Web',
                                 'Painting' => 'Painting'
                             ])
                             ->searchable()
                             ->columnSpan(1),
-                        Forms\Components\Select::make('material') 
+                        Forms\Components\Select::make('material')
                             ->options([
                                 'Music track' => 'Music track',
                                 'Podcast' => 'Podcast',
@@ -103,7 +104,7 @@ class EntityResource extends Resource
                                 'Metalcraft' => 'Metalcraft',
                                 'Personal ornament' => 'Personal ornament',
                                 'Pottery' => 'Pottery',
-                                'Sculpture' => 'Sculpture', 
+                                'Sculpture' => 'Sculpture',
                                 'Artist book' => 'Artist book',
                                 'Catalogue' => 'Catalogue',
                                 'Chart' => 'Chart',
@@ -125,7 +126,7 @@ class EntityResource extends Resource
                                 'Report' => 'Report',
                                 'Score' => 'Score',
                                 'Short story' => 'Short story',
-                                'Thesis dissertation' => 'Thesis dissertation', 
+                                'Thesis dissertation' => 'Thesis dissertation',
                                 'Basketry' => 'Basketry',
                                 'Dress' => 'Dress',
                                 'Embroidery' => 'Embroidery',
@@ -143,7 +144,8 @@ class EntityResource extends Resource
                         Forms\Components\Select::make('tags')
                             ->relationship('tags', 'name')
                             ->multiple()
-                            ->searchable(),
+                            ->searchable()
+                            ->options(Tag::take(10)->get()->pluck('name', 'id')),
                         Forms\Components\TextInput::make('code')
                         ->maxLength(255)
                         ->live(onBlur: true)
@@ -164,7 +166,7 @@ class EntityResource extends Resource
                     ->columns(2)
                     ->collapsible()
                     ->compact(),
-                    
+
                     Forms\Components\Section::make('Identification')
                     ->schema ([
                         Forms\Components\Textarea::make('title')
@@ -197,7 +199,7 @@ class EntityResource extends Resource
                                 'Bugkalot' => 'Bugkalot',
                                 'Cantonese' => 'Cantonese',
                                 'Capiznon' => 'Capiznon',
-                                'Catalan' => 'Catalan', 
+                                'Catalan' => 'Catalan',
                                 'Cebuano' => 'Cebuano',
                                 'Chavacano' => 'Chavacano',
                                 'Cuyunon' => 'Cuyunon',
@@ -263,10 +265,10 @@ class EntityResource extends Resource
                     ])
                     ->columns(2)
                     ->collapsible()
-                    ->compact(),                         
+                    ->compact(),
                 ])
                 ->columnSpan(['lg' => 2]),
-                        
+
                 Forms\Components\Group::make()
                 ->schema([
                     Forms\Components\Section::make('From Collection')
@@ -274,14 +276,19 @@ class EntityResource extends Resource
                         Forms\Components\Select::make('collection_id')
                         ->relationship('collection', 'name')
                         ->label('Select the closest parent collection')
-                        ->searchable(),
+                        ->searchable()
+                        ->options(Collection::take(10)->get()->pluck('name', 'id')),
+
+                    Forms\Components\FileUpload::make('image')
+                    ->label('Thumbnail')
+                    ->directory('entity-images'),
                     ])
                 ])
                 ->columnSpan(['lg' => 1]),
 
                 Forms\Components\Group::make()
                 ->schema([
-                    
+
                     Forms\Components\Tabs::make('Meta (Fill up if applicable)')
                     ->tabs([
                         Tab::make('Creation')

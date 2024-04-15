@@ -9,7 +9,6 @@
     </style>
 @endpush
 
-
 @section('content')
 <div class="w-full text-white">
     <!-- search -->
@@ -121,17 +120,17 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
 
         <div class="bg-gray-300 w-full h-72 md:h-36 grid grid-cols-1 md:grid-cols-2 justify-center items-center px-2 font-interbold">
             <div class="grid-col justify-self-center md:justify-self-end px-10 md:px-5 h-1/3 md:h-fit">
-                <p class="text-slate-800 text-xl sm:text-2xl lg:3xl">Now digitized and <br class="block sm:hidden"> made accessible <br class="block md:hidden">for your discovery.</p>    
+                <p class="text-slate-800 text-xl sm:text-2xl lg:3xl">Now digitized and <br class="block sm:hidden"> made accessible <br class="block md:hidden">for your discovery.</p>
             </div>
             <div class="grid-col justify-self-center md:justify-self-start grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-2 h-1/2 md:h-fit pb-20 md:pb-0">
                 <div class="grid-col">
                     <a href="#" class="rounded-full text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-8 md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Browse collections</a>
                 </div>
-                <div class="grid-col">  
+                <div class="grid-col">
                     <a href="#" class="rounded-full text-xl text-gray-800 bg-gray-100 mx-4 px-24 md:text-lg lg:text-xl md:px-8 lg:px-24 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Log In</a>
                 </div>
             </div>
@@ -143,7 +142,7 @@
 
     <!-- allegories -->
     <div class="bg-slate-200 h-full justify-center relative min-h-svh" id="showcase">
-        @livewire('hometabs')
+          @livewire('hometabs')
         <!-- <div class="bg-black w-full h-16 grid grid-cols-7 text-nowrap text-sm md:text-md lg:text-xl sticky top-16 place-items-center items-center px-4 sm:px-20 lg:px-40 z-30">
             <div class="rounded-full px-2 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Music</div>
             <div class="rounded-full px-3 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Dance</div>
@@ -172,7 +171,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- request -->

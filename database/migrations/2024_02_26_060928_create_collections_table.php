@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('description');
             $table->foreignId('collection_id')->nullable();
+            $table->text('image');
             $table->timestamps();
         });
     }

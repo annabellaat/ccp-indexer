@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\websiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/collections', 'HomeController@collections')->name('collections');
+//Route::get('/collections', 'HomeController@collections')->name('collections');
 
+Route::get('/', [websiteController::class, 'homepage'])->name('home');
 
-Route::view('/','home')->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
 Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
