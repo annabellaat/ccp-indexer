@@ -15,9 +15,15 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
          \App\Models\User::create([
-             'name' => 'admin',
-             'email' => 'admine@gmail.com',
-             'password' => bcrypt('123456'),
+             'name' => 'Danielle',
+             'email' => 'ipr@culturalcenter.gov.ph',
+             'password' => bcrypt('imsupergay'),
+         ]);
+
+         \App\Models\User::create([
+             'name' => 'Jamie',
+             'email' => 'jamie@gmail.com',
+             'password' => bcrypt('jamiegwapo'),
          ]);
         $tags = [
             ['name' => 'Apartment', 'slug' => 'apartment'],
