@@ -30,6 +30,7 @@ class Entity extends Model
         'file_count' => 'integer',
         'collection_id' => 'integer',
         'language' => 'array',
+        'image' => 'array',
     ];
 
     public function requests(): BelongsToMany

@@ -1,4 +1,4 @@
-<footer class="bg-gray-800 py-10 text-white font-mg">
+<footer class="bg-gray-800 py-10 text-white">
     <div class="container mx-auto text-center content-center">
         <div class="sm:mx-20 lg:mx-28 flex flex-col lg:flex-row">
             <div class="w-full text-nowrap text-center sm:text-center lg:text-left pt-5 pb-2 lg:pt-0">
@@ -8,7 +8,7 @@
                 <br>
                 (02) 8832 1125 loc. 1510-12 <br>
                 <br>
-                collections@culturalcenter.gov.ph
+                digitalarchives@culturalcenter.gov.ph
             </div>
             <div class="w-full">
                 <div class="flex flex-row justify-center pt-0 pb-5 lg:pt-20">

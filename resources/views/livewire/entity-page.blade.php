@@ -1,10 +1,32 @@
 <div>
     <div class="h-max py-24 grid grid-cols-2">
         <div class="text-xl col-span-2 pb-6 w-3/4 justify-self-center">
-            <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800">Entity </h>
+            <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800">{{ $entity->title }} </h>
         </div>
-        <div class="grid-col justify-self-end mr-12 pl-6">
-            <img src="{{ asset('/storage/'.$entity->image) }}" alt="{{$entity->title}} Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
+        <div class="grid-col justify-self-center mr-12 pl-12">
+            <div class="grid">
+                @if($entity->image)
+                    @if(count($entity->image) > 1)
+                        <div class="grid grid-cols-2 gap-4 place-items-center">
+                    @else
+                        <div class="grid grid-cols-1">
+                    @endif
+                    @foreach($entity->image as $img)
+                        <div class="">
+                            <img src="{{ asset('/storage/'.$img) }}" alt="{{$entity->title}} Image" class="min-w-10 min-h-10 h-auto max-w-full rounded-2xl">
+                        </div>
+                    @endforeach
+                </div>
+                @else
+                    <div class="text-lg">
+                        <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10  max-h-[300px] rounded-2xl">
+                        <!-- No Image Found -->
+                    </div>
+                    <p id="no-images">No images in folder</p>
+                @endif
+
+            </div>
+
         </div>
         <div class="grid-col w-3/4">
             <div class="text-lg md:text-2xl font-bold text-red-800 pb-3">{{ $entity->title }}</div>

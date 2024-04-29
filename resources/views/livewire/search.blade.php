@@ -2,13 +2,13 @@
     <!-- {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <p class="text-4xl mb-4">Discover thousands of materials from <br> the Cultural Center of the Philippines </p> -->
     <div class="flex justify-center items-center py-12">
-        <div class="relative z-10">
-            <div class="absolute inset-y-0 end-0 flex items-center p-5 rounded-full pointer-events-none bg-gray-700">
+        <div class="relative z-10 w-full lg:w-[60%] px-24">
+            <div class="absolute inset-y-0 end-[18%] lg:end-[15%] flex items-center p-5 rounded-full pointer-events-none bg-gray-700">
                 <svg class="w-6 h-4 text-white dark:text-gray-400" aria-hidden="true"  fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                 </svg>
             </div>
-            <input type="text" class="text-md md:text-xl form-control text-slate-800 pl-4 pr-20 md:pr-32 lg:pr-40 py-4 rounded-full text-align-start w-[300px] md:w-[500px]" wire:model.live="searchItem" placeholder="Search all 10k+ archives..." id="searchEnt">
+            <input type="text" class="text-sm md:text-xl form-control text-slate-800 pl-4 py-4 rounded-full text-align-start md:ml-16 lg:ml-24 w-[90%] md:w-[80%]" wire:model.live="searchItem" placeholder="Search all 10k+ archives..." id="searchEnt">
         </div>
     </div>
     @if($searchItem != '' && strlen($this->searchItem) > 2)

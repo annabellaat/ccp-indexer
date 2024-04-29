@@ -13,11 +13,7 @@
 <div class="w-full text-white">
     <!-- search -->
     <div class="justify-content-center bg-red-200 h-max" id="search">
-        <div class="h-[260px] lg:h-[400px] bg-black">
-            <div class="z-30 absolute mt-[5%] ml-[5%] w-3/4">
-                <p class="text-[#d4ab1a] font-interbold text-3xl md:text-4xl lg:text-7xl mb-4">Digital archives you can explore</p>
-                <p class="text-gray-200 text-sm sm:text-lg md:text-2xl mb-4 font-interlight lg:w-2/5">Explore hundreds of archival materials from the <br class="block lg:hidden"> Cultural Center of the Philippines</p>
-            </div>
+        <div class="h-max lg:h-[600px] bg-black">
             <div id="carouselExampleIndicators" class="relative h-full flex-auto" data-te-carousel-init data-te-ride="carousel">
                 <!--Carousel indicators-->
                 <div class="absolute bottom-[5%] left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
@@ -68,10 +64,16 @@
                     class="relative float-left -mr-[100%] w-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none object-fill"
                     data-te-carousel-item
                     data-te-carousel-active>
+                    
+                    <div class="z-30 absolute mt-[15%] ml-[5%] w-3/4">
+                        <p class="text-[#d4ab1a] font-interbold text-2xl md:text-4xl lg:text-4xl mb-4">Digital archives you can explore</p>
+                        <p class="text-gray-200 text-sm sm:text-lg md:text-xl mb-4 font-interlight lg:w-2/5">Explore hundreds of archival materials from the <br class="block lg:hidden"> Cultural Center of the Philippines</p>
+                    </div>
                     <img
                         src="{{asset('img/Search-1.jpg')}}"
                         class="block max-h-[111%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
                         alt="First slide" />
+                        
                     </div>
                     <!--Second item-->
                     <div

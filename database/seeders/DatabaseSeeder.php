@@ -14,17 +14,27 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        \App\Models\User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'),
+            'role_id' => 1,
+        ]);
+
          \App\Models\User::create([
              'name' => 'Danielle',
              'email' => 'ipr@culturalcenter.gov.ph',
              'password' => bcrypt('imsupergay'),
+             'role_id' => 1,
          ]);
 
          \App\Models\User::create([
              'name' => 'Jamie',
              'email' => 'jamie@gmail.com',
              'password' => bcrypt('jamiegwapo'),
+             'role_id' => 1,
          ]);
+         
         $tags = [
             ['name' => 'Apartment', 'slug' => 'apartment'],
             ['name' => 'Bahay Kubo', 'slug' => 'bahay-kubo'],

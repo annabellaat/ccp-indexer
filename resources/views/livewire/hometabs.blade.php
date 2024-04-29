@@ -10,26 +10,26 @@
         }">
         <div class="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-center text-white pt-4 text-nowrap">
             <ul class="flex flex-row -mx-px place-content-center gap-2 sm:gap-8">
-                <li class="" @click="openTab = 1">
-                    <a wire:click="music" href="#showcase" onclick="return {{$activeTab==1 ? 'false' : 'true'}}" :class="openTab === 1 ? activeClass : inactiveClass">Music</a>
+                <li class="cursor-pointer" @click="openTab = 1">
+                    <span wire:click="music" onclick="return {{$activeTab==1 ? 'false' : 'true'}}" :class="openTab === 1 ? activeClass : inactiveClass">Music</span>
                 </li>
-                <li class="" @click="openTab = 2">
-                    <a wire:click="dance" href="#showcase" onclick="return {{$activeTab==2 ? 'false' : 'true'}}" :class="openTab === 2 ? activeClass : inactiveClass">Dance</a>
+                <li class="cursor-pointer" @click="openTab = 2">
+                    <span wire:click="dance" onclick="return {{$activeTab==2 ? 'false' : 'true'}}" :class="openTab === 2 ? activeClass : inactiveClass">Dance</span>
                 </li>
-                <li class="" @click="openTab = 3">
-                    <a wire:click="theater" href="#showcase" onclick="return {{$activeTab==3 ? 'false' : 'true'}}" :class="openTab === 3 ? activeClass : inactiveClass">Theater</a>
+                <li class="cursor-pointer" @click="openTab = 3">
+                    <span wire:click="theater" onclick="return {{$activeTab==3 ? 'false' : 'true'}}" :class="openTab === 3 ? activeClass : inactiveClass">Theater</span>
                 </li>
-                <li class="" @click="openTab = 4">
-                    <a wire:click="visualarts" href="#showcase" onclick="return {{$activeTab==4 ? 'false' : 'true'}}" :class="openTab === 4 ? activeClass : inactiveClass">Visual Arts</a>
+                <li class="cursor-pointer" @click="openTab = 4">
+                    <span wire:click="visualarts" onclick="return {{$activeTab==4 ? 'false' : 'true'}}" :class="openTab === 4 ? activeClass : inactiveClass">Visual Arts</span>
                 </li>
-                <li class="" @click="openTab = 5">
-                    <a wire:click="film" href="#showcase" onclick="return {{$activeTab==5 ? 'false' : 'true'}}" :class="openTab === 5 ? activeClass : inactiveClass">Film</a>
+                <li class="cursor-pointer" @click="openTab = 5">
+                    <span wire:click="film" onclick="return {{$activeTab==5 ? 'false' : 'true'}}" :class="openTab === 5 ? activeClass : inactiveClass">Film</span>
                 </li>
-                <li class="" @click="openTab = 6">
-                    <a wire:click="literature" href="#showcase" onclick="return {{$activeTab==6 ? 'false' : 'true'}}" :class="openTab === 6 ? activeClass : inactiveClass">Literature</a>
+                <li class="cursor-pointer" @click="openTab = 6">
+                    <span wire:click="literature" onclick="return {{$activeTab==6 ? 'false' : 'true'}}" :class="openTab === 6 ? activeClass : inactiveClass">Literature</span>
                 </li>
-                <li class="" @click="openTab = 7">
-                    <a wire:click="events" href="#showcase" onclick="return {{$activeTab==7 ? 'false' : 'true'}}" :class="openTab === 7 ? activeClass : inactiveClass">Events</a>
+                <li class="cursor-pointer" @click="openTab = 7">
+                    <span wire:click="events" onclick="return {{$activeTab==7 ? 'false' : 'true'}}" :class="openTab === 7 ? activeClass : inactiveClass">Events</span>
                 </li>
             </ul>
         </div>
@@ -38,60 +38,33 @@
 
     @livewire('search')
 
-    <div class="grid w-full grid grid-cols-1 gap-1 gap-y-24 px-4 lg:px-30 py-20 md:grid-cols-2 text-black place-items-center place-content-center justify-ceter">
-
-        @if($activeTab == 1)
+    <div class="grid w-full grid grid-cols-1 gap-1 gap-y-24 px-4 lg:px-30 pt-2 pb-20 md:grid-cols-2 text-black place-items-center place-content-center justify-ceter">
 
         @foreach($random_collections as $collection)
 
-
-
-        <div class="w-2/3 lg:w-[60%]">
-            <div class="">
-                <img src="{{ asset('/storage/'.$collection->image) }}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
-                <div class="max-w-xl w-auto">
-                    <div class="text-4xl mt-10">
-                        {{ $collection->name }}
+        <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
+            <div class="w-2/3 lg:w-[100%]">
+                    @if(!is_null($collection->image))
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
+                    @else
+                        <div class="text-lg">
+                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10  max-h-[300px] rounded-2xl">
+                            <!-- No Image Found -->
+                        </div>
+                    @endif
+                    <div class="max-w-xl w-auto">
+                        <div class="text-3xl mt-10">
+                            {{ $collection->title }}
+                        </div>
+                        <div class="text-lg pt-4">
+                            {{  Str::limit($collection->description, 100)  }}
+                        </div>
                     </div>
-                    <div class="text-2xl">
-                        {{ $collection->description  }}
-                    </div>
-                </div>
             </div>
-        </div>
+        </a>
 
         @endforeach
 
-
-        @endif
-        @if($activeTab == 2)
-        <div class="w-2/3 lg:w-[60%]">
-            <div class="">
-                <img src="{{asset('img/library-image.jpg')}}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
-                <div class="max-w-xl w-auto">
-                    <div class="text-4xl mt-10">
-                        Dance Collection1 Name
-                    </div>
-                    <div class="text-2xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ...
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @endif
-        @if($activeTab == 3)
-
-
-        @endif
-        @if($activeTab == 4)
-        @endif
-        @if($activeTab == 5)
-        @endif
-        @if($activeTab == 6)
-        @endif
-        @if($activeTab == 7)
-        @endif
         <!-- <div class="grid-col w-2/3 lg:w-[60%]">
             <div class="">
                 <img src="{{asset('img/library-image.jpg')}}" alt="showcase Featured Image" class="min-w-10 min-h-10 w-auto rounded-2xl">

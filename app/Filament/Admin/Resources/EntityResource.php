@@ -18,6 +18,7 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class EntityResource extends Resource
 {
@@ -280,8 +281,13 @@ class EntityResource extends Resource
                         ->options(Collection::take(10)->get()->pluck('name', 'id')),
 
                     Forms\Components\FileUpload::make('image')
-                    ->label('Thumbnail')
-                    ->directory('entity-images'),
+                    ->label('Thumbnails')
+                    ->multiple()
+                    ->directory('entity-images')
+                    ->getUploadedFileNameForStorageUsing(
+                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                            ->prepend('Ent-')
+                    ),
                     ])
                 ])
                 ->columnSpan(['lg' => 1]),
@@ -902,8 +908,8 @@ class EntityResource extends Resource
                 ->columns([
                     // Tables\Columns\TextColumn::make('archivist')
                     //     ->searchable(),
-                    Tables\Columns\IconColumn::make('thumbnail')
-                        ->boolean(),
+                    // Tables\Columns\IconColumn::make('thumbnail')
+                    //     ->boolean(),
                     Tables\Columns\TextColumn::make('code')
                         ->searchable(),
                     Tables\Columns\TextColumn::make('title')
