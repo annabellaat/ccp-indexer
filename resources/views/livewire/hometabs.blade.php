@@ -38,26 +38,28 @@
 
     @livewire('search')
 
-    <div class="grid w-full grid grid-cols-1 gap-1 gap-y-24 px-4 lg:px-30 pt-2 pb-20 md:grid-cols-2 text-black place-items-center place-content-center justify-ceter">
+    <div class="grid w-full grid grid-cols-1 gap-1 gap-y-12 px-4 lg:px-30 pt-2 pb-20 md:grid-cols-2 text-black place-items-center">
 
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="w-2/3 lg:w-[100%]">
+            <div class="w-auto">
                     @if(!is_null($collection->image))
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[550px] rounded-2xl">
+                    <div class="justify-self-center">
+                        <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[150px] rounded-2xl">
+                    </div>
                     @else
-                        <div class="text-lg">
-                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10  max-h-[300px] rounded-2xl">
-                            <!-- No Image Found -->
-                        </div>
+                    <div class="justify-self-center">
+                        <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                        <!-- No Image Found -->
+                    </div>
                     @endif
                     <div class="max-w-xl w-auto">
-                        <div class="text-3xl mt-10">
+                        <div class="text-xl mt-10">
                             {{ $collection->title }}
                         </div>
-                        <div class="text-lg pt-4">
-                            {{  Str::limit($collection->description, 100)  }}
+                        <div class="text-md pt-4">
+                            {{  Str::words($collection->description, 25)  }}
                         </div>
                     </div>
             </div>

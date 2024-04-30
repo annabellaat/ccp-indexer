@@ -2,10 +2,10 @@
   <div class="flex h-16 mx-auto">
     <div class="flex-none self-center mr-10">
       <a href="{{ route('home') }}" class="flex">
-        <img alt="CCP Logo" class="mr-3 ml-7 h-9 w-11" src="{{ asset('img/ccp-default-big.png') }}">
-        <span class="text-white text-3xl pt-1">
+        <img alt="CCP Logo" class="mr-3 ml-12 h-14 w-full" src="{{ asset('img/ccp-nav-logo.png') }}">
+        <!-- <span class="text-white text-3xl pt-1">
             CCP DIGITAL ARCHIVES
-        </span>
+        </span> -->
       </a>
     </div>
     <div class="relative flex-auto">
