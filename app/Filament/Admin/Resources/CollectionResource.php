@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Illuminate\Support\Str;
 
 class CollectionResource extends Resource
 {
@@ -27,13 +29,22 @@ class CollectionResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->columnSpanFull(),
-                    // Forms\Components\TextInput::make('slug')
-                    // ->disabled()
-                    // ->dehydrated()
-                    // ->required()
-                    // ->maxLength(255)
-                    // ->unique(Collection::class, 'slug', ignoreRecord: true),
+                    ->columnSpanFull()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                        if ($operation !== 'create') {
+                            return;
+                        }
+
+                        $set('slug', Str::slug($state));
+                    }),
+                    Forms\Components\TextInput::make('slug')
+                    ->disabled()
+                    ->dehydrated()
+                    ->required()
+                    ->maxLength(255)
+                    ->columnSpanFull()
+                    ->unique(Collection::class, 'slug', ignoreRecord: true),
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->maxLength(65535)
@@ -42,7 +53,14 @@ class CollectionResource extends Resource
                     ->relationship('collection', 'name')
                     ->label('Parent Collection')
                     ->searchable(),
-                Forms\Components\FileUpload::make('image'),
+                Forms\Components\FileUpload::make('image')
+                ->label('Thumbnails')
+                ->multiple()
+                ->directory('collection-images')
+                ->getUploadedFileNameForStorageUsing(
+                    fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                        ->prepend('Col-')
+                ),
             ]);
     }
 

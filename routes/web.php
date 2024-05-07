@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\websiteController;
 use App\Livewire\BrowseEntity;
 use App\Livewire\EntityPage;
+use App\Livewire\CollectionPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 
 Route::get('/browse', BrowseEntity::class)->name('browse');
 Route::get('/entity/{entity}/{slug}', EntityPage::class)->name('entity');
+Route::get('/collection/{collection}', CollectionPage::class)->name('collection');
+

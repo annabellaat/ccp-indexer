@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Entity;
+use App\Models\Collection;
 use App\Models\EntityTag;
 
 class EntityPage extends Component

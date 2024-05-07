@@ -852,7 +852,8 @@ class EntityResource extends Resource
 
                         Tab::make('Acquisition, Storage, Citation, and Rights')
                         ->schema ([
-                            Forms\Components\DatePicker::make('accession_year'),
+                            Forms\Components\Textarea::make('accession_year')
+                                ->maxLength(4),
                             Forms\Components\Textarea::make('loan_history')
                                 ->maxLength(65535)
                                 ->columns(1),
@@ -919,6 +920,10 @@ class EntityResource extends Resource
                     Tables\Columns\TextColumn::make('date')
                         ->date()
                         ->sortable(),
+                    Tables\Columns\TextColumn::make('collection.name')
+                        ->numeric()
+                        ->sortable()
+                        ->label('Parent Collection'),
                     Tables\Columns\TextColumn::make('place')
                         ->searchable()
                         ->limit(30),
@@ -931,9 +936,6 @@ class EntityResource extends Resource
                         ->searchable()
                         ->limit(30)
                         ->tooltip(fn (Model $record): string => "{$record->open_access_link}"),
-                    Tables\Columns\TextColumn::make('collection.name')
-                        ->numeric()
-                        ->sortable(),
                     Tables\Columns\TextColumn::make('created_at')
                         ->dateTime()
                         ->sortable()

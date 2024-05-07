@@ -1,16 +1,21 @@
 <div>
-    <div class="h-max py-24 grid grid-cols-2">
-        <div class="text-xl col-span-2 pb-6 w-3/4 justify-self-center">
-            <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800">{{ $entity->title }} </h>
-        </div>
+    <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
+        <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800">{{ $entity->title }} </h>
+    </div>
+    @if(!is_null($entity->collection_id))
+    <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
+        Under the collection <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800"> {{ $entity->collection->name }} </a>
+    </div>
+    @endif
+    <div class="min-h-screen py-12 grid grid-cols-2">
         <div class="grid-col px-12 w-full">
             <div class="grid place-items-center">
                 
-            @if(!is_null($entity->image))
+            @if(!is_null($entity->image) && $entity->image !== [])
                 @if(count($entity->image) > 1)
                 <div id="entityCarousel" class="relative w-full flex-auto"  data-te-carousel-init data-te-ride="carousel">
                 <!--Carousel indicators-->
-                    <div class="absolute top-5 left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
+                    <div class="absolute -top-5 left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
                         @foreach($entity->image as $img)
                             @if($loop->iteration == 1)
                                 <button
@@ -48,15 +53,10 @@
 
                             <img
                                 src="{{ asset('/storage/'.$img) }}"
-                                class="block max-w-full m-auto"
+                                class="block max-w-full m-auto rounded-xl"
                                 alt="{{$entity->title}} Image" />
                             </div>
                         @endforeach
-
-                        <!-- Item 1 -->
-                        <!-- <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                        </div> -->
                     </div>
                 </div>
                 @else
@@ -75,11 +75,11 @@
             </div>
 
         </div>
-        <div class="grid-col w-3/4">
+        <div class="grid-col w-full pr-1 sm:pr-10">
             <div class="text-lg md:text-xl font-bold text-red-800 pb-3">{{ $entity->title }}</div>
             <div class="text-sm md:text-md">{{ $entity->description }}</div>
 
-            <div class="grid grid-cols-4 text-sm md:text-md">
+            <div class="grid grid-cols-4 text-xs sm:text-sm md:text-md">
                 <div class="col-span-4 text-lg font-bold text-red-800 py-6">Details</div>
                 <div class="font-bold col-span-1 py-1">Date: </div>
                 <div class="col-span-3">{{ $entity->date->format('F d, Y') }}</div>

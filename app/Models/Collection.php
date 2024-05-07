@@ -26,6 +26,7 @@ class Collection extends Model
     protected $casts = [
         'id' => 'integer',
         'collection_id' => 'integer',
+        'image' => 'array',
     ];
 
     public function entities(): HasMany

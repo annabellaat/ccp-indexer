@@ -36,32 +36,28 @@
     </div>
 
 
-    @livewire('search')
+  
 
-    <div class="grid w-full grid grid-cols-1 gap-1 gap-y-12 px-4 lg:px-30 pt-2 pb-20 md:grid-cols-2 text-black place-items-center">
+    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-12 px-20 md:px-32 lg:px-56 pt-20 pb-20 text-black">
 
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="w-auto">
-                    @if(!is_null($collection->image))
-                    <div class="justify-self-center">
-                        <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10  max-h-[150px] rounded-2xl">
-                    </div>
-                    @else
-                    <div class="justify-self-center">
-                        <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
-                        <!-- No Image Found -->
-                    </div>
-                    @endif
-                    <div class="max-w-xl w-auto">
-                        <div class="text-xl mt-10">
-                            {{ $collection->title }}
-                        </div>
-                        <div class="text-md pt-4">
-                            {{  Str::words($collection->description, 25)  }}
-                        </div>
-                    </div>
+            <div class="container w-full h-full rounded-sm border-r border-b border-yellow-700 ring-2 ring-yellow-700 shadow-lg justify-center p-2 bg-white">
+                <div class="place-items-center w-full">
+                @if(!is_null($collection->image) && $collection->image != [])
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                @else
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                    <!-- No Image Found -->
+                @endif
+                </div>
+                <div class="w-full h-max text-md md:text-lg mt-10 text-center align-text-bottom">
+                        {{ $collection->title }}
+                    <!-- <div class="text-md pt-4">
+                        {{  Str::words($collection->description, 25)  }}
+                    </div> -->
+                </div>
             </div>
         </a>
 
