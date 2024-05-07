@@ -44,15 +44,15 @@
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
             <div class="container w-full h-full rounded-sm border-r border-b border-yellow-700 ring-2 ring-yellow-700 shadow-lg justify-center p-2 bg-white">
-                <div class="place-items-center w-full">
+                <div class="flex flex-col items-center w-full">
                 @if(!is_null($collection->image) && $collection->image != [])
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[250px] rounded-2xl">
                 @else
-                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[250px] rounded-2xl">
                     <!-- No Image Found -->
                 @endif
                 </div>
-                <div class="w-full h-max text-md md:text-lg mt-10 text-center align-text-bottom">
+                <div class="w-full h-max text-md md:text-lg mt-10 flex flex-col text-center">
                         {{ $collection->title }}
                     <!-- <div class="text-md pt-4">
                         {{  Str::words($collection->description, 25)  }}
