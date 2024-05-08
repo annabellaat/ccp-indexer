@@ -23,6 +23,7 @@
                 @foreach($all_ents as $ent)
                 <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}" class="mb-3 px-4"> {{ $ent->title }}</a>
                 @endforeach
+
             </div>
         </div>
     </div>

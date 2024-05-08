@@ -43,21 +43,18 @@
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="container w-full h-full rounded-sm border-r border-b border-yellow-700 ring-2 ring-yellow-700 shadow-lg justify-center p-2 bg-white">
-                <div class="flex flex-col items-center w-full">
+            <div class="container w-full h-full rounded-sm border-r-2 border-b border-yellow-500 hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
+                <div class="flex flex-col items-center w-full border-2 shadow-lg">
                 @if(!is_null($collection->image) && $collection->image != [])
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[250px] rounded-2xl">
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl">
                 @else
-                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[250px] rounded-2xl">
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="block min-w-10 min-h-10 max-h-[300px] rounded-2xl">
                     <!-- No Image Found -->
                 @endif
                 </div>
-                <div class="w-full h-max text-md md:text-lg mt-10 flex flex-col text-center">
+                <span class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight">
                         {{ $collection->title }}
-                    <!-- <div class="text-md pt-4">
-                        {{  Str::words($collection->description, 25)  }}
-                    </div> -->
-                </div>
+    </span>
             </div>
         </a>
 
