@@ -44,11 +44,13 @@
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
             <div class="container w-full h-full rounded-sm border-r-2 border-b border-yellow-500 hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
-                <div class="flex flex-col items-center w-full border-2 shadow-lg">
+                <div class="flex flex-col items-center w-full border-2 shadow-lg max-h-[500px]">
                 @if(!is_null($collection->image) && $collection->image != [])
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl">
+                    <!-- <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl"> -->
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-[100%] w-auto rounded-sm">
+                    
                 @else
-                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="block min-w-10 min-h-10 max-h-[300px] rounded-2xl">
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-[100%] w-auto rounded-sm">
                     <!-- No Image Found -->
                 @endif
                 </div>
