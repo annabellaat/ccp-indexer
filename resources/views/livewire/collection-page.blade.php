@@ -1,4 +1,7 @@
 <div>
+    <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
+        <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $collection->name }} </h>
+    </div>
     <div class="container min-h-screen px-10 py-2 md:py-24 min-w-full flex flex-col items-center">
         <div class="">
             @if(!is_null($collection->image) && $collection->image !== [])
@@ -18,52 +21,25 @@
                 {{ $collection->description }}
             </p>
         </div>
-        <!-- entities under this collection -->
-        @if(count($entsUnderCollection) > 0)
-        <div>
-            <p class="text-xl">
-                Entities under this collection:
-            </p>
-            <div class="grid w-full grid-cols-{{count($entsUnderCollection)}} gap-4">
-                @foreach($entsUnderCollection as $ent)
-                <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
-                    <div class="container w-full h-full rounded-sm border-r border-b border-yellow-700 ring-2 ring-yellow-700 shadow-lg justify-center p-2">
-                        <div class="place-items-center w-full">
-                        @if(!is_null($ent->image) && $ent->image != [])
-                            <img src="{{ asset('/storage/'.$ent->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
-                        @else
-                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
-                            <!-- No Image Found -->
-                        @endif
-                        </div>
-                        <div class="w-full h-max text-md md:text-lg mt-10 text-center align-text-bottom">
-                                {{ $ent->title }}
-                        </div>
-                    </div>
-                </a>
-                @endforeach
-            </div>
-        </div>
-        @endif
         <!-- collections under this collection -->
         @if(count($colsUnderCollection) > 0)
         <div class="py-12">
-            <p class="text-xl">
+            <p class="text-xl pl-[10%]">
                 Collections under this collection:
             </p>
-            <div class="grid w-full grid-cols-{{count($colsUnderCollection)}} gap-4">
+            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($colsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($colsUnderCollection) > 3 ? 4 : count($colsUnderCollection) }} gap-4 gap-y-12 px-20 lg:px-56 pt-10 pb-20 text-black">
                 @foreach($colsUnderCollection as $col)
                 <a href="{{ route('collection', ['collection' => $col, 'slug' => $col->slug]) }}">
-                    <div class="container w-full h-full rounded-sm border-r border-b border-yellow-700 ring-2 ring-yellow-700 shadow-lg justify-center p-2">
-                        <div class="place-items-center w-full">
+                    <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
+                        <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
                         @if(!is_null($col->image) && $col->image != [])
-                            <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                            <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
                         @else
-                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="min-w-10 min-h-10 max-h-[150px] rounded-2xl">
+                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">
                             <!-- No Image Found -->
                         @endif
                         </div>
-                        <div class="w-full h-max text-md md:text-lg mt-10 text-center align-text-bottom">
+                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
                                 {{ $col->name }}
                         </div>
                     </div>
@@ -72,6 +48,34 @@
             </div>
         </div>
         @endif
+        <!-- entities under this collection -->
+        @if(count($entsUnderCollection) > 0)
+        <div class="">
+            <p class="text-xl pl-[10%]">
+                Entries under this collection:
+            </p>
+            <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-{{count($entsUnderCollection) > 3 ? 4 : count($entsUnderCollection) }} gap-4 gap-y-12 px-20 lg:px-56 pt-10 pb-20 text-black">
+                @foreach($entsUnderCollection as $ent)
+                <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
+                    <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
+                        <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
+                        @if(!is_null($ent->image) && $ent->image != [])
+                            <img src="{{ asset('/storage/'.$ent->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
+                        @else
+                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">
+                            <!-- No Image Found -->
+                        @endif
+                        </div>
+                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
+                                {{ $ent->title }}
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+        </div>
+        @endif
+        
 
     </div>
 </div>

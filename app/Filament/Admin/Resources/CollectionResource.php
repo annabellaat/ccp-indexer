@@ -66,7 +66,8 @@ class CollectionResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('collection_id', null);
+        // return parent::getEloquentQuery()->where('collection_id', null);
+        return parent::getEloquentQuery();
     }
 
     public static function table(Table $table): Table
@@ -78,6 +79,7 @@ class CollectionResource extends Resource
                 Tables\Columns\TextColumn::make('description')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('collection.name')
+                    ->label('Parent Collection')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

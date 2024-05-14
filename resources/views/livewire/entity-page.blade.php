@@ -1,6 +1,6 @@
 <div>
     <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
-        <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800">{{ $entity->title }} </h>
+        <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $entity->title }} </h>
     </div>
     @if(!is_null($entity->collection_id))
     <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
@@ -75,16 +75,24 @@
             </div>
 
         </div>
-        <div class="grid-col w-full pr-1 sm:pr-10">
+        <div class="grid-col w-full pr-10 md:pr-60 sm:pr-10">
             <div class="text-lg md:text-xl font-bold text-red-800 pb-3">{{ $entity->title }}</div>
-            <div class="text-sm md:text-md">{{ $entity->description }}</div>
+            @if($readmore == false)
+            <div class="text-sm md:text-md">{{ \Illuminate\Support\Str::words($entity->description, 150, '...') }}  
+                @if(str_word_count($entity->description) > 150)
+                <span class="text-sky-600 cursor-pointer" wire:click="readMore()">read more</span>
+                @endif
+            </div>
+            @else
+            <div class="text-sm md:text-md">{{ $entity->description }}  <span class="text-sky-600 cursor-pointer" wire:click="readMore()">see less</span></div>
+            @endif
 
             <div class="grid grid-cols-4 text-xs sm:text-sm md:text-md">
                 <div class="col-span-4 text-lg font-bold text-red-800 py-6">Details</div>
                 <div class="font-bold col-span-1 py-1">Date: </div>
-                <div class="col-span-3">{{ $entity->date->format('F d, Y') }}</div>
+                <div class="col-span-3">{{ !is_null($entity->date) ? $entity->date->format('F d, Y') : "-No date given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Place: </div>
-                <div class="col-span-3">{{ $entity->place }}</div>
+                <div class="col-span-3">{{ !is_null($entity->place) ? $entity->place : "-No place given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Material: </div>
                 <div class="col-span-3">{{ $entity->material }}</div>
                 <div class="font-bold col-span-1 py-1">Category: </div>

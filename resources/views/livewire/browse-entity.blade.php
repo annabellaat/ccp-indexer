@@ -7,7 +7,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input type="text" class="text-md md:text-xl form-control text-slate-800 pl-4 pr-20 md:pr-32 lg:pr-40 py-4 w-full rounded-full text-align-start" wire:model.live="query" wire:debounce="1000" placeholder="Search all titles..." id="searchEnt">
+                <input type="text" class="text-md md:text-xl form-control text-slate-800 pl-4 pr-44 md:pr-[450px] lg:pr-[600px] py-4 w-full rounded-full text-align-start" wire:model.live="query" wire:debounce="500" placeholder="Search all titles..." id="searchEnt">
             </div>
         </div>
         <div class="py-12 pb-24 text-red-800">
@@ -20,8 +20,16 @@
                 </div>
             </div>
             <div class="grid items-center mx-auto w-4/5 md:w-[60%] text-lg sm:text-xl">
-                @foreach($all_ents as $ent)
-                <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}" class="mb-3 px-4"> {{ $ent->title }}</a>
+                @foreach($all_browse as $ent)
+                    @if(array_key_exists('archivist', $ent))
+                    <span wire:click="goToEnt('{{$ent['id']}}', '{{$ent['slug']}}')" class="mb-3 px-4 cursor-pointer" wire:key="{{$ent['id']}}"> {{ $ent['title'] }}</span>
+                    @else
+                    <div class="mb-2">
+                    <livewire:under-collection :id="$ent['id']" :slug="$ent['slug']" :title="$ent['title']" />
+                    </div>
+                    @endif
+                    
+                <!-- <a href="{{ array_key_exists('archivist', $ent) ? route('entity', ['entity' => $ent['id'], 'slug' => $ent['slug']]) : route('collection', ['collection' => $ent['id'], 'slug' => $ent['slug']]) }}" class="mb-3 px-4"> {{ array_key_exists('archivist', $ent) ? $ent['title'] : $ent['name'] }}</a> -->
                 @endforeach
 
             </div>

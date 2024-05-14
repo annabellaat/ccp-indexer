@@ -11,25 +11,25 @@
         <div class="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-center text-white pt-4 text-nowrap">
             <ul class="flex flex-row -mx-px place-content-center gap-2 sm:gap-8">
                 <li class="cursor-pointer" @click="openTab = 1">
-                    <span wire:click="music" onclick="return {{$activeTab==1 ? 'false' : 'true'}}" :class="openTab === 1 ? activeClass : inactiveClass">Music</span>
+                    <span wire:click="music" onclick="return (openTab==1 ? 'false' : 'true')" :class="openTab === 1 ? activeClass : inactiveClass">Music</span>
                 </li>
                 <li class="cursor-pointer" @click="openTab = 2">
-                    <span wire:click="dance" onclick="return {{$activeTab==2 ? 'false' : 'true'}}" :class="openTab === 2 ? activeClass : inactiveClass">Dance</span>
+                    <span wire:click="dance" onclick="return (openTab==2 ? 'false' : 'true')" :class="openTab === 2 ? activeClass : inactiveClass">Dance</span>
                 </li>
                 <li class="cursor-pointer" @click="openTab = 3">
-                    <span wire:click="theater" onclick="return {{$activeTab==3 ? 'false' : 'true'}}" :class="openTab === 3 ? activeClass : inactiveClass">Theater</span>
+                    <span wire:click="theater" onclick="return (openTab==3 ? 'false' : 'true')" :class="openTab === 3 ? activeClass : inactiveClass">Theater</span>
                 </li>
                 <li class="cursor-pointer" @click="openTab = 4">
-                    <span wire:click="visualarts" onclick="return {{$activeTab==4 ? 'false' : 'true'}}" :class="openTab === 4 ? activeClass : inactiveClass">Visual Arts</span>
+                    <span wire:click="visualarts" onclick="return (openTab==4 ? 'false' : 'true')" :class="openTab === 4 ? activeClass : inactiveClass">Visual Arts</span>
                 </li>
                 <li class="cursor-pointer" @click="openTab = 5">
-                    <span wire:click="film" onclick="return {{$activeTab==5 ? 'false' : 'true'}}" :class="openTab === 5 ? activeClass : inactiveClass">Film</span>
+                    <span wire:click="film" onclick="return (openTab==5 ? 'false' : 'true')" :class="openTab === 5 ? activeClass : inactiveClass">Film</span>
                 </li>
                 <li class="cursor-pointer" @click="openTab = 6">
-                    <span wire:click="literature" onclick="return {{$activeTab==6 ? 'false' : 'true'}}" :class="openTab === 6 ? activeClass : inactiveClass">Literature</span>
+                    <span wire:click="literature" onclick="return (openTab==6 ? 'false' : 'true')" :class="openTab === 6 ? activeClass : inactiveClass">Literature</span>
                 </li>
                 <li class="cursor-pointer" @click="openTab = 7">
-                    <span wire:click="events" onclick="return {{$activeTab==7 ? 'false' : 'true'}}" :class="openTab === 7 ? activeClass : inactiveClass">Events</span>
+                    <span wire:click="events" onclick="return (openTab==7 ? 'false' : 'true')" :class="openTab === 7 ? activeClass : inactiveClass">Events</span>
                 </li>
             </ul>
         </div>
@@ -38,25 +38,25 @@
 
   
 
-    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-12 px-20 md:px-32 lg:px-56 pt-20 pb-20 text-black">
+    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-12 px-20 lg:px-56 pt-20 pb-20 text-black">
 
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="container w-full h-full rounded-sm border-r-2 border-b border-yellow-500 hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
-                <div class="flex flex-col items-center w-full border-2 shadow-lg max-h-[500px]">
+            <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
+                <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
                 @if(!is_null($collection->image) && $collection->image != [])
                     <!-- <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl"> -->
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-[100%] w-auto rounded-sm">
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
                     
                 @else
-                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-[100%] w-auto rounded-sm">
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">
                     <!-- No Image Found -->
                 @endif
                 </div>
-                <span class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight">
+                <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
                         {{ $collection->title }}
-    </span>
+                </div>
             </div>
         </a>
 

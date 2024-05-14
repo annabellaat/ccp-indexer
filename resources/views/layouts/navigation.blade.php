@@ -38,7 +38,7 @@
             <a href="{{Route::is('home') ? '#search' : url('/search')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">FEATURED</a>
           </li> -->
           <li class="flex-auto">
-            <a href="{{ Route::is('home') ? '#showcase' : route('browse') }}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">BROWSE</a>
+            <a href="{{ route('browse') }}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">BROWSE</a>
           </li>
           <li class="flex-auto">
             <a href="{{ Route::is('home') ? '#' : route('browse') }}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2 text-nowrap" aria-current="page">OPEN ACCESS</a>
@@ -55,8 +55,8 @@
 
       <div class="sssss absolute mt-16 right-0 z-10 shadow-2xl ring-1 ring-black ring-opacity-5 rounded-lg bg-red-900 hidden md:hidden" id="navbar-collapse">
         <!-- <a href="{{Route::is('home') ? '#search' : url('/search')}}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">FEATURED</a> -->
-        <a href="{{Route::is('home') ? '#showcase' : url('/collections')}}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">BROWSE</a>
-        <a href="{{Route::is('home') ? '#request' : url('/entities/request')}}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest text-nowrap" aria-current="page">OPEN ACCESS</a>
+        <a href="{{ route('browse') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">BROWSE</a>
+        <a href="{{ Route::is('home') ? '#' : route('browse') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest text-nowrap" aria-current="page">OPEN ACCESS</a>
       </div>
 
     </div>

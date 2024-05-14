@@ -65,7 +65,7 @@
                     data-te-carousel-item
                     data-te-carousel-active>
                     
-                    <div class="z-30 absolute mt-[22%] ml-[5%] w-3/4">
+                    <div class="z-30 absolute pt-[37%] md:pt-[22%] ml-[5%] w-3/4">
                         <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-2">Digital archives you can explore</p>
                         <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight lg:w-2/5">Explore hundreds of archival materials from the <br class="block lg:hidden"> Cultural Center of the Philippines</p>
                     </div>
