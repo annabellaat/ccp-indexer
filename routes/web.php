@@ -34,5 +34,5 @@ Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 
 Route::get('/browse', BrowseEntity::class)->name('browse');
 Route::get('/entity/{entity}/{slug}', EntityPage::class)->name('entity');
-Route::get('/collection/{collection}', CollectionPage::class)->name('collection');
+Route::get('/collection/{collection}/{slug}', CollectionPage::class)->name('collection');
 
