@@ -38,16 +38,16 @@
 
   
 
-    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-12 px-20 lg:px-56 pt-20 pb-20 text-black">
+    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-12 px-20 lg:px-[10%] pt-20 pb-20 text-black">
 
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
             <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
-                <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
+                <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md bg-slate-950">
                 @if(!is_null($collection->image) && $collection->image != [])
                     <!-- <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl"> -->
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-scale-down">
                     
                 @else
                     <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">

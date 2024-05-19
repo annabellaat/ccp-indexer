@@ -28,8 +28,6 @@
                     <livewire:under-collection :id="$ent['id']" :slug="$ent['slug']" :title="$ent['title']" />
                     </div>
                     @endif
-                    
-                <!-- <a href="{{ array_key_exists('archivist', $ent) ? route('entity', ['entity' => $ent['id'], 'slug' => $ent['slug']]) : route('collection', ['collection' => $ent['id'], 'slug' => $ent['slug']]) }}" class="mb-3 px-4"> {{ array_key_exists('archivist', $ent) ? $ent['title'] : $ent['name'] }}</a> -->
                 @endforeach
 
             </div>
