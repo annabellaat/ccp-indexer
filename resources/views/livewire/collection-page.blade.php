@@ -13,7 +13,7 @@
             @endif
 
         </div>
-        <div class="py-10">
+        <div class="py-4">
             <p class="text-2xl mb-4">
                 {{ $collection->name }}
             </p>
@@ -23,11 +23,11 @@
         </div>
         <!-- collections under this collection -->
         @if(count($colsUnderCollection) > 0)
-        <div class="py-12">
+        <div class="">
             <p class="text-xl pl-[10%]">
                 Collections under this collection:
             </p>
-            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($colsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($colsUnderCollection) > 3 ? 4 : count($colsUnderCollection) }} gap-4 gap-y-12 px-20 lg:px-[10%] pt-10 pb-20 text-black">
+            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($colsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($colsUnderCollection) > 3 ? 4 : count($colsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-4 pb-20 text-black">
                 @foreach($colsUnderCollection as $col)
                 <a href="{{ route('collection', ['collection' => $col, 'slug' => $col->slug]) }}">
                     <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
@@ -54,7 +54,7 @@
             <p class="text-xl pl-[10%]">
                 Entries under this collection:
             </p>
-            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($entsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($entsUnderCollection) > 3 ? 4 : count($entsUnderCollection) }} gap-4 gap-y-12 px-20 lg:px-[10%] pt-10 pb-20 text-black">
+            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($entsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($entsUnderCollection) > 3 ? 4 : count($entsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-4 pb-20 text-black">
                 @foreach($entsUnderCollection as $ent)
                 <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
                     <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">

@@ -7,18 +7,21 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                 </div>
-                <input type="text" class="text-md md:text-xl form-control text-slate-800 pl-4 pr-44 md:pr-[450px] lg:pr-[600px] py-4 w-full rounded-full text-align-start" wire:model.live="query" wire:debounce="500" placeholder="Search all titles..." id="searchEnt">
+                <input type="text" class="text-md md:text-xl form-control text-slate-800 pl-4 pr-44 md:pr-[450px] lg:pr-[600px] py-4 w-full rounded-full text-align-start" wire:model.live="query" wire:debounce="3000" placeholder="Search all titles..." id="searchEnt" spellcheck="false">
             </div>
         </div>
         <div class="py-12 pb-24 text-red-800">
             <div class="grid justify-center items-center">
                 <div class="text-lg md:text-3xl lg:text-4xl pb-12">
+                    <span 
+                    class="{{ $activeLet == 'num' ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterNumber()">#</span>
                 @foreach(range("A","Z") as $let)
                     <span 
                     class="{{ $activeLet == $let ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterByLetter('{{ $let }}')">{{$let}}</span>
                 @endforeach
                 </div>
             </div>
+
             <div class="grid items-center mx-auto w-4/5 md:w-[60%] text-lg sm:text-xl">
                 @foreach($all_browse as $ent)
                     @if(array_key_exists('archivist', $ent))
@@ -29,7 +32,6 @@
                     </div>
                     @endif
                 @endforeach
-
             </div>
         </div>
     </div>

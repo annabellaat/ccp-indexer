@@ -15,7 +15,7 @@ class BrowseEntity extends Component
     public $all_cols = [];
     public $all_browse = [];
     public $query = '';
-    public $activeLet = 'A';
+    public $activeLet = 'num';
     protected $searching = true;
     public $showmoreB = false;
     public $moreEnts = [];
@@ -23,10 +23,23 @@ class BrowseEntity extends Component
     public function mount()
     {
       $this->rry = range("A","Z");
-      $this->all_ents = Entity::where('collection_id', '=', null)->orderBy('title', 'asc')->take(50)->get();
+    //   $this->all_ents = Entity::where('collection_id', '=', null)->orderBy('title', 'asc')->take(20)->get();
+    //   $this->all_cols = Collection::where('collection_id', '=', null)->orderBy('name', 'asc')->take(20)->get(['name AS title', 'collections.*']);
+    //   $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
+    //   array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
     }
 
-    
+    public function filterNumber() {
+        $this->activeLet =  'num';
+        $this->searching = false;
+        $this->query = '';
+        $this->all_ents = Entity::where('title', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('title', 'asc')->take(50)->get();
+        $this->all_cols = Collection::where('name', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('name', 'asc')->take(50)->get(['name AS title', 'collections.*']);
+        $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
+        array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
+
+    }
+
     public function filterByLetter($letter) {
         $this->activeLet =   $letter;
         $this->searching = false;
@@ -46,10 +59,10 @@ class BrowseEntity extends Component
         $this->redirectRoute('collection', ['collection' => $id, 'slug' => $slug]);
     }
 
-    public function showMore($id) {
-        $this->moreEnts = Entity::where('collection_id', '=', $id)->orderBy('title', 'asc')->get()->toArray();
-        $this->showmoreB = true;
-    }
+    // public function showMore($id) {
+    //     $this->moreEnts = Entity::where('collection_id', '=', $id)->orderBy('title', 'asc')->get()->toArray();
+    //     $this->showmoreB = true;
+    // }
 
     // use WithPagination;
     public function render()

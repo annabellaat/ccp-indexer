@@ -1,5 +1,5 @@
 <div>
-    <span class="pl-4" x-data="{ show: true }" wire:key="{{$id}}">
+    <span class="pl-4" x-data="{ show: true }">
 
         <span x-show="show" x-on:click="show = ! show" class="font-interbold cursor-pointer" id="{{$id}}-plus">[+] </span>
         <span x-show="! show" x-on:click="show = ! show" class="font-interbold cursor-pointer" id="{{$id}}-minus">[-] </span>

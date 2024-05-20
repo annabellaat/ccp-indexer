@@ -3,13 +3,12 @@
     <div class="flex-none self-center mr-10">
       <a href="{{ route('home') }}" class="flex">
         <img alt="CCP Logo" class="mr-3 ml-2 sm:ml-12 h-12 w-full" src="{{ asset('img/ccp-nav-logo.png') }}">
-        <!-- <span class="text-white text-3xl pt-1">
-            CCP DIGITAL ARCHIVES
-        </span> -->
       </a>
     </div>
     <div class="relative flex-auto">
-      <div class="absolute top-3 right-0 items-center md:hidden">
+      <div class="absolute top-3 right-0 items-center lg:hidden flex">
+
+        <div class="">
         <button type="button" class="mr-1 sm:mr-3 relative inline-flex items-center justify-center rounded-md p-1.5 text-gray-400 border-slate-300 hover:bg-slate-400/50" id="navbar-dropdown">
           <span class="absolute -inset-0.5 navhide"></span>
           <span class="sr-only">Open main menu</span>
@@ -30,13 +29,14 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
+        </div>
       </div>
 
-      <div class="mr-2 hidden md:grid md:grid-rows-1 gap-4 justify-end h-full">
+      <div class="mr-2 hidden lg:grid lg:grid-rows-1 gap-4 justify-end h-full">
         <ul class="flex pt-4">
-          <!-- <li class="flex-auto">
-            <a href="{{Route::is('home') ? '#search' : url('/search')}}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">FEATURED</a>
-          </li> -->
+          <li class="flex-auto pr-4 pt-1 text-white font-interlight">
+            <livewire:search>
+          </li>
           <li class="flex-auto">
             <a href="{{ route('browse') }}" class="text-white hover:outline hover:outline-amber-700 hover:outline-1 hover:outline-offset-1 hover:bg-red-800 block rounded-md px-2 py-1 text-xl tracking-wide mr-2" aria-current="page">BROWSE</a>
           </li>
@@ -52,8 +52,7 @@
         </ul>
       </div>
 
-
-      <div class="sssss absolute mt-16 right-0 z-10 shadow-2xl ring-1 ring-black ring-opacity-5 rounded-lg bg-red-900 hidden md:hidden" id="navbar-collapse">
+      <div class="sssss absolute mt-16 right-0 z-10 shadow-2xl ring-1 ring-black ring-opacity-5 rounded-lg bg-red-900 hidden lg:hidden" id="navbar-collapse">
         <!-- <a href="{{Route::is('home') ? '#search' : url('/search')}}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">FEATURED</a> -->
         <a href="{{ route('browse') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">BROWSE</a>
         <a href="{{ Route::is('home') ? '#' : route('browse') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest text-nowrap" aria-current="page">OPEN ACCESS</a>
