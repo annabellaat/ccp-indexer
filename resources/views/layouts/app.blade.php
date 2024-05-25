@@ -18,6 +18,16 @@
             .font-kagitingan {
                 font-family: kagitingan;
             } */
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            .no-scrollbar {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
             @font-face {
                 font-family: misgott;
                 src: url({{url('fonts/mission-gothic/MissionGothicThin.otf')}});
@@ -83,7 +93,7 @@
         @livewireStyles
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="antialiased font-inter">
+    <body class="antialiased font-inter overflow-x-hidden">
         <div class="bg-gray-100 d-flex flex-grow-1 flex-column">
             @include('layouts.navigation')
             <div class="">

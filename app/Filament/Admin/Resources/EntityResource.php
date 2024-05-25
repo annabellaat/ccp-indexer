@@ -150,6 +150,7 @@ class EntityResource extends Resource
                         Forms\Components\TextInput::make('code')
                         ->maxLength(255)
                         ->live(onBlur: true)
+                        ->required()
                         ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
                             if ($operation !== 'create') {
                                 return;

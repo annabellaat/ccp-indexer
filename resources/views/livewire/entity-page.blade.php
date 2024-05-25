@@ -1,13 +1,13 @@
 <div>
-    <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
+    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pt-6 justify-self-center">
         <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $entity->title }} </h>
     </div>
     @if(!is_null($entity->collection_id))
-    <div class="text-sm sm:text-lg md:text-xl px-20 pt-12 justify-self-center">
-        Under the collection <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800"> {{ $entity->collection->name }} </a>
+    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pt-6 justify-self-center">
+        Under the collection of <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800"> {{ $entity->collection->name }} </a>
     </div>
     @endif
-    <div class="min-h-screen py-12 grid grid-cols-2">
+    <div class="min-h-screen py-12 grid grid-cols-1 lg:grid-cols-2">
         <div class="grid-col px-12 w-full">
             <div class="grid place-items-center">
                 
@@ -42,31 +42,31 @@
                         @foreach($entity->image as $img)
                             @if($loop->iteration == 1)
                             <div
-                            class="relative float-left -mr-[100%] w-full max-w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none object-fill"
+                            class="relative float-left -mr-[100%] w-full transition-transform duration-[1000ms] ease-in-out motion-reduce:transition-none items-center h-[300px] lg:h-[550px] rounded-md"
                             data-te-carousel-item
                             data-te-carousel-active>
                             @else
                             <div
-                            class="relative float-left -mr-[100%] hidden w-full max-w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                            class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[1000ms] ease-in-out motion-reduce:transition-none items-center h-[300px] lg:h-[550px] rounded-md"
                             data-te-carousel-item>
                             @endif
 
                             <img
                                 src="{{ asset('/storage/'.$img) }}"
-                                class="block max-w-full m-auto rounded-xl"
+                                class="block h-full w-auto m-auto rounded-md object-cover"
                                 alt="{{$entity->title}} Image" />
                             </div>
                         @endforeach
                     </div>
                 </div>
                 @else
-                <div class="">
-                    <img src="{{ asset('/storage/'.$entity->image[0]) }}" alt="{{$entity->title}} Image" class="min-w-10 min-h-10 h-auto max-w-full rounded-2xl">
+                <div class="shadow-lg items-center h-[300px] lg:h-[550px] rounded-md bg-slate-900">
+                    <img src="{{ asset('/storage/'.$entity->image[0]) }}" alt="{{$entity->title}} Image" class="h-full w-auto rounded-md object-cover">
                 </div>
                 @endif
             @else
-                <div class="text-lg">
-                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="No Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl">
+                <div class="h-[300px] lg:h-[550px]">
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="No Image" class="h-full rounded-2xl object-contain">
                     <!-- No Image Found -->
                 </div>
                 <p id="no-images">No images in folder</p>
@@ -75,16 +75,16 @@
             </div>
 
         </div>
-        <div class="grid-col w-full pr-10 md:pr-60 sm:pr-10">
-            <div class="text-lg md:text-xl font-bold text-red-800 pb-3">{{ $entity->title }}</div>
+        <div class="grid-col w-full pt-8 lg:pt-0 pl-10 md:pl-[20%] lg:pl-0 pr-10 lg:pr-48 sm:pr-10 cursor-default">
+            <div class="text-xl md:text-2xl font-bold text-red-800 pb-3">{{ $entity->title }}</div>
             @if($readmore == false)
-            <div class="text-sm md:text-md">{{ \Illuminate\Support\Str::words($entity->description, 150, '...') }}  
+            <div class="text-sm md:text-md max-h-[220px] overscroll-contain overflow-y-auto">{{ \Illuminate\Support\Str::words($entity->description, 150, '...') }}  
                 @if(str_word_count($entity->description) > 150)
                 <span class="text-sky-600 cursor-pointer" wire:click="readMore()">read more</span>
                 @endif
             </div>
             @else
-            <div class="text-sm md:text-md">{{ $entity->description }}  <span class="text-sky-600 cursor-pointer" wire:click="readMore()">see less</span></div>
+            <div class="text-sm md:text-md max-h-[220px] overscroll-contain overflow-y-auto">{{ $entity->description }}  <span class="text-sky-600 cursor-pointer" wire:click="readMore()">see less</span></div>
             @endif
 
             <div class="grid grid-cols-4 text-xs sm:text-sm md:text-md">

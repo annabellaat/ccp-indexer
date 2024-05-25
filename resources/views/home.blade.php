@@ -61,11 +61,11 @@
                 <div class="relative flex h-full w-full overflow-hidden after:clear-both after:block after:content-['']">
                     <!--First item-->
                     <div
-                    class="relative float-left -mr-[100%] w-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none object-fill"
+                    class="relative float-left -mr-[100%] w-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item
                     data-te-carousel-active>
                     
-                    <div class="z-30 absolute pt-[37%] md:pt-[22%] ml-[5%] w-3/4">
+                    <div class="z-30 absolute bottom-10 ml-[5%] w-3/4">
                         <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-2">Digital archives you can explore</p>
                         <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight lg:w-2/5">Explore hundreds of archival materials from the <br class="block lg:hidden"> Cultural Center of the Philippines</p>
                     </div>
@@ -143,7 +143,7 @@
 
 
     <!-- allegories -->
-    <div class="bg-slate-200 h-full justify-center relative min-h-svh" id="showcase">
+    <div class="bg-white h-full justify-center relative min-h-svh" id="showcase">
           @livewire('hometabs')
         <!-- <div class="bg-black w-full h-16 grid grid-cols-7 text-nowrap text-sm md:text-md lg:text-xl sticky top-16 place-items-center items-center px-4 sm:px-20 lg:px-40 z-30">
             <div class="rounded-full px-2 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Music</div>

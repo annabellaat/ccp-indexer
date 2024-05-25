@@ -71,14 +71,14 @@
             </div>
             <div class="flex-end pt-5 lg:pt-1 sm:mx-32 md:mx-64 lg:mx-0 text-sm text-nowrap">
                 <ul class="flex">
-                    <li class="flex-auto lg:mx-2 text-yellow-600/75 hover:text-yellow-800/75">
-                        <a href="{{url('about')}}" class="nav-link text-ccp-gold">About</a>
+                    <li class="flex-auto lg:mx-2 text-[#d4ab1a] hover:text-yellow-400">
+                        <a href="{{url('about')}}" class="nav-link font-interbold">About</a>
                     </li>
-                    <li class="flex-auto lg:mx-2 text-yellow-600/75 hover:text-yellow-800/75">
-                        <a href="{{url('terms-of-use')}}" class="nav-link text-ccp-gold">Terms of Use</a>
+                    <li class="flex-auto lg:mx-2 text-[#d4ab1a] hover:text-yellow-400">
+                        <a href="{{url('terms-of-use')}}" class="nav-link font-interbold">Terms of Use</a>
                     </li>
-                    <li class="flex-auto lg:ml-2 text-yellow-600/75 hover:text-yellow-800/75">
-                        <a href="{{url('privacy-policy')}}" class="nav-link text-ccp-gold">Privacy Policy</a>
+                    <li class="flex-auto lg:ml-2 text-[#d4ab1a] hover:text-yellow-400">
+                        <a href="{{url('privacy-policy')}}" class="nav-link font-interbold">Privacy Policy</a>
                     </li>
                 </ul>
             </div>

@@ -2,14 +2,14 @@
     'active_css' => 'text-amber-500 border-amber-500'
 ])
 <div>
-    <div class="bg-black w-full h-15 lg:h-16 sticky top-16 z-30 pr-1"
+    <div class="bg-black w-full h-14 sticky top-16 z-30 pr-1 shadow-[rgba(0,0,15,0.5)_0px_4px_4px_0px]"
         x-data="{
             openTab: 1,
-            activeClass: 'rounded-sm inline-block border-b-4 pb-3 rounded-t-lg text-[#d4ab1a] border-[#d4ab1a] font-interbold',
-            inactiveClass: 'rounded-sm inline-block border-b-4 pb-3 border-transparent rounded-t-lg hover:text-[#d4ab1a] hover:border-[#d4ab1a] hover:font-bold'
+            activeClass: 'inline-block border-b-4 pb-3 rounded-t-lg text-[#d4ab1a] border-[#d4ab1a] font-interbold',
+            inactiveClass: 'inline-block border-b-4 pb-3 border-transparent rounded-t-lg hover:text-[#d4ab1a] hover:border-[#d4ab1a] hover:font-bold'
         }">
-        <div class="text-sm sm:text-lg md:text-xl lg:text-2xl font-medium text-center text-white pt-4 text-nowrap">
-            <ul class="flex flex-row -mx-px place-content-center gap-2 sm:gap-8">
+        <div class="text-md md:text-xl font-medium text-center text-white pt-4  md:pt-3 text-nowrap">
+            <ul class="flex flex-row -mx-px place-content-center gap-3 md:gap-6 lg:gap-16">
                 <li class="cursor-pointer" @click="openTab = 1">
                     <span wire:click="music" onclick="return (openTab==1 ? 'false' : 'true')" :class="openTab === 1 ? activeClass : inactiveClass">Music</span>
                 </li>
@@ -38,19 +38,19 @@
 
   
 
-    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-12 px-20 lg:px-[10%] pt-20 pb-20 text-black">
+    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 px-20 lg:px-[10%] pt-6 pb-6 text-black">
 
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="container w-full h-full rounded-md hover:ring-2 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
-                <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md bg-slate-950">
+            <div class="container w-full h-full rounded-sm hover:ring-1 hover:ring-yellow-500 shadow-md justify-center p-2 bg-white">
+                <div class="flex flex-col items-center w-auto border h-[300px] rounded-sm bg-slate-950">
                 @if(!is_null($collection->image) && $collection->image != [])
                     <!-- <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl"> -->
-                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-scale-down">
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-sm object-scale-down">
                     
                 @else
-                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-sm object-scale-down">
                     <!-- No Image Found -->
                 @endif
                 </div>

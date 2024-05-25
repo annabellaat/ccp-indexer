@@ -5,6 +5,9 @@ use App\Http\Controllers\websiteController;
 use App\Livewire\BrowseEntity;
 use App\Livewire\EntityPage;
 use App\Livewire\CollectionPage;
+use App\Livewire\OpenAccess;
+use App\Livewire\SearchPage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +38,6 @@ Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 Route::get('/browse', BrowseEntity::class)->name('browse');
 Route::get('/entity/{entity}/{slug}', EntityPage::class)->name('entity');
 Route::get('/collection/{collection}/{slug}', CollectionPage::class)->name('collection');
+Route::get('/open-access', OpenAccess::class)->name('open-access');
+Route::get('/search-page/{searchTerm?}', SearchPage::class)->name('search');
 
