@@ -38,13 +38,13 @@
 
   
 
-    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 px-20 lg:px-[10%] pt-6 pb-6 text-black">
+    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 px-10 lg:px-[3%] pt-6 pb-6 text-black">
 
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="container w-full h-full rounded-sm hover:ring-1 hover:ring-yellow-500 shadow-md justify-center p-2 bg-white">
-                <div class="flex flex-col items-center w-auto border h-[300px] rounded-sm bg-slate-950">
+            <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/25 justify-center p-2 bg-white">
+                <div class="flex flex-col items-center w-auto h-[300px] rounded-xl bg-slate-950">
                 @if(!is_null($collection->image) && $collection->image != [])
                     <!-- <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl"> -->
                     <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-sm object-scale-down">

@@ -159,10 +159,10 @@
             <div class="w-5/6 sm:w-4/5 md:w-3/5 lg:w-2/5 place-content-center mb-10">
                 <div class="my-10 h-1 w-900px border-black bg-slate-900 rounded-full"></div>
                 <div class="px-2">
-                    <div class="w-auto text-3xl text-[#d4ab1a] mb-4 font-interbold">
+                    <div class="w-auto text-2xl text-[#d4ab1a] mb-4 font-interbold">
                         About the Digital Archives
                     </div>
-                    <div class="w-auto text-xl text-slate-800 mb-8 text-justify">
+                    <div class="w-auto text-lg text-slate-800 mb-8 text-justify">
                         The CCP Digital Archives is a catalog of the center’s
                         materials and resources. It aims to share thousands of
                         works produced by the CCP since its opening in 1969.
