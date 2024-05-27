@@ -155,7 +155,7 @@
             <div class="rounded-full px-2 sm:px-5 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Events</div>
         </div> -->
 
-        <div class="w-full flex justify-center mt-4">
+        <div class="w-full flex justify-center mt-1">
             <div class="w-5/6 sm:w-4/5 md:w-3/5 lg:w-2/5 place-content-center mb-10">
                 <div class="my-10 h-1 w-900px border-black bg-slate-900 rounded-full"></div>
                 <div class="px-2">

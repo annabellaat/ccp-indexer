@@ -52,11 +52,11 @@
             </div>
         @endif
         @if(count($this->cols) == 0 && count($this->ents) == 0)
-            <p class="font-interbold border-b-2">No match found</p>
+            <p class="font-interbold border-t-2 border-b-2 py-2">No match found</p>
         @endif
         @if($this->entC > 3 || $this->colC > 3)
             <a href="{{route('search', ['searchTerm' => $searchItem])}}">
-                <p class="font-interbold border-b-2 py-4 bg-red-200 hover:bg-red-300 text-center rounded-sm">Click to see {{($this->entC+$this->colC) - count($this->cols) - count($this->ents)}} more result{{($this->entC+$this->colC) - count($this->cols) - count($this->ents) > 1 ? 's': ''}}...</p>
+                <p class="font-interbold border-b-2 py-2 bg-red-200 hover:bg-red-300 text-center rounded-sm">Click to see {{($this->entC+$this->colC) - count($this->cols) - count($this->ents)}} more result{{($this->entC+$this->colC) - count($this->cols) - count($this->ents) > 1 ? 's': ''}}...</p>
             </a>
         @endif
 

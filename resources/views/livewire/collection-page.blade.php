@@ -1,5 +1,5 @@
 <div>
-    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pt-6 justify-self-center">
+    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 py-6 justify-self-center bg-red-100/50">
         <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $collection->name }} </h>
     </div>
     <div class="container min-h-screen px-10 py-4 md:py-12 min-w-full flex flex-col items-center">
@@ -13,7 +13,7 @@
             @endif
 
         </div>
-        <div class="py-4">
+        <div class="py-8">
             <p class="text-2xl mb-4 text-red-800">
                 {{ $collection->name }}
             </p>
@@ -24,13 +24,13 @@
         <!-- collections under this collection -->
         @if(count($colsUnderCollection) > 0)
         <div class="">
-            <p class="text-xl pl-[10%]">
+            <p class="text-lg pl-[10%] font-interbold">
                 Collections under this collection:
             </p>
             <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($colsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($colsUnderCollection) > 3 ? 4 : count($colsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-4 pb-4 text-black">
                 @foreach($colsUnderCollection as $col)
                 <a href="{{ route('collection', ['collection' => $col, 'slug' => $col->slug]) }}">
-                    <div class="container w-full h-full rounded-md hover:ring-1 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
+                    <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/25 justify-center p-2 bg-gray-100">
                         <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
                         @if(!is_null($col->image) && $col->image != [])
                             <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
@@ -51,13 +51,13 @@
         <!-- entities under this collection -->
         @if(count($entsUnderCollection) > 0)
         <div class="">
-            <p class="text-xl pl-[10%]">
+            <p class="text-lg pl-[10%] font-interbold">
                 Entries under this collection:
             </p>
             <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($entsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($entsUnderCollection) > 3 ? 4 : count($entsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-4 pb-20 text-black">
                 @foreach($entsUnderCollection as $ent)
                 <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
-                    <div class="container w-full h-full rounded-md hover:ring-1 hover:ring-yellow-500 shadow-lg justify-center p-2 bg-white">
+                    <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/25 justify-center p-2 bg-gray-100">
                         <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
                         @if(!is_null($ent->image) && $ent->image != [])
                             <img src="{{ asset('/storage/'.$ent->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">

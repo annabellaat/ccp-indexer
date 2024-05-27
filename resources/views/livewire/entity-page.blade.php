@@ -1,12 +1,14 @@
 <div>
-    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pt-6 justify-self-center">
-        <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $entity->title }} </h>
+    <div class="bg-red-100/50">
+        <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 py-6 justify-self-center">
+            <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $entity->title }} </h>
+        </div>
+        @if(!is_null($entity->collection_id))
+        <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pb-6 justify-self-center">
+            Under the collection of <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800"> {{ $entity->collection->name }} </a>
+        </div>
+        @endif
     </div>
-    @if(!is_null($entity->collection_id))
-    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pt-6 justify-self-center">
-        Under the collection of <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800"> {{ $entity->collection->name }} </a>
-    </div>
-    @endif
     <div class="min-h-screen py-12 grid grid-cols-1 lg:grid-cols-2">
         <div class="grid-col px-12 w-full">
             <div class="grid place-items-center">
@@ -69,7 +71,7 @@
                     <img src="{{ asset('img/ccp-default-big.png') }}" alt="No Image" class="h-full rounded-2xl object-contain">
                     <!-- No Image Found -->
                 </div>
-                <p id="no-images">No images in folder</p>
+                <p id="no-images" class="italic">No images in folder</p>
             @endif
 
             </div>

@@ -42,8 +42,8 @@
 
         @foreach($random_collections as $collection)
 
-        <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}">
-            <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/25 justify-center p-2 bg-white">
+        <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}" class="flex justify-center">
+            <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-white  hover:-translate-y-1 hover:scale-105 duration-150">
                 <div class="flex flex-col items-center w-auto h-[300px] rounded-xl bg-slate-950">
                 @if(!is_null($collection->image) && $collection->image != [])
                     <!-- <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="min-w-10 min-h-10 max-h-[300px] rounded-2xl"> -->
@@ -55,13 +55,16 @@
                 @endif
                 </div>
                 <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
-                        {{ $collection->title }}
+                        {{ $collection->title }} {{$loop->iteration}}
                 </div>
             </div>
         </a>
-
         @endforeach
-
+        @if($random_collections->count() < $count)
+        <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex pt-6">
+            <button wire:click="loadMore()" class="border border-red-300 rounded-full py-2 px-4 bg-red-200/75 hover:bg-red-200 hover:scale-105 duration-150">Load more entries</button>
+        </div>
+        @endif
         <!-- <div class="grid-col w-2/3 lg:w-[60%]">
             <div class="">
                 <img src="{{asset('img/library-image.jpg')}}" alt="showcase Featured Image" class="min-w-10 min-h-10 w-auto rounded-2xl">
