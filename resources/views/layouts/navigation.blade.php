@@ -53,10 +53,10 @@
         </ul>
       </div>
 
-      <div class="sssss absolute mt-16 right-0 z-10 shadow-2xl ring-1 ring-black ring-opacity-5 rounded-lg bg-red-900 hidden lg:hidden" id="navbar-collapse">
+      <div class="sssss absolute mt-16 right-0 z-10 shadow-2xl ring-1 ring-black ring-opacity-5 rounded-sm bg-red-900 hidden lg:hidden" id="navbar-collapse">
         <!-- <a href="{{Route::is('home') ? '#search' : url('/search')}}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">FEATURED</a> -->
-        <a href="{{ route('browse') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest" aria-current="page">BROWSE</a>
-        <a href="{{ route('open-access') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-md px-16 py-3 text-xl tracking-widest text-nowrap" aria-current="page">OPEN ACCESS</a>
+        <a href="{{ route('browse') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-sm px-16 py-3 text-lg tracking-wider" aria-current="page">BROWSE</a>
+        <a href="{{ route('open-access') }}" class="navhide text-white ring-black ring-opacity-10 ring-1 hover:outline hover:outline-amber-800 hover:outline-1 hover:bg-red-800 block rounded-sm px-16 py-3 text-lg tracking-wider text-nowrap" aria-current="page">OPEN ACCESS</a>
       </div>
 
     </div>

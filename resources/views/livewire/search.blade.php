@@ -11,7 +11,7 @@
         </div>
     </div>
     @if(strlen($searchItem) > 0)
-    <div class="absolute bg-white text-black rounded-sm border-1 px-4 py-4 -ml-64 sm:-ml-96 mt-4 min-w-[400px] lg:w-[950px] overflow-y-auto max-h-[800px] overscroll-contain no-scrollbar">
+    <div class="absolute bg-white text-black rounded-sm border-1 px-4 pt-4 pb-2 -ml-64 sm:-ml-96 mt-4 min-w-[400px] lg:w-[950px] overflow-y-auto max-h-[800px] overscroll-contain no-scrollbar">
         <button class="bg-slate-200 absolute right-4 top-5 px-3 py-1 rounded-full font-interbold text-slate-700 hover:text-slate-100 hover:bg-red-600" wire:click.prevent="close()">X</button>
         @if(count($this->cols)>0)
             <div class="container">
@@ -56,7 +56,7 @@
         @endif
         @if($this->entC > 3 || $this->colC > 3)
             <a href="{{route('search', ['searchTerm' => $searchItem])}}">
-                <p class="font-interbold border-b-2 py-2 bg-red-200 hover:bg-red-300 text-center rounded-sm">Click to see {{($this->entC+$this->colC) - count($this->cols) - count($this->ents)}} more result{{($this->entC+$this->colC) - count($this->cols) - count($this->ents) > 1 ? 's': ''}}...</p>
+                <p class="font-interbold py-1 bg-gray-200 hover:bg-gray-300 text-center rounded-sm">Click to see {{($this->entC+$this->colC) - count($this->cols) - count($this->ents)}} more result{{($this->entC+$this->colC) - count($this->cols) - count($this->ents) > 1 ? 's': ''}}...</p>
             </a>
         @endif
 
