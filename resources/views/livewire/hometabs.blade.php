@@ -8,8 +8,8 @@
             activeClass: 'inline-block border-b-4 pb-3 rounded-t-lg text-[#d4ab1a] border-[#d4ab1a] font-interbold',
             inactiveClass: 'inline-block border-b-4 pb-3 border-transparent rounded-t-lg hover:text-[#d4ab1a] hover:border-[#d4ab1a] hover:font-bold'
         }">
-        <div class="text-md md:text-xl font-medium text-center text-white pt-4  md:pt-3 text-nowrap">
-            <ul class="flex flex-row -mx-px place-content-center gap-3 md:gap-6 lg:gap-16">
+        <div class="text-sm md:text-xl text-center text-white pt-5 md:pt-3 text-nowrap">
+            <ul class="flex flex-row -mx-px place-content-center gap-2 md:gap-6 lg:gap-16">
                 <li class="cursor-pointer" @click="openTab = 1">
                     <span wire:click="music" onclick="return (openTab==1 ? 'false' : 'true')" :class="openTab === 1 ? activeClass : inactiveClass">Music</span>
                 </li>
