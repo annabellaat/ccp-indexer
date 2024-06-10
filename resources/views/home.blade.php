@@ -78,7 +78,7 @@
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <a href="{{ route('collection', ['collection' => 1, 'slug' => 'pulso-pilipinas-mga-likhang-sayaw']) }}">
+                    <a href="{{ route('entity', ['entity' => 2, 'slug' => 'pulso-pilipinas-mga-likhang-sayaw']) }}">
                         <img
                             src="{{asset('img/Banner 1.png')}}"
                             class="block h-full w-auto m-auto"
