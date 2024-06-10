@@ -49,77 +49,77 @@
                     data-te-slide-to="4"
                     class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
                     aria-label="Slide 5"></button>
-                    <button
+                    <!-- <button
                     type="button"
                     data-te-target="#carouselExampleIndicators"
                     data-te-slide-to="5"
                     class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 6"></button>
+                    aria-label="Slide 6"></button> -->
                 </div>
 
                 <!--Carousel items-->
                 <div class="relative flex h-full w-full overflow-hidden after:clear-both after:block after:content-['']">
                     <!--First item-->
                     <div
-                    class="relative float-left -mr-[100%] w-screen transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    class="relative float-left -mr-[100%] w-screen transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item
                     data-te-carousel-active>
                     
-                    <div class="z-30 absolute bottom-10 ml-[5%] w-3/4">
+                    <!-- <div class="z-30 absolute bottom-10 ml-[5%] w-3/4">
                         <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-2">Digital archives you can explore</p>
                         <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight lg:w-2/5">Explore hundreds of archival materials from the <br class="block lg:hidden"> Cultural Center of the Philippines</p>
-                    </div>
+                    </div> -->
                     <img
-                        src="{{asset('img/Search-1.jpg')}}"
-                        class="block max-h-[111%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
+                        src="{{asset('img/Banner 0.png')}}"
+                        class="block flex h-full w-auto m-auto"
                         alt="First slide" />
                         
                     </div>
                     <!--Second item-->
                     <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
                     <img
-                        src="{{asset('img/Search-2.jpg')}}"
-                        class="block max-h-[101%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
+                        src="{{asset('img/Banner 1.png')}}"
+                        class="block h-full w-auto m-auto"
                         alt="Second Slide" />
                     </div>
                     <!--Third item-->
                     <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
                     <img
-                        src="{{asset('img/Search-3.jpg')}}"
-                        class="block max-h-[101%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
+                        src="{{asset('img/Banner 2.png')}}"
+                        class="block h-full w-auto m-auto"
                         alt="Third Slide" />
                     </div>
                     <!--Fourth item-->
                     <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
                     <img
-                        src="{{asset('img/Search-4.jpg')}}"
-                        class="block max-h-[101%] md:max-h-[121%] lg:max-h-[151%] md:-mt-2  lg:-mt-30 m-auto"
+                        src="{{asset('img/Banner 3.png')}}"
+                        class="block h-full w-auto m-auto"
                         alt="Fourth Slide" />
                     </div>
                     <!--Fifth item-->
                     <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
                     <img
-                        src="{{asset('img/Search-5.jpg')}}"
-                        class="block max-h-[101%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
+                        src="{{asset('img/Banner 4.png')}}"
+                        class="block h-full w-auto m-auto"
                         alt="Fifth Slide" />
                     </div>
                     <!--Sixth item-->
-                    <div
+                    <!-- <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
                     <img
                         src="{{asset('img/Search-6.jpg')}}"
                         class="block max-h-[101%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
                         alt="Sixth Slide" />
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

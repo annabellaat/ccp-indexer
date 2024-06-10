@@ -54,9 +54,9 @@ class EntityImporter extends Importer
             ImportColumn::make('description')
                 ->rules(['max:65535']),
             ImportColumn::make('reference')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('open_access_link')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('language')
                 ->rules(['max:65535'])
                 ->array(','),
@@ -78,29 +78,29 @@ class EntityImporter extends Importer
             ImportColumn::make('participants')
                 ->rules(['max:65535']),
             ImportColumn::make('film')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('play')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('screenwriter')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('scriptwriter')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('writer')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('playwright')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('librettist')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('adaptor')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('adapted_from')
                 ->rules(['max:65535']),
             ImportColumn::make('based_on')
                 ->rules(['max:65535']),
             ImportColumn::make('translator')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('concept')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('director')
                 ->rules(['max:65535']),
             ImportColumn::make('associate_director')
