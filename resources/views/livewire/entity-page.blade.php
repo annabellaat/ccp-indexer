@@ -1,11 +1,11 @@
 <div>
     <div class="bg-red-100/50">
-        <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 py-6 justify-self-center">
+        <div class="text-md sm:text-lg px-4 sm:px-20 py-4 justify-self-center">
             <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $entity->title }} </h>
         </div>
         @if(!is_null($entity->collection_id))
-        <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 pb-6 justify-self-center">
-            Under the collection of <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800"> {{ $entity->collection->name }} </a>
+        <div class="text-md sm:text-md px-4 sm:px-20 pb-2 justify-self-center font-interlight">
+            Under the collection of <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800 text-lg font-inter"> {{ $entity->collection->name }} </a>
         </div>
         @endif
     </div>

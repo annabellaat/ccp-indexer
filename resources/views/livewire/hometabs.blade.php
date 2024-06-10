@@ -54,8 +54,8 @@
                     <!-- No Image Found -->
                 @endif
                 </div>
-                <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
-                        {{ $collection->title }} {{$loop->iteration}}
+                <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
+                        {{ $collection->title }}
                 </div>
             </div>
         </a>
@@ -64,7 +64,7 @@
         <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex pt-2">
             <button wire:click="loadMore()" class="border border-amber-500/75 rounded-full p-0.5 hover:scale-105 duration-150">
                 <!-- <svg wire:loading.remove fill="#000000" class="h-12 w-12" viewBox="0 0 490.4 490.4" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M490.4,245.2C490.4,110,380.4,0,245.2,0S0,110,0,245.2s110,245.2,245.2,245.2S490.4,380.4,490.4,245.2z M24.5,245.2 c0-121.7,99-220.7,220.7-220.7s220.7,99,220.7,220.7s-99,220.7-220.7,220.7S24.5,366.9,24.5,245.2z"></path> <path d="M253.9,360.4l68.9-68.9c4.8-4.8,4.8-12.5,0-17.3s-12.5-4.8-17.3,0l-48,48V138.7c0-6.8-5.5-12.3-12.3-12.3 s-12.3,5.5-12.3,12.3v183.4l-48-48c-4.8-4.8-12.5-4.8-17.3,0s-4.8,12.5,0,17.3l68.9,68.9c2.4,2.4,5.5,3.6,8.7,3.6 S251.5,362.8,253.9,360.4z"></path> </g> </g> </g></svg> -->
-                <div wire:loading.remove class="px-2 py-1 hover:scale-105 duration-150 font-interbold">Load more entries</div>
+                <div wire:loading.remove class="px-2 py-1 hover:scale-105 duration-150 font-interlight">Load more entries</div>
                 <svg
                     wire:loading
                     class="animate-spin h-12 w-12 text-black"

@@ -14,10 +14,10 @@
         <!-- collections under open access -->
         @if(count($all_cols) > 0)
         <div class="w-full">
-            <p class="text-lg font-interbold">
+            <p class="text-lg font-interbold pl-10 sm:pl-20">
                 Collections under Open Access:
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-{{count($all_cols) > 1 ? 2 : 1 }} lg:grid-cols-{{count($all_cols) > 3 ? 4 : count($all_cols) }} gap-4 gap-y-6 px-10 sm:px-20 lg:px-[10%] py-4 text-red-800">
+            <div class="grid grid-cols-1 sm:grid-cols-{{count($all_cols) > 1 ? 2 : 1 }} lg:grid-cols-{{count($all_cols) > 3 ? 4 : count($all_cols) }} gap-4 gap-y-6 px-10 sm:px-20 lg:px-[10%] py-4">
                 @foreach($all_cols as $col)
                 <a href="{{ route('collection', ['collection' => $col, 'slug' => $col->slug]) }}">
                     <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 max-w-[300px] hover:-translate-y-1 hover:scale-105 duration-150">
@@ -29,7 +29,7 @@
                             <!-- No Image Found -->
                         @endif
                         </div>
-                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
+                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
                                 {{ $col->name }}
                         </div>
                     </div>
@@ -48,10 +48,10 @@
         <!-- entities under open access -->
         @if(count($all_ents) > 0)
         <div class="w-full">
-            <p class="text-lg font-interbold">
+            <p class="text-lg font-interbold pl-10 sm:pl-20">
                 Entries under Open Access:
             </p>
-            <div class="w-full grid grid-cols-1 sm:grid-cols-{{count($all_ents) > 1 ? 2 : 1 }} lg:grid-cols-{{count($all_ents) > 3 ? 4 : count($all_ents) }} gap-4 gap-y-6 px-10 sm:px-20 lg:px-[10%] pt-4 pb-20 text-red-800">
+            <div class="w-full grid grid-cols-1 sm:grid-cols-{{count($all_ents) > 1 ? 2 : 1 }} lg:grid-cols-{{count($all_ents) > 3 ? 4 : count($all_ents) }} gap-4 gap-y-6 px-10 sm:px-20 lg:px-[10%] pt-4 pb-20">
                 @foreach($all_ents as $ent)
                 <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
                     <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 max-w-[300px] hover:-translate-y-1 hover:scale-105 duration-150">
@@ -63,7 +63,7 @@
                             <!-- No Image Found -->
                         @endif
                         </div>
-                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
+                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
                                 {{ $ent->title }}
                         </div>
                     </div>

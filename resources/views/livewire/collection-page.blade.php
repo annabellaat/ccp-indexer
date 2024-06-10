@@ -1,5 +1,5 @@
 <div>
-    <div class="text-md sm:text-lg md:text-xl px-4 sm:px-20 py-6 justify-self-center bg-red-100/50">
+    <div class="text-md sm:text-lg px-4 sm:px-20 py-4 justify-self-center bg-red-100/50">
         <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $collection->name }} </h>
     </div>
     <div class="container min-h-screen px-10 py-4 md:py-12 min-w-full flex flex-col items-center">
@@ -14,20 +14,20 @@
 
         </div>
         <div class="py-8 container">
-            <p class="text-xl sm:text-2xl mb-4 sm:px-10 text-red-800">
+            <p class="text-xl sm:text-2xl mb-4 sm:px-10 text-red-800 font-interbold">
                 {{ $collection->name }}
             </p>
-            <p class="text-md sm:text-lg sm:px-10">
+            <p class="text-md sm:text-lg sm:px-10 font-interlight">
                 {{ $collection->description }}
             </p>
         </div>
         <!-- collections under this collection -->
         @if(count($colsUnderCollection) > 0)
         <div class="">
-            <p class="text-lg pl-[10%] font-interbold">
+            <p class="text-sm sm:text-lg pl-[10%] font-interbold absolute left-7">
                 Collections under this collection:
             </p>
-            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($colsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($colsUnderCollection) > 3 ? 4 : count($colsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-4 pb-4 text-black">
+            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($colsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($colsUnderCollection) > 3 ? 4 : count($colsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-10 pb-4 text-black">
                 @foreach($colsUnderCollection as $col)
                 <a href="{{ route('collection', ['collection' => $col, 'slug' => $col->slug]) }}">
                     <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 hover:-translate-y-1 hover:scale-105 duration-150">
@@ -39,7 +39,7 @@
                             <!-- No Image Found -->
                         @endif
                         </div>
-                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
+                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
                                 {{ $col->name }}
                         </div>
                     </div>
@@ -51,10 +51,10 @@
         <!-- entities under this collection -->
         @if(count($entsUnderCollection) > 0)
         <div class="">
-            <p class="text-lg pl-[10%] font-interbold">
+            <p class="text-sm sm:text-lg pl-[10%] font-interbold absolute left-7">
                 Entries under this collection:
             </p>
-            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($entsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($entsUnderCollection) > 3 ? 4 : count($entsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-4 pb-20 text-black">
+            <div class="grid w-full grid grid-cols-1 sm:grid-cols-{{count($entsUnderCollection) > 1 ? 2 : 1 }} lg:grid-cols-{{count($entsUnderCollection) > 3 ? 4 : count($entsUnderCollection) }} gap-4 gap-y-6 px-20 lg:px-[10%] pt-10 pb-20 text-black">
                 @foreach($entsUnderCollection as $ent)
                 <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
                     <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 hover:-translate-y-1 hover:scale-105 duration-150">
@@ -66,7 +66,7 @@
                             <!-- No Image Found -->
                         @endif
                         </div>
-                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-interlight container">
+                        <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
                                 {{ $ent->title }}
                         </div>
                     </div>

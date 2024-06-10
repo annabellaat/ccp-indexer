@@ -1,5 +1,5 @@
-<div>
-    <span class="pl-4" x-data="{ show: true }">
+<div class="pl-4">
+    <span x-data="{ show: true }">
 
         <span x-show="show" x-on:click="show = ! show" class="font-interbold cursor-pointer" id="{{$id}}-plus">[+] </span>
         <span x-show="! show" x-on:click="show = ! show" class="font-interbold cursor-pointer" id="{{$id}}-minus">[-] </span>
@@ -11,7 +11,7 @@
             @else
             @foreach($all as $ent)
                 @if(array_key_exists('archivist', $ent))
-                <span wire:click="goToEnt('{{$ent['id']}}', '{{$ent['slug']}}')" class="mt-1 mb-3 px-4 cursor-pointer" wire:key="{{$ent['id']}}">{{$ent['title']}}</span>
+                <span wire:click="goToEnt('{{$ent['id']}}', '{{$ent['slug']}}')" class="mt-1 mb-2 px-4 cursor-pointer" wire:key="{{$ent['id']}}">{{$ent['title']}}</span>
                 @else
                 <div class="mb-2">
                     <livewire:under-collection :id="$ent['id']" :slug="$ent['slug']" :title="$ent['title']" />
