@@ -73,43 +73,50 @@
                         src="{{asset('img/Banner 0.png')}}"
                         class="block flex h-full w-auto m-auto"
                         alt="First slide" />
-                        
                     </div>
                     <!--Second item-->
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <img
-                        src="{{asset('img/Banner 1.png')}}"
-                        class="block h-full w-auto m-auto"
-                        alt="Second Slide" />
+                    <a href="{{ route('collection', ['collection' => 1, 'slug' => 'pulso-pilipinas-mga-likhang-sayaw']) }}">
+                        <img
+                            src="{{asset('img/Banner 1.png')}}"
+                            class="block h-full w-auto m-auto"
+                            alt="Second Slide" />
+                    </a>
                     </div>
                     <!--Third item-->
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <img
-                        src="{{asset('img/Banner 2.png')}}"
-                        class="block h-full w-auto m-auto"
-                        alt="Third Slide" />
+                    <a href="{{ route('entity', ['entity' => 23, 'slug' => 'pingkian-isang-musikal']) }}">
+                        <img
+                            src="{{asset('img/Banner 2.png')}}"
+                            class="block h-full w-auto m-auto"
+                            alt="Third Slide" />
+                    </a>
                     </div>
                     <!--Fourth item-->
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <img
-                        src="{{asset('img/Banner 3.png')}}"
-                        class="block h-full w-auto m-auto"
-                        alt="Fourth Slide" />
+                    <a href="{{ route('entity', ['entity' => 7, 'slug' => 'baraptasan']) }}">
+                        <img
+                            src="{{asset('img/Banner 3.png')}}"
+                            class="block h-full w-auto m-auto"
+                            alt="Fourth Slide" />
+                    </a>
                     </div>
                     <!--Fifth item-->
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <img
-                        src="{{asset('img/Banner 4.png')}}"
-                        class="block h-full w-auto m-auto"
-                        alt="Fifth Slide" />
+                    <a href="{{ route('entity', ['entity' => 21, 'slug' => 'mebuyans-colony']) }}">
+                        <img
+                            src="{{asset('img/Banner 4.png')}}"
+                            class="block h-full w-auto m-auto"
+                            alt="Fifth Slide" />
+                    </a>
                     </div>
                     <!--Sixth item-->
                     <!-- <div
