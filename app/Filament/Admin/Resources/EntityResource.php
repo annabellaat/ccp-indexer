@@ -688,7 +688,7 @@ class EntityResource extends Resource
                             ->collapsed()
                             ->columns(2),
                             Forms\Components\Textarea::make('curator')
-                                ->maxLength(100),
+                                ->maxLength(65535),
                             Forms\Components\Textarea::make('author')
                                 ->maxLength(65535)
                                 ->columns(1),
@@ -702,9 +702,9 @@ class EntityResource extends Resource
                                 ->maxLength(65535)
                                 ->columns(1),
                             Forms\Components\Textarea::make('photographer')
-                                ->maxLength(100),
+                                ->maxLength(65535),
                             Forms\Components\Textarea::make('camera_operator')
-                                ->maxLength(255),
+                                ->maxLength(65535),
                             Forms\Components\select::make('camera_setup')
                                 ->options([
                                     '1-cam' => '1-cam',
