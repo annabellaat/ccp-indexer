@@ -33,6 +33,10 @@ class Search extends Component
         $this->searchIs = $this->searchIs ? false : true;
         $this->searchItem = "";
     }
+
+    public function goSearch() {
+        $this->redirectRoute('search', ['searchTerm' => $this->searchItem]);
+    }
     public function render()
     {
         // return view('livewire.search', [
@@ -48,20 +52,23 @@ class Search extends Component
         //     }
         // }
 
-        if(strlen($this->searchItem) >= 1) {
-            $query = Entity::where('title', 'like', '%'.$this->searchItem.'%');
-            foreach($this->columns as $column) {
-                $query->orWhere($column, 'LIKE', '%'.$this->searchItem.'%');
-            }
-            $this->ents = $query->orderBy('title', 'asc')->get();
-            $this->entC = $this->ents->count();
-            $this->ents = $query->orderBy('title', 'asc')->limit(3)->get();
-            
-            $this->cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->searchItem.'%')->orWhere('description', 'like', '%'.$this->searchItem.'%')->orderBy('name', 'asc')->get();
-            $this->colC = $this->cols->count();
-            $this->cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->searchItem.'%')->orWhere('description', 'like', '%'.$this->searchItem.'%')->orderBy('name', 'asc')->limit(3)->get();
 
-        }
+
+        // if(strlen($this->searchItem) >= 1) {
+
+        //     $query = Entity::where('title', 'like', '%'.$this->searchItem.'%');
+        //     foreach($this->columns as $column) {
+        //         $query->orWhere($column, 'LIKE', '%'.$this->searchItem.'%');
+        //     }
+        //     $this->ents = $query->orderBy('title', 'asc')->get();
+        //     $this->entC = $this->ents->count();
+        //     $this->ents = $query->orderBy('title', 'asc')->limit(3)->get();
+            
+        //     $this->cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->searchItem.'%')->orWhere('description', 'like', '%'.$this->searchItem.'%')->orderBy('name', 'asc')->get();
+        //     $this->colC = $this->cols->count();
+        //     $this->cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->searchItem.'%')->orWhere('description', 'like', '%'.$this->searchItem.'%')->orderBy('name', 'asc')->limit(3)->get();
+
+        // }
         return view('livewire.search');
 
     }

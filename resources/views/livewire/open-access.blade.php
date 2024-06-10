@@ -20,7 +20,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-{{count($all_cols) > 1 ? 2 : 1 }} lg:grid-cols-{{count($all_cols) > 3 ? 4 : count($all_cols) }} gap-4 gap-y-6 px-10 sm:px-20 lg:px-[10%] py-4 text-red-800">
                 @foreach($all_cols as $col)
                 <a href="{{ route('collection', ['collection' => $col, 'slug' => $col->slug]) }}">
-                    <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/25 justify-center p-2 bg-gray-100 max-w-[300px]">
+                    <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 max-w-[300px] hover:-translate-y-1 hover:scale-105 duration-150">
                         <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
                         @if(!is_null($col->image) && $col->image != [])
                             <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
@@ -54,7 +54,7 @@
             <div class="w-full grid grid-cols-1 sm:grid-cols-{{count($all_ents) > 1 ? 2 : 1 }} lg:grid-cols-{{count($all_ents) > 3 ? 4 : count($all_ents) }} gap-4 gap-y-6 px-10 sm:px-20 lg:px-[10%] pt-4 pb-20 text-red-800">
                 @foreach($all_ents as $ent)
                 <a href="{{ route('entity', ['entity' => $ent, 'slug' => $ent->slug]) }}">
-                    <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/25 justify-center p-2 bg-gray-100 max-w-[300px]">
+                    <div class="container w-full h-full rounded-2xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 max-w-[300px] hover:-translate-y-1 hover:scale-105 duration-150">
                         <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md">
                         @if(!is_null($ent->image) && $ent->image != [])
                             <img src="{{ asset('/storage/'.$ent->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">

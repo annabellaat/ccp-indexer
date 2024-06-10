@@ -30,6 +30,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('category_id')
                     ->numeric(),
                 Forms\Components\TextInput::make('role_id')
+                    ->default(1)
                     ->numeric(),
                 Forms\Components\TextInput::make('type')
                     ->maxLength(255),

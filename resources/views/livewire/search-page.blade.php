@@ -20,23 +20,24 @@
         </div>
         @endif
         
-        <div class="container px-2 sm:px-[10%]">
+        <div class="container px-2 sm:px-[10%] text-sm sm:text-md md:text-lg">
             @if(strlen($searchItem) > 0 && $entC + $colC > 0)
             <div class="bg-white text-black rounded-lg border-1 px-4 py-4 mt-4 w-full">
                 @if(count($this->cols)>0)
                     <div class="container">
                         <p class="font-interbold border-t-2 border-b-2 py-2">Collections matched:</p>
                         @foreach($this->cols as $col)
-                            <div class="cursor-pointer py-2 mx-8 grid grid-flow-col {{$loop->last ? 'pb-4' : 'border-b border-orange-200'}}" wire:click="goToCol('{{$col->id}}', '{{$col->slug}}')" wire:key="$col->id">
-                                <span class="mr-4">
+                            <div class="cursor-pointer py-2 sm:mx-8 grid grid-cols-7 {{$loop->last ? 'pb-4' : 'border-b border-orange-200'}}" wire:click="goToCol('{{$col->id}}', '{{$col->slug}}')" wire:key="$col->id">
+                                <span class="content-center sm:mr-4 col-span-2 sm:col-span-1">
                                 @if($col->image != null || $col->image != [])
                                     <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="max-h-20 w-40 rounded-md object-contain">
                                 @else
                                     <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="max-h-20 w-40 rounded-md object-contain">
                                 @endif
                                 </span>
-                                <span class="content-center">
-                                    <p class="pl-4">{{$col->name}}</p>
+                                <span class="content-center col-span-5 sm:col-span-6">
+                                    <p class="pl-4 text-red-800 font-interbold">{{$col->name}}</p>
+                                    <p class="pl-4 text-sm">{{$col->description}}</p>
                                 </span>
                             </div>
                         @endforeach 
@@ -46,16 +47,17 @@
                     <div class="container">
                         <p class="font-interbold border-t-2 border-b-2 py-2">Entries matched:</p>
                         @foreach($this->ents as $entity)
-                            <div class="cursor-pointer py-2 mx-8 grid grid-flow-col {{$loop->last ? 'pb-4' : 'border-b border-orange-200'}}" wire:click="goToEnt('{{$entity->id}}', '{{$entity->slug}}')" wire:key="$entity->id">
-                                <span class="mr-4">
+                            <div class="cursor-pointer py-2 sm:mx-8 grid grid-cols-7  {{$loop->last ? 'pb-4' : 'border-b border-orange-200'}}" wire:click="goToEnt('{{$entity->id}}', '{{$entity->slug}}')" wire:key="$entity->id">
+                                <span class="content-center sm:mr-4 col-span-2 sm:col-span-1">
                                 @if($entity->image != null || $entity->image != [])
                                     <img src="{{ asset('/storage/'.$entity->image[0]) }}" alt="showcase Featured Image" class="max-h-20 w-40 rounded-md object-contain">
                                 @else
                                     <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="max-h-20 w-40 rounded-md object-contain">
                                 @endif
                                 </span>
-                                <span class="content-center">
-                                    <p class="pl-4">{{$entity->title}}</p>
+                                <span class="content-center col-span-5 sm:col-span-6">
+                                    <p class="pl-4 text-red-800 font-interbold">{{$entity->title}}</p>
+                                    <p class="pl-4 text-sm">{{\Illuminate\Support\Str::words($entity->description, 50, '...') }}</p>
                                 </span>
                             </div>
                         @endforeach
