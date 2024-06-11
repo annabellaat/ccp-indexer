@@ -109,9 +109,23 @@
                         No Tags Input
                     @endif
                 </div>
+
+                @foreach($columns as $col)
+                    @if($entity->$col)
+                    <div class="font-bold col-span-1 py-1">{{ucwords(str_replace("_"," ",$col))}}: </div>
+                    <div class="col-span-3">{{ $entity->$col }}</div>
+                    @endif
+                @endforeach
+
+                @if($entity->open_access_link)
+                <div class="col-span-3 mt-20">
+                    <a href="{{ $entity->open_access_link }}" target="_blank" class="rounded-full font-bold text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-2 text-xs md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Access Here</a>
+                </div>
+                @else
                 <div class="col-span-3 mt-20">
                     <a href="{{ route('browse') }}" class="rounded-full font-bold text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-2 text-xs md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Request Access</a>
                 </div>
+                @endif
             </div>
         </div>
     </div>

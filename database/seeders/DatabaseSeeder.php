@@ -38,42 +38,42 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Digital Archives',
             'email' => 'digitalarchives@culturalcenter.gov.ph',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('CCParchivesuser'),
             'role_id' => 1,
         ]);
 
          \App\Models\User::create([
              'name' => 'Kenny',
              'email' => 'dayoung.ccp.archives@gmail.com',
-             'password' => bcrypt('password'),
+             'password' => bcrypt('CCParchiveskenny'),
              'role_id' => 1,
          ]);
 
          \App\Models\User::create([
              'name' => 'Mika',
              'email' => 'ccp.archives.mika@gmail.com',
-             'password' => bcrypt('password'),
+             'password' => bcrypt('CCParchivesmika'),
              'role_id' => 1,
          ]);
          
          \App\Models\User::create([
              'name' => 'Janine',
              'email' => 'ccp.archives.janine@gmail.com',
-             'password' => bcrypt('password'),
+             'password' => bcrypt('CCParchivesjanine'),
              'role_id' => 1,
          ]);
  
           \App\Models\User::create([
               'name' => 'Wayne',
               'email' => 'wayne.ccp.archives@gmail.com',
-              'password' => bcrypt('password'),
+              'password' => bcrypt('CCParchiveswayne'),
               'role_id' => 1,
           ]);
  
           \App\Models\User::create([
               'name' => 'Paul',
               'email' => 'ppabustan@gmail.com',
-              'password' => bcrypt('password'),
+              'password' => bcrypt('CCParchivespaul'),
               'role_id' => 1,
           ]);
          
