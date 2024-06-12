@@ -183,9 +183,9 @@ class EntityResource extends Resource
                         Forms\Components\MarkdownEditor::make('description')
                             ->columnSpanFull(),
                         Forms\Components\TextInput::make('reference')
-                            ->maxLength(255),
+                            ->maxLength(65535),
                         Forms\Components\TextInput::make('open_access_link')
-                            ->maxLength(255),
+                            ->maxLength(65535),
                         Forms\Components\select::make('language')
                             ->options([
                                 'Agusanon' => 'Agusanon',
@@ -337,28 +337,28 @@ class EntityResource extends Resource
                             Forms\Components\Section::make('Film/Play/Theater details')
                             ->schema ([
                                 Forms\Components\Textarea::make('film')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('play')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('screenwriter')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('scriptwriter')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('writer')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('playwright')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('librettist')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('adaptor')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('adapted_from')
                                     ->columns(1),
@@ -366,10 +366,10 @@ class EntityResource extends Resource
                                     ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('translator')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('concept')
-                                    ->maxLength(255)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('director')
                                     ->maxLength(65535)
