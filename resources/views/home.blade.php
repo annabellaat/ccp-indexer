@@ -78,7 +78,7 @@
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 498, 'slug' => 'pulso-pilipinas-mga-likhang-sayaw']) }}">
+                    <a href="{{ route('entity', ['entity' => 3, 'slug' => 'pulso-pilipinas-mga-likhang-sayaw']) }}">
                         <img
                             src="{{asset('img/Banner 1.png')}}"
                             class="block h-full w-auto m-auto"
@@ -89,7 +89,7 @@
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 511, 'slug' => 'pingkian-isang-musikal']) }}">
+                    <a href="{{ route('entity', ['entity' => 27, 'slug' => 'pingkian-isang-musikal']) }}">
                         <img
                             src="{{asset('img/Banner 2.png')}}"
                             class="block h-full w-auto m-auto"
@@ -100,7 +100,7 @@
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 505, 'slug' => 'baraptasan']) }}">
+                    <a href="{{ route('entity', ['entity' => 18, 'slug' => 'baraptasan']) }}">
                         <img
                             src="{{asset('img/Banner 3.png')}}"
                             class="block h-full w-auto m-auto"
@@ -111,7 +111,7 @@
                     <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                     data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 503, 'slug' => 'mebuyans-colony']) }}">
+                    <a href="{{ route('entity', ['entity' => 16, 'slug' => 'mebuyans-colony']) }}">
                         <img
                             src="{{asset('img/Banner 4.png')}}"
                             class="block h-full w-auto m-auto"

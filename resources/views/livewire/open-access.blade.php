@@ -37,13 +37,13 @@
                 @endforeach
             </div>
         </div>
-        @else
+        <!-- else
         <div class="w-full py-12">
             <p class="text-lg text-yellow-700 font-interbold pl-10 sm:pl-20">
                 No Collections under Open Access.
             </p>
 
-        </div>
+        </div> -->
         @endif
         <!-- entities under open access -->
         @if(count($all_ents) > 0)
