@@ -16,8 +16,8 @@
             @if(!is_null($entity->image) && $entity->image !== [])
                 @if(count($entity->image) > 1)
                 <div id="entityCarousel" class="relative w-full flex-auto"  data-te-carousel-init data-te-ride="carousel">
-                <!--Carousel indicators-->
-                    <div class="absolute -top-5 left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
+                    <!--Carousel indicators-->
+                    <div class="absolute -bottom-12 left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
                         @foreach($entity->image as $img)
                             @if($loop->iteration == 1)
                                 <button
@@ -92,7 +92,7 @@
             <div class="grid grid-cols-4 text-xs sm:text-sm md:text-md">
                 <div class="col-span-4 text-lg font-bold text-red-800 py-6">Details</div>
                 <div class="font-bold col-span-1 py-1">Date: </div>
-                <div class="col-span-3">{{ !is_null($entity->date) ? $entity->date->format('F d, Y') : "-No date given-" }}</div>
+                <div class="col-span-3">{{ !is_null($entity->date) ? $entity->date->format('Y') : "-No date given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Place: </div>
                 <div class="col-span-3">{{ !is_null($entity->place) ? $entity->place : "-No place given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Material: </div>

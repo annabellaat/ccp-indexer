@@ -28,7 +28,7 @@
                     <span wire:click="goToEnt('{{$ent['id']}}', '{{$ent['slug']}}')" class="mb-3 px-4 cursor-pointer" wire:key="{{$ent['id']}}"> {{ $ent['title'] }}</span>
                     @else
                     <div class="mb-2">
-                    <livewire:under-collection :id="$ent['id']" :slug="$ent['slug']" :title="$ent['title']" />
+                    <livewire:under-collection wire:key="{{$ent['id']}}" :id="$ent['id']" :slug="$ent['slug']" :title="$ent['title']" />
                     </div>
                     @endif
                 @endforeach

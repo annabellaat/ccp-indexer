@@ -78,6 +78,16 @@ class DatabaseSeeder extends Seeder
           ]);
          
         $tags = [
+            ['name' => 'Dance', 'slug' => 'dance'],
+            ['name' => 'Installation', 'slug' => 'installation'],
+            ['name' => 'Theater', 'slug' => 'theater'],
+            ['name' => 'Event', 'slug' => 'event'],
+            ['name' => 'Outreach', 'slug' => 'outreach'],
+            ['name' => 'Film', 'slug' => 'film'],
+            ['name' => 'Arts Management', 'slug' => 'arts-management'],
+            ['name' => 'Contemporary Dance', 'slug' => 'contemporary-dance'],
+            ['name' => 'Exhibit', 'slug' => 'exhibit'],
+            ['name' => 'Broadcast', 'slug' => 'broadcast'],
             ['name' => 'Apartment', 'slug' => 'apartment'],
             ['name' => 'Bahay Kubo', 'slug' => 'bahay-kubo'],
             ['name' => 'Bahay na Bato', 'slug' => 'bahay-na-bato'],

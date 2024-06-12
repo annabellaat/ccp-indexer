@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('archivist')->nullable();
             $table->text('work')->nullable();
             $table->text('material')->nullable();
-            $table->string('code')->nullable();
+            $table->string('code')->unique()->nullable();
             $table->text('category')->nullable();
-            $table->string('title')->nullable();
-            $table->string('slug')->unique()->nullable();
+            $table->text('title')->nullable();
+            $table->text('slug')->unique()->nullable();
             $table->text('alternate-title')->nullable();
             $table->dateTime('date')->nullable();
             $table->string('place')->nullable();

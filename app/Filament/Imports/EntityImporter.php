@@ -438,10 +438,10 @@ class EntityImporter extends Importer
 
     public function resolveRecord(): ?Entity
     {
-        // return Entity::firstOrNew([
-        //     // Update existing records, matching them by `$this->data['column_name']`
-        //     'email' => $this->data['email'],
-        // ]);
+        return Entity::firstOrNew([
+            // Update existing records, matching them by `$this->data['column_name']`
+            'code' => $this->data['code'],
+        ]);
 
         return new Entity();
     }
