@@ -48,6 +48,7 @@ class EntityImporter extends Importer
             ImportColumn::make('alternate-title')
                 ->rules(['max:65535']),
             ImportColumn::make('date')
+                ->ignoreBlankState()
                 ->rules(['date']),
             ImportColumn::make('place')
                 ->rules(['max:255']),

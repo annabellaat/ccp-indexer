@@ -143,7 +143,14 @@ class EntityResource extends Resource
                             ->searchable()
                             ->columnSpan(1),
                         Forms\Components\Select::make('tags')
-                            ->relationship('tags', 'name')
+                            ->relationship('tags', 'name') 
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required(),
+                                Forms\Components\TextInput::make('slug')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
                             ->multiple()
                             ->searchable()
                             ->options(Tag::take(10)->get()->pluck('name', 'id')),
@@ -314,10 +321,10 @@ class EntityResource extends Resource
                                 ]),
                             Forms\Components\TextInput::make('series')
                                 ->columns(1),
-                            Forms\Components\MarkdownEditor::make('opening_remarks')
-                                ->columnSpanFull(),
-                            Forms\Components\MarkdownEditor::make('closing_remarks')
-                                ->columnSpanFull(),
+                            Forms\Components\Textarea::make('opening_remarks')
+                                ->columns(1),
+                            Forms\Components\Textarea::make('closing_remarks')
+                                ->columns(1),
 
                             Forms\Components\Section::make('Talk details')
                             ->schema ([
