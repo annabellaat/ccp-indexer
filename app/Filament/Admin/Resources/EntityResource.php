@@ -283,15 +283,14 @@ class EntityResource extends Resource
                     ->label('Thumbnails')
                     ->multiple()
                     ->reorderable()
-                    ->appendFiles()
                     ->directory('entity-images')
                     ->getUploadedFileNameForStorageUsing(
                         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                             ->prepend('Ent-')
                     ),
-                    Forms\Components\Textarea::make('image')
-                        ->maxLength(65535)
-                        ->columnSpanFull(),
+                    // Forms\Components\Textarea::make('image')
+                    //     ->maxLength(65535)
+                    //     ->columnSpanFull(),
                     ])
                 ])
                 ->columnSpan(['lg' => 1]),
