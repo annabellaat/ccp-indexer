@@ -33,15 +33,6 @@ class EntityResource extends Resource
             ->schema([
                 Forms\Components\Group::make()
                 ->schema([
-                    // Forms\Components\Section::make('Thumbnail')
-                    // ->schema([
-                    //     SpatieMediaLibraryFileUpload::make('thumbnail')
-                    //         ->collection('entity-thumbnails')
-                    //         // ->multiple()
-                    //         ->maxFiles(1)
-                    //         ->hiddenLabel(),
-                    // ])
-                    // ->collapsible(),
                     Forms\Components\TextInput::make('archivist')
                         ->default(auth()->user()->name)
                         ->maxLength(255)
@@ -291,11 +282,16 @@ class EntityResource extends Resource
                     Forms\Components\FileUpload::make('image')
                     ->label('Thumbnails')
                     ->multiple()
+                    ->reorderable()
+                    ->appendFiles()
                     ->directory('entity-images')
                     ->getUploadedFileNameForStorageUsing(
                         fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                             ->prepend('Ent-')
                     ),
+                    Forms\Components\Textarea::make('image')
+                        ->maxLength(65535)
+                        ->columnSpanFull(),
                     ])
                 ])
                 ->columnSpan(['lg' => 1]),
