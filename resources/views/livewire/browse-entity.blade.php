@@ -35,7 +35,7 @@
             </div>
         </div>
         <!-- load more when scroll -->
-        <div
+        <!-- <div
             x-data="{
                 observe () {
                     let observer = new IntersectionObserver((entries) => {
@@ -52,6 +52,6 @@
                 }
             }"
             x-init="observe"
-        ></div>
+        ></div> -->
     </div>
 </div>

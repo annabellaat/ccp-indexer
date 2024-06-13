@@ -19,7 +19,7 @@ class BrowseEntity extends Component
     protected $searching = true;
     public $showmoreB = false;
     public $moreEnts = [];
-    public $perPage = 50;
+    public $perPage = 200;
     public $numOrLet = true;
 
     public function mount()
@@ -75,7 +75,7 @@ class BrowseEntity extends Component
     }
 
     public function loadMore() {
-        $this->perPage +=20;
+        $this->perPage +=50;
         if($this->searching) {
             $this->filterBySearch();
         } else {
