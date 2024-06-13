@@ -19,6 +19,8 @@ class BrowseEntity extends Component
     protected $searching = true;
     public $showmoreB = false;
     public $moreEnts = [];
+    public $perPage = 50;
+    public $numOrLet = true;
 
     public function mount()
     {
@@ -30,25 +32,60 @@ class BrowseEntity extends Component
     }
 
     public function filterNumber() {
+        $this->numOrLet = true;
         $this->activeLet =  'num';
         $this->searching = false;
         $this->query = '';
-        $this->all_ents = Entity::where('title', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('title', 'asc')->take(50)->get();
-        $this->all_cols = Collection::where('name', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('name', 'asc')->take(50)->get(['name AS title', 'collections.*']);
+        $this->all_ents = Entity::where('title', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('title', 'asc')->take($this->perPage)->get();
+        $this->all_cols = Collection::where('name', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('name', 'asc')->take($this->perPage)->get(['name AS title', 'collections.*']);
         $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
         array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
 
     }
 
     public function filterByLetter($letter) {
-        $this->activeLet =   $letter;
+        $this->numOrLet = false;
+        $this->activeLet =  $letter;
         $this->searching = false;
         $this->query = '';
-        $this->all_ents = Entity::where('title', 'like', $letter.'%')->where('collection_id', '=', null)->orderBy('title', 'asc')->take(50)->get();
-        $this->all_cols = Collection::where('name', 'like', $letter.'%')->where('collection_id', '=', null)->orderBy('name', 'asc')->take(50)->get(['name AS title', 'collections.*']);
+        $this->all_ents = Entity::where('title', 'like', $letter.'%')->where('collection_id', '=', null)->orderBy('title', 'asc')->take($this->perPage)->get();
+        $this->all_cols = Collection::where('name', 'like', $letter.'%')->where('collection_id', '=', null)->orderBy('name', 'asc')->take($this->perPage)->get(['name AS title', 'collections.*']);
         $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
         array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
         // dd($this->all_browse);
+    }
+
+    public function filterBySearch() {
+        if($this->query !== '') {
+            $this->searching = true;
+            $this->all_ents = Entity::where('collection_id', '=', null)->where('title', 'like', '%'.$this->query.'%')->orderBy('title', 'asc')->get();
+            $this->all_cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->query.'%')->orderBy('name', 'asc')->get(['name AS title', 'collections.*']);
+            $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
+            array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
+        } else{
+            if($this->searching == true) {
+                $this->all_ents = Entity::where('collection_id', '=', null)->orderBy('title', 'asc')->take($this->perPage)->get();
+                $this->all_cols = Collection::where('collection_id', '=', null)->orderBy('name', 'asc')->take($this->perPage)->get(['name AS title', 'collections.*']);
+                $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
+                array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
+            }
+            // dd($this->all_browse);
+        }
+
+    }
+
+    public function loadMore() {
+        $this->perPage +=20;
+        if($this->searching) {
+            $this->filterBySearch();
+        } else {
+            if($this->numOrLet) {
+                $this->filterBySearch();
+            } else {
+                $this->filterByLetter($this->activeLet);
+            }
+        }
+
     }
     
     public function goToEnt($id, $slug) {
@@ -59,30 +96,9 @@ class BrowseEntity extends Component
         $this->redirectRoute('collection', ['collection' => $id, 'slug' => $slug]);
     }
 
-    // public function showMore($id) {
-    //     $this->moreEnts = Entity::where('collection_id', '=', $id)->orderBy('title', 'asc')->get()->toArray();
-    //     $this->showmoreB = true;
-    // }
-
-    // use WithPagination;
     public function render()
     {
-        
-        if($this->query !== '') {
-            $this->searching = true;
-            $this->all_ents = Entity::where('collection_id', '=', null)->where('title', 'like', '%'.$this->query.'%')->orderBy('title', 'asc')->get();
-            $this->all_cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->query.'%')->orderBy('name', 'asc')->get(['name AS title', 'collections.*']);
-            $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
-            array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
-        } else{
-            if($this->searching == true) {
-                $this->all_ents = Entity::where('collection_id', '=', null)->orderBy('title', 'asc')->take(50)->get();
-                $this->all_cols = Collection::where('collection_id', '=', null)->orderBy('name', 'asc')->take(50)->get(['name AS title', 'collections.*']);
-                $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
-                array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
-            }
-            // dd($this->all_browse);
-        }
+        $this->filterBySearch();
         return view('livewire.browse-entity')->layout('layouts.app');
     }
 }

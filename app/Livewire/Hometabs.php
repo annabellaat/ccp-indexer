@@ -50,7 +50,7 @@ class Hometabs extends Component
         $this->clickedNew($request, $this->activeTab);
     }
     public function film(Request $request) {
-        $this->activeTab = 'Film';
+        $this->activeTab = 'Film & Broadcast';
         $this->clickedNew($request, $this->activeTab);
     }
     public function literature(Request $request) {
