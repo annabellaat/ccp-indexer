@@ -25,11 +25,19 @@ class Hometabs extends Component
         }
     }
 
-    public function clickedNew(Request $request, string $activeTab) {
+    public function clickedNew(Request $request, string $activeTab, string $second = null, string $third = null) {
         $this->perPage = 8;
         $this->sessionRand($request);
-        $this->random_collections = Entity::where('category', 'like', $activeTab)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
-        $this->count = Entity::where('category', 'like', $activeTab)->count();
+        if($activeTab == "Literary Arts") {
+            $this->random_collections = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+            $this->count = Entity::where('category', 'like', $activeTab)->count();
+        } elseif($activeTab == 'Event') {
+            $this->random_collections = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+            $this->count = Entity::where('category', 'like', $activeTab)->count();
+        } else {
+            $this->random_collections = Entity::where('category', 'like', $activeTab)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+            $this->count = Entity::where('category', 'like', $activeTab)->count();
+        }
 
     }
 
@@ -55,11 +63,11 @@ class Hometabs extends Component
     }
     public function literature(Request $request) {
         $this->activeTab = 'Literary Arts';
-        $this->clickedNew($request, $this->activeTab);
+        $this->clickedNew($request, $this->activeTab, 'Arts Education');
     }
     public function events(Request $request) {
         $this->activeTab = 'Event';
-        $this->clickedNew($request, $this->activeTab);
+        $this->clickedNew($request, $this->activeTab, 'Program', 'Festivals');
     }
 
     public function loadMore(Request $request) {
