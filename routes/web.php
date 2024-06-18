@@ -36,8 +36,8 @@ Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
 Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 
 Route::get('/browse', BrowseEntity::class)->name('browse');
-Route::get('/entity/{entity}/{slug}', EntityPage::class)->name('entity');
-Route::get('/collection/{collection}/{slug}', CollectionPage::class)->name('collection');
+Route::get('/entity/{entity}/{slug?}', EntityPage::class)->name('entity');
+Route::get('/collection/{collection}/{slug?}', CollectionPage::class)->name('collection');
 Route::get('/open-access', OpenAccess::class)->name('open-access');
-Route::get('/search-page/{searchTerm?}', SearchPage::class)->name('search');
+Route::get('/search-page/{searchTerm?}}', SearchPage::class)->name('search');
 

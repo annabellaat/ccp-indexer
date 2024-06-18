@@ -5,12 +5,16 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Collection;
 use App\Models\Entity;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+
+use function PHPUnit\Framework\isNull;
 
 class SearchPage extends Component
 {
     public $searchItem = '';
+    public $searchForTag = false;
     public $ents = [];
     public $cols = [];
     public $entC = 0;
@@ -35,6 +39,8 @@ class SearchPage extends Component
     
     public function close() {
         $this->searchItem = "";
+        $this->entC = 0;
+        $this->colC = 0;
     }
 
     public function loadMore() {
@@ -50,17 +56,33 @@ class SearchPage extends Component
     
     public function render()
     {
+        
         if(strlen($this->searchItem) >= 1) {
-            $query = Entity::where('title', 'like', '%'.$this->searchItem.'%');
-            foreach($this->columns as $column) {
-                $query->orWhere($column, 'LIKE', '%'.$this->searchItem.'%');
+            if($this->searchItem[0] == '[') {
+                $this->searchForTag = true;
+                $tagSearch = trim($this->searchItem, "[]");
+                $tagId = Tag::where('name', '=', $tagSearch)->pluck('id');
+                // dd($tagId->count());
+                if($tagId->count() == 0) {
+                    return view('livewire.search-page')->layout('layouts.app');
+                } else {
+                    $query2 = Tag::find($tagId[0])->entities()->take($this->perPage)->get();
+                    $this->entC = $query2->count();
+                    $this->ents = $query2;
+                }
+    
+            } else {
+                $query = Entity::where('title', 'like', '%'.$this->searchItem.'%');
+                foreach($this->columns as $column) {
+                    $query->orWhere($column, 'LIKE', '%'.$this->searchItem.'%');
+                }
+                
+                $this->entC = $query->count();
+                $this->ents = $query->orderBy('title', 'asc')->take($this->perPage)->get();
+                
+                $this->cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->searchItem.'%')->orWhere('description', 'like', '%'.$this->searchItem.'%')->orderBy('name', 'asc')->take($this->perPage)->get();
+                $this->colC = $this->cols->count();
             }
-            
-            $this->entC = $query->count();
-            $this->ents = $query->orderBy('title', 'asc')->take($this->perPage)->get();
-            
-            $this->cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->searchItem.'%')->orWhere('description', 'like', '%'.$this->searchItem.'%')->orderBy('name', 'asc')->take($this->perPage)->get();
-            $this->colC = $this->cols->count();
 
         }
         return view('livewire.search-page')->layout('layouts.app');

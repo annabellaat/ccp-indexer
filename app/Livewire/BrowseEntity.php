@@ -16,7 +16,6 @@ class BrowseEntity extends Component
     public $all_browse = [];
     public $query = '';
     public $activeLet = 'all';
-    protected $searching = true;
     public $totalCount = 0;
     public $perPage = 150;
     public $numOrLet = 3;
@@ -25,19 +24,13 @@ class BrowseEntity extends Component
     {
       $this->rry = range("A","Z");
       $this->filterAll();
-    //   $this->all_ents = Entity::where('collection_id', '=', null)->orderBy('title', 'asc')->take(20)->get();
-    //   $this->all_cols = Collection::where('collection_id', '=', null)->orderBy('name', 'asc')->take(20)->get(['name AS title', 'collections.*']);
-    //   $this->all_browse = array_merge($this->all_cols->toArray(), $this->all_ents->toArray());
-    //   array_multisort(array_column($this->all_browse, 'title'), $this->all_browse);
     }
 
     public function mergeSort($cols, $ents) {
         $this->all_browse = array_merge($cols->toArray(), $ents->toArray());
-        array_multisort(array_column($this->all_browse, 'title'), SORT_ASC,SORT_NATURAL|SORT_FLAG_CASE, $this->all_browse);
+        array_multisort(array_column($this->all_browse, 'title'), SORT_ASC,SORT_STRING|SORT_FLAG_CASE, $this->all_browse);
         $this->totalCount = count($this->all_browse);
         $this->all_browse = array_slice($this->all_browse,0,$this->perPage);
-        // dd($this->totalCount);
-
     }
 
     public function filterAll() {
@@ -56,7 +49,6 @@ class BrowseEntity extends Component
         }
         $this->numOrLet = 1;
         $this->activeLet =  'num';
-        // $this->searching = false;
         $this->query = '';
         $this->all_ents = Entity::where('title', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('title', 'asc')->take($this->perPage)->get();
         $this->all_cols = Collection::where('name', 'regexp', '^[0-9]+')->where('collection_id', '=', null)->orderBy('name', 'asc')->take($this->perPage)->get(['name AS title', 'collections.*']);
@@ -70,7 +62,6 @@ class BrowseEntity extends Component
         }
         $this->numOrLet = 2;
         $this->activeLet =  $letter;
-        // $this->searching = false;
         $this->query = '';
         $this->all_ents = Entity::where('title', 'like', $letter.'%')->where('collection_id', '=', null)->orderBy('title', 'asc')->take($this->perPage)->get();
         $this->all_cols = Collection::where('name', 'like', $letter.'%')->where('collection_id', '=', null)->orderBy('name', 'asc')->take($this->perPage)->get(['name AS title', 'collections.*']);
@@ -78,11 +69,9 @@ class BrowseEntity extends Component
     }
 
     public function filterBySearch() {
-        // $this->searching = true;
         $this->all_ents = Entity::where('collection_id', '=', null)->where('title', 'like', '%'.$this->query.'%')->orderBy('title', 'asc')->get();
         $this->all_cols = Collection::where('collection_id', '=', null)->where('name', 'like', '%'.$this->query.'%')->orderBy('name', 'asc')->get(['name AS title', 'collections.*']);
         $this->mergeSort($this->all_cols, $this->all_ents);
-            // dd($this->all_ents);
 
     }
 
@@ -102,11 +91,11 @@ class BrowseEntity extends Component
 
     }
     
-    public function goToEnt($id, $slug) {
+    public function goToEnt($id, $slug=null) {
         $this->redirectRoute('entity', ['entity' => $id, 'slug' => $slug]);
     }
 
-    public function goToCol($id, $slug) {
+    public function goToCol($id, $slug=null) {
         $this->redirectRoute('collection', ['collection' => $id, 'slug' => $slug]);
     }
 

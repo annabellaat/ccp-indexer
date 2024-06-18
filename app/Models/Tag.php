@@ -31,6 +31,6 @@ class Tag extends Model
 
     public function entities(): BelongsToMany
     {
-        return $this->belongsToMany(Entity::class);
+        return $this->belongsToMany(Entity::class, 'entity_tag', 'tag_id');
     }
 }

@@ -88,9 +88,23 @@
             @else
             <div class="text-sm md:text-md max-h-[220px] overscroll-contain overflow-y-auto">{{ $entity->description }}  <span class="text-sky-600 cursor-pointer" wire:click="readMore()">see less</span></div>
             @endif
-
-            <div class="grid grid-cols-4 text-xs sm:text-sm md:text-md">
-                <div class="col-span-4 text-lg font-bold text-red-800 py-6">Details</div>
+            
+            <div class="col-span-1 pt-4 text-xs">
+                <span class="font-bold">Tags:</span> 
+                    @if(!$entity->tags->isEmpty())
+                        @foreach($entity->tags as $tag)
+                            <span wire:click="goSearch('[{{$tag->name}}]')" class="text-slate-600 font-interbold bg-sky-200/50 rounded-md px-1 py-1 mr-1 hover:bg-sky-300/50 cursor-pointer">
+                                {{ $tag->name }}
+                            </span>
+                        @endforeach
+                    @else
+                    <span class="text-rose-700">
+                        No Tags Input
+                    </span>
+                    @endif
+            </div>
+            <div class="grid grid-cols-4 text-xs sm:text-sm">
+                <div class="col-span-4 text-lg font-bold text-red-800 pt-4 pb-1">Details</div>
                 <div class="font-bold col-span-1 py-1">Date: </div>
                 <div class="col-span-3">{{ !is_null($entity->date) ? $entity->date->format('Y') : "-No date given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Place: </div>
@@ -99,21 +113,11 @@
                 <div class="col-span-3">{{ $entity->material }}</div>
                 <div class="font-bold col-span-1 py-1">Category: </div>
                 <div class="col-span-3">{{ $entity->category }}</div>
-                <div class="font-bold col-span-1 py-1">Tag: </div>
-                <div class="col-span-3">
-                    @if(!$entity->tags->isEmpty())
-                        @foreach($entity->tags as $tag)   
-                            {{ $tag->name }}{{ $loop->last ? '' : ',' }}
-                        @endforeach
-                    @else
-                        No Tags Input
-                    @endif
-                </div>
 
                 @foreach($columns as $col)
                     @if($entity->$col)
                     <div class="font-bold col-span-1 py-1">{{ucwords(str_replace("_"," ",$col))}}: </div>
-                    <div class="col-span-3">{{ $entity->$col }}</div>
+                    <div class="col-span-3 py-1">{{ $entity->$col }}</div>
                     @endif
                 @endforeach
 

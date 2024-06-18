@@ -22,7 +22,7 @@
         
         <div class="container px-2 sm:px-[10%] text-sm sm:text-md md:text-lg">
             @if(strlen($searchItem) > 0 && $entC + $colC > 0)
-            <div class="bg-white text-black rounded-lg border-1 px-4 py-4 mt-4 w-full">
+            <div class="bg-white text-black rounded-lg border-1 px-4 py-4 mt-4 w-full" wire:key="searchHeader">
                 @if(count($this->cols)>0)
                     <div class="container">
                         <p class="font-interbold border-t-2 border-b-2 py-2">Collections matched:</p>
@@ -58,6 +58,13 @@
                                 <span class="content-center col-span-5 sm:col-span-6">
                                     <p class="pl-4 text-red-800 font-interbold">{{$entity->title}}</p>
                                     <p class="pl-4 text-sm">{{\Illuminate\Support\Str::words($entity->description, 50, '...') }}</p>
+                                    <p class="pl-4 text-xs pt-4 pb-1">
+                                        @foreach($entity->tags as $tag)
+                                        <span class="text-slate-600 font-interbold bg-sky-200/50 rounded-md px-1 py-1 mr-1">
+                                            {{ $tag->name }}
+                                        </span>
+                                        @endforeach
+                                    </p>
                                 </span>
                             </div>
                         @endforeach
