@@ -19,6 +19,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Enums\ThemeMode;
 use Filament\Support\Enums\MaxWidth;
+use Filament\Navigation\NavigationGroup;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -30,6 +31,18 @@ class AdminPanelProvider extends PanelProvider
             ->id('ccpadmin')
             ->path('ccpadmin')
             ->login()
+            ->navigationGroups([
+                NavigationGroup::make()
+                     ->label('Shop')
+                     ->icon('heroicon-o-shopping-cart'),
+                NavigationGroup::make()
+                    ->label('Blog')
+                    ->icon('heroicon-o-pencil'),
+                NavigationGroup::make()
+                    ->label(fn (): string => __('navigation.settings'))
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
+            ])
             // ->brandLogoHeight('5rem')
             ->font(family:'Poppins')
             ->favicon(url:'img/favicon.png')

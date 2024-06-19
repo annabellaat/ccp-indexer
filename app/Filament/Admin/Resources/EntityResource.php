@@ -134,14 +134,7 @@ class EntityResource extends Resource
                             ->searchable()
                             ->columnSpan(1),
                         Forms\Components\Select::make('tags')
-                            ->relationship('tags', 'name') 
-                            ->createOptionForm([
-                                Forms\Components\TextInput::make('name')
-                                    ->required(),
-                                Forms\Components\TextInput::make('slug')
-                                    ->required()
-                                    ->maxLength(255),
-                            ])
+                            ->relationship('tags', 'name')
                             ->multiple()
                             ->searchable()
                             ->options(Tag::take(10)->get()->pluck('name', 'id')),

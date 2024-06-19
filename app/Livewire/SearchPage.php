@@ -72,6 +72,7 @@ class SearchPage extends Component
                 }
     
             } else {
+                $this->searchForTag = false;
                 $query = Entity::where('title', 'like', '%'.$this->searchItem.'%');
                 foreach($this->columns as $column) {
                     $query->orWhere($column, 'LIKE', '%'.$this->searchItem.'%');

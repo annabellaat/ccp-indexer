@@ -15,12 +15,12 @@
                 <div class="text-lg md:text-3xl lg:text-4xl pb-12">
                     <!-- <span 
                     class="{{ $activeLet == 'num' ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterNumber()">#</span> -->
+                    <span 
+                    class="{{ $activeLet == 'all' ? 'underline font-bold' : '' }} text-bold cursor-pointer text-2xl" wire:click="filterAll()">all</span>
                 @foreach(range("A","Z") as $let)
                     <span 
                     class="{{ $activeLet == $let ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterByLetter('{{ $let }}')">{{$let}}</span>
                 @endforeach
-                    <span 
-                    class="{{ $activeLet == 'all' ? 'underline font-bold' : '' }} text-bold cursor-pointer text-2xl" wire:click="filterAll()">all</span>
                 </div>
             </div>
             <div class="grid items-center mx-auto w-4/5 md:w-[60%] text-lg sm:text-xl" wire:key="header">

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\CollectionResource\Pages;
-use App\Filament\Admin\Resources\CollectionResource\RelationManagers;
-use App\Models\Collection;
+use App\Filament\Admin\Resources\TagResource\Pages;
+use App\Filament\Admin\Resources\TagResource\RelationManagers;
+use App\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,14 +12,14 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\TextInput;
 
-class CollectionResource extends Resource
+class TagResource extends Resource
 {
-    protected static ?string $model = Collection::class;
+    protected static ?string $model = Tag::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationGroup = 'Archives';
 
     public static function form(Form $form): Form
@@ -29,7 +29,7 @@ class CollectionResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255)
-                    ->columnSpanFull()
+                    ->autocomplete(false)
                     ->live(onBlur: true)
                     ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
                         if ($operation !== 'create') {
@@ -43,31 +43,9 @@ class CollectionResource extends Resource
                     ->dehydrated()
                     ->required()
                     ->maxLength(255)
-                    ->columnSpanFull()
-                    ->unique(Collection::class, 'slug', ignoreRecord: true),
-                Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('collection_id')
-                    ->relationship('collection', 'name')
-                    ->label('Parent Collection')
-                    ->searchable(),
-                Forms\Components\FileUpload::make('image')
-                ->label('Thumbnails')
-                ->multiple()
-                ->directory('collection-images')
-                ->getUploadedFileNameForStorageUsing(
-                    fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                        ->prepend('Col-')
-                ),
+                    ->unique(Tag::class, 'slug', ignoreRecord: true),
+                //
             ]);
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        // return parent::getEloquentQuery()->where('collection_id', null);
-        return parent::getEloquentQuery();
     }
 
     public static function table(Table $table): Table
@@ -76,20 +54,15 @@ class CollectionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('description')
+                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('collection.name')
-                    ->label('Parent Collection')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
+                //
             ])
             ->filters([
                 //
@@ -116,9 +89,9 @@ class CollectionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCollections::route('/'),
-            'create' => Pages\CreateCollection::route('/create'),
-            'edit' => Pages\EditCollection::route('/{record}/edit'),
+            'index' => Pages\ListTags::route('/'),
+            'create' => Pages\CreateTag::route('/create'),
+            'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
     }
 }
