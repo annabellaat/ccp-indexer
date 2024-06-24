@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
 
 class CollectionResource extends Resource
 {
@@ -75,9 +76,12 @@ class CollectionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(90),
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(90)
+                    ->tooltip(fn (Model $record): string => "{$record->description}"),
                 Tables\Columns\TextColumn::make('collection.name')
                     ->label('Parent Collection')
                     ->numeric()

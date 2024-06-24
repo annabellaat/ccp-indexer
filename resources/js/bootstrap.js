@@ -43,5 +43,9 @@ window.addEventListener("click", () => {
       dropdownList.classList.toggle("hidden");
     }
   }
+  if(event.target.classList.contains('secret')) {
+    alert("why click");
+  }
 });
+
 

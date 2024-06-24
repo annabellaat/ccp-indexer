@@ -16,13 +16,7 @@ class Request extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'status',
-        'user_id',
-        'entity_id',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be cast to native types.

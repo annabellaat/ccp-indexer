@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->nullable();
+            $table->string('type_of_use')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->string('status')->nullable();
-            $table->foreignId('user_id');
+            $table->string('country')->nullable();
+            $table->string('company')->nullable();
+            $table->string('number')->nullable();
+            $table->text('project_title')->nullable();
+            $table->text('project_description')->nullable();
+            $table->string('project_duration')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->unsignedInteger('entity_id');
             $table->timestamps();
         });

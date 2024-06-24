@@ -1,10 +1,10 @@
-<footer class="bg-gray-800 py-10 text-white">
+<footer class="bg-gray-800 py-10 text-white select-none">
     <div class="container mx-auto text-center content-center">
         <div class="sm:mx-20 lg:mx-28 flex flex-col lg:flex-row">
             <div class="w-full text-nowrap text-center sm:text-center lg:text-left pt-5 pb-2 lg:pt-0">
                 Cultural Center of the Philippines <br>
                 CCP Complex, Roxas Boulevard <br>
-                Pasay City 1300 Metro Manila <br>
+                Pasay City 1300 Metro <span class="secret">M</span>anila <br>
                 <br>
                 (02) 8832 1125 loc. 1510-12 <br>
                 <br>
