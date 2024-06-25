@@ -1,6 +1,6 @@
 <div class="flex justify-center">
-    <div class="container min-h-screen pt-20 flex flex-col items-center">
-        <div class="text-lg sm:text-xl font-interbold text-red-800">
+    <div class="container min-h-screen pt-12 flex flex-col items-center">
+        <div class="text-xl sm:text-3xl font-interbold text-red-800 text-nowrap">
             Content Accessibility Request Form
         </div>
         @if($step==0)
@@ -19,43 +19,45 @@
         <div class="bg-gradient-to-r from-[#d4ab1a] from-0% via-[#d4ab1a] via-100% to-gray-200 to-100% h-5 w-full sm:w-[60%] mt-8 rounded-full"></div>
         @endif
         
-        <div class="mt-10 flex flex-col items-left w-full sm:w-[60%]">
+        <div class="mt-8 flex flex-col items-left w-full sm:w-[60%]">
             <form wire:submit.prevent="submit">
 
                 @if($step == 0)
-                <div>
-                    <div class="text-2xl sm:text-4xl text-red-800 font-inter font-bold">
+                <div class="select-none">
+                    <div class="text-xl sm:text-3xl text-red-800 font-inter font-bold">
                         YOUR REQUEST
                     </div>
                     <div class="mt-2">
                         Confirm your submission.
                     </div>
-                    <div class="form-group mt-4 select-none">
-                        <span class="text-red-800 font-bold">TITLE</span>
-                        <input disabled class="mt-2 mb-4 p-3 w-full border-2 rounded-lg bg-white text-sm sm:text-lg" type="text" value="{{$entity->title}}"> 
-                        <span class="text-red-800 font-bold">PLACE</span>
-                        <input disabled class="mt-2 mb-4 p-3 w-full border-2 rounded-lg bg-white text-sm sm:text-lg" value="{{$entity->place}}"> 
-                        <span class="text-red-800 font-bold">DESCRIPTION</span>
-                        <textarea disabled class="mt-2 mb-4 p-3 w-full min-h-[300px] border-2 rounded-lg bg-white text-sm sm:text-lg" value="{{$entity->description}}">{{$entity->description}}</textarea>
+                    <div class="form-group mt-4 font-bold grid grid-cols-2 gap-2">
+                        <span class="text-red-800 font-bold text-sm sm:text-base col-span-2">TITLE</span>
+                        <input disabled class="mb-4 py-2 px-3 w-full border-2 rounded-lg bg-white text-sm sm:text-base font-interlight col-span-2" type="text" value="{{$entity->title}}"> 
+                        <span class="text-red-800 font-bold text-sm sm:text-base col-span-1">PLACE</span>
+                        <span class="text-red-800 font-bold text-sm sm:text-base col-span-1">DATE</span>
+                        <input disabled class="mb-4 py-2 px-3 w-full border-2 rounded-lg bg-white text-sm sm:text-base font-interlight col-span-1" value="{{$entity->place}}"> 
+                        <input disabled class="mb-4 py-2 px-3 w-full border-2 rounded-lg bg-white text-sm sm:text-base font-interlight col-span-1" value="{{date('M d, Y', strtotime($entity->date))}}"> 
+                        <span class="text-red-800 font-bold text-sm sm:text-base col-span-2">DESCRIPTION</span>
+                        <textarea disabled class="mb-4 py-2 px-3 w-full min-h-[200px] border-2 rounded-lg bg-white text-sm sm:text-base font-interlight col-span-2" value="{{$entity->description}}">{{$entity->description}}</textarea>
                         
                     </div>
                 </div>
                 @endif
                 @if($step == 1)
-                <div>
-                    <div class="text-2xl sm:text-4xl text-red-800 font-inter font-bold">
+                <div class="select-none">
+                    <div class="text-2xl sm:text-3xl text-red-800 font-inter font-bold">
                         TYPE OF USE
                     </div>
                     <div class="mt-2">
                         Choose the type of permission for use. 
                     </div>
                     <div class="form-group mt-4 flex-col flex text-lg select-none">
-                        <label class="border-2 p-2 pl-4 rounded-lg has-[:checked]:bg-red-100">
+                        <label class="border-2 p-2 pl-4 rounded-lg has-[:checked]:bg-red-100 cursor-pointer">
                             <input type="radio" id="insti" name="typeOfUse" value="Institutional" wire:model.lazy="typeOfUse" class="pl-4">
                             <span class="font-bold pl-4 text-base sm:text-xl">Institutional</span><br>
                             <div class="pl-8 pt-1 text-sm sm:text-lg">Any employee of the CCP requesting materials for an official CCP event, project or production</div>
                         </label>
-                        <label class="border-2 p-2 pl-4 rounded-lg mt-2 has-[:checked]:bg-red-100">
+                        <label class="border-2 p-2 pl-4 rounded-lg mt-2 has-[:checked]:bg-red-100 cursor-pointer">
                             <input type="radio" id="viewr" name="typeOfUse" value="Viewing Room" wire:model.lazy="typeOfUse">
                             <span class="font-bold pl-4 text-base sm:text-xl">Viewing Room</span><br>
                             <div class="pl-8 pt-1 text-sm sm:text-lg">
@@ -64,13 +66,13 @@
                             critical paper or other private viewings<br>
                             - Users are prohibited from downloading, copying, reproducing or circulating the CCP materials</div>
                         </label>
-                        <label class="border-2 p-2 pl-4 rounded-lg mt-2 has-[:checked]:bg-red-100">
+                        <label class="border-2 p-2 pl-4 rounded-lg mt-2 has-[:checked]:bg-red-100 cursor-pointer">
                             <input type="radio" id="arch" name="typeOfUse" value="Archival/Portfolio" wire:model.lazy="typeOfUse">
                             <span class="font-bold pl-4 text-base sm:text-xl">Archival/Portfolio</span><br>
                             <div class="pl-8 pt-1 text-sm sm:text-lg">- May only be requested by persons or organizations who were part of the requested production<br>
                             - Materials may be downloaded but can only be used for personal, archival, and non-commercial purposes</div>
                         </label>
-                        <label class="border-2 p-2 pl-4 rounded-lg mt-2 has-[:checked]:bg-red-100">
+                        <label class="border-2 p-2 pl-4 rounded-lg mt-2 has-[:checked]:bg-red-100 cursor-pointer">
                             <input type="radio" id="comm" name="typeOfUse" value="Commercial Use" wire:model.lazy="typeOfUse">
                             <span class="font-bold pl-4 text-base sm:text-xl">Commercial Use</span><br>
                             <div class="pl-8 pt-1 text-sm sm:text-lg">Requests for distribution or circulation of CCP materials such as television broadcast, radio, publishing, use as production material, or any online platform which involve sales, financial gain or raising funds</div>
@@ -81,7 +83,7 @@
                 @endif
                 @if($step == 2)
                 <div>
-                    <div class="text-2xl sm:text-4xl text-red-800 font-inter font-bold mb-8">
+                    <div class="text-2xl sm:text-3xl text-red-800 font-inter font-bold mb-8 select-none">
                         USER DETAILS
                     </div>
                     <div class="form-group grid grid-cols-8">
@@ -123,7 +125,7 @@
                 @endif
                 @if($step == 3)
                 <div>
-                    <div class="text-2xl sm:text-4xl text-red-800 font-inter font-bold mb-8">
+                    <div class="text-2xl sm:text-3xl text-red-800 font-inter font-bold mb-8 select-none">
                         TERMS & CONDITIONS
                     </div>
                     <div class="form-group relative">
@@ -147,21 +149,20 @@
                         8. The laws of the Republic of the Philippines shall govern this Agreement. Each party irrevocably consents to the exclusive jurisdiction of the City of Pasay.<br><br>
 
                         </div>
-                        <div class="mb-10 mt-6">
-                            <label class="right-0 absolute font-bold text-sm sm:text-base justify-items-center">
+                        <div class="mb-10 mt-6 justify-center flex">
+                            <label class="font-bold text-sm sm:text-base justify-items-center">
                                 <input wire:model="agree" type="checkbox" value="0" class="size-4">
                                 <span class="pl-2">I agree with the Terms and Conditions</span><br>
                                 @error('agree')<small class="form-text text-danger col-span-8">{{ $message }}</small>@enderror
                             </label>
                         </div>
 
-                        {{$name}} {{$country}} {{$typeOfUse}} {{ $email}}
                     </div>
                 </div>
                 @endif
                 @if($step == 4)
-                <div>
-                    <div class="text-2xl sm:text-4xl text-red-800 font-inter font-bold">
+                <div class="select-none">
+                    <div class="text-2xl sm:text-3xl text-red-800 font-inter font-bold">
                         REQUEST SUCCESSFUL!
                     </div>
                     <div class="mt-2">

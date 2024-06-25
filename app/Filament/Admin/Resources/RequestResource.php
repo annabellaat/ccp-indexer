@@ -98,6 +98,10 @@ class RequestResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('project_title')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->sortable()
+                    ->dateTime()
+                    ->label('Date Requested'),
             ])
             ->filters([
                 //
@@ -110,7 +114,8 @@ class RequestResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array
