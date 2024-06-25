@@ -15,7 +15,7 @@ class RequestWidget extends BaseWidget
             Stat::make('New Requests', Request::where('status', 'New')->count())
                 ->description('New requests submitted by users')
                 ->descriptionIcon('heroicon-m-clipboard', IconPosition::Before),
-            Stat::make('Processed Requests', Request::where('status', 'Processed')->count())
+            Stat::make('Processed Requests', Request::where('status', 'Processing')->count())
                 ->description('Requests currently in processing')
                 ->descriptionIcon('heroicon-m-clipboard-document-list', IconPosition::Before)
                 ->color('warning'),
