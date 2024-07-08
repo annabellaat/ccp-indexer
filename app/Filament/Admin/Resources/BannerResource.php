@@ -36,7 +36,7 @@ class BannerResource extends Resource
                         ->columnSpan(1),
                     Forms\Components\TextInput::make('title')
                         ->columnSpanFull(),
-                    Forms\Components\TextArea::make('description')
+                    Forms\Components\Textarea::make('description')
                         ->columnSpanFull(),
                     Forms\Components\Select::make('entity_id')
                         ->options(Entity::all()->pluck('title', 'id'))
