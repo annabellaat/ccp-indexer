@@ -17,7 +17,7 @@ class RequestResource extends Resource
 {
     protected static ?string $model = Request::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document';
 
     public static function form(Form $form): Form
     {
@@ -33,7 +33,21 @@ class RequestResource extends Resource
                         })
                         ->label('Entity Requested')
                         ->columnSpanFull(),
-                    Forms\Components\TextInput::make('status'),
+                    Forms\Components\Select::make('status')
+                        ->options([
+                            'New' => [
+                                'New' => 'New'
+                            ],
+                            'Processing' => [
+                                'Material Available ' => 'Material Available ',
+                                'IPR Cleared' => 'IPR Cleared',
+                                'Paid' => 'Paid',
+                            ],
+                            'Closed' => [
+                                'Closed - Material Sent' => 'Closed - Material Sent',
+                                'Closed - Disapproved' => 'Closed - Disapproved'
+                            ]
+                        ]),
                     Forms\Components\TextInput::make('type_of_use')
                         ->disabled(),
                     Forms\Components\Section::make('Requestor Details')

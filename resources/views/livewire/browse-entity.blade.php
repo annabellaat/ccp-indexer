@@ -16,10 +16,10 @@
                     <!-- <span 
                     class="{{ $activeLet == 'num' ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterNumber()">#</span> -->
                     <span 
-                    class="{{ $activeLet == 'all' ? 'underline font-bold' : '' }} text-bold cursor-pointer text-2xl mr-4" wire:click="filterAll()">all</span>
+                    class="{{ $activeLet == 'all' ? 'underline font-bold text-3xl' : '' }} text-bold cursor-pointer text-2xl mr-4" wire:click="filterAll()">all</span>
                 @foreach(range("A","Z") as $let)
                     <span 
-                    class="{{ $activeLet == $let ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterByLetter('{{ $let }}')">{{$let}}</span>
+                    class="{{ $activeLet == $let ? 'underline font-bold text-5xl' : '' }} text-bold cursor-pointer" wire:click="filterByLetter('{{ $let }}')">{{$let}}</span>
                 @endforeach
                 </div>
             </div>

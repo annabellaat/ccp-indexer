@@ -46,7 +46,7 @@ class CafPage extends Component
     public function submit2() {
         $this->validate([
             'typeOfUse' => 'required',
-        ]);
+        ], ['typeOfUse' => 'Must select which type of use for your request']);
         $this->step++;
     }
 

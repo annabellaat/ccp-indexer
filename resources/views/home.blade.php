@@ -17,7 +17,17 @@
             <div id="carouselExampleIndicators" class="relative h-full flex-auto" data-te-carousel-init data-te-ride="carousel">
                 <!--Carousel indicators-->
                 <div class="absolute bottom-[5%] left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
-                    <button
+                    @for($i = 0 ; $i < count($banners); $i++)
+                        <button
+                        type="button"
+                        data-te-target="#carouselExampleIndicators"
+                        data-te-slide-to="{{$i}}"
+                        data-te-carousel-active
+                        class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                        aria-current="true"
+                        aria-label="Slide {{$i+1}}"></button>
+                    @endfor
+                    <!-- <button
                     type="button"
                     data-te-target="#carouselExampleIndicators"
                     data-te-slide-to="0"
@@ -48,76 +58,44 @@
                     data-te-target="#carouselExampleIndicators"
                     data-te-slide-to="4"
                     class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 5"></button>
-                    <!-- <button
-                    type="button"
-                    data-te-target="#carouselExampleIndicators"
-                    data-te-slide-to="5"
-                    class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 6"></button> -->
+                    aria-label="Slide 5"></button> -->
                 </div>
 
                 <!--Carousel items-->
                 <div class="relative flex h-full w-full overflow-hidden after:clear-both after:block after:content-['']">
-                    <!--First item-->
-                    <div
-                    class="relative float-left -mr-[100%] w-screen transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
-                    data-te-carousel-item
-                    data-te-carousel-active>
+                    @foreach($banners as $ban)
+                        @if($loop->first)
+                        <div
+                        class="relative float-left -mr-[100%] w-screen transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
+                        data-te-carousel-item
+                        data-te-carousel-active>
+                        @else
+                        <div
+                        class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
+                        data-te-carousel-item>
+                        @endif
+                            @if($ban->title != null && $ban->description != null)
+                            <div class="z-30 absolute bottom-10 ml-[10%] w-fit bg-gray-800 bg-opacity-45 px-10 py-5">
+                                <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-4">{{$ban->title}}</p>
+                                <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight">{{$ban->description}}</p>
+                            </div>
+                            @endif
+                            @if($ban->entity_id != null)
+                            <a href="{{ route('entity', ['entity' => $ban->entity_id]) }}">
+                            <img
+                                src="{{asset('storage')}}/{{$ban->image}}"
+                                class="block flex h-full w-auto m-auto"
+                                alt="Slide {{$loop->iteration}}" />
+                            </a>
+                            @else
+                            <img
+                                src="{{asset('storage')}}/{{$ban->image}}"
+                                class="block flex h-full w-auto m-auto"
+                                alt="Slide {{$loop->iteration}}" />
+                            @endif
+                        </div>
+                    @endforeach
                     
-                    <!-- <div class="z-30 absolute bottom-10 ml-[5%] w-3/4">
-                        <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-2">Digital archives you can explore</p>
-                        <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight lg:w-2/5">Explore hundreds of archival materials from the <br class="block lg:hidden"> Cultural Center of the Philippines</p>
-                    </div> -->
-                    <img
-                        src="{{asset('img/Banner 0.png')}}"
-                        class="block flex h-full w-auto m-auto"
-                        alt="First slide" />
-                    </div>
-                    <!--Second item-->
-                    <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
-                    data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 3, 'slug' => 'pulso-pilipinas-mga-likhang-sayaw']) }}">
-                        <img
-                            src="{{asset('img/Banner 1.png')}}"
-                            class="block h-full w-auto m-auto"
-                            alt="Second Slide" />
-                    </a>
-                    </div>
-                    <!--Third item-->
-                    <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
-                    data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 27, 'slug' => 'pingkian-isang-musikal']) }}">
-                        <img
-                            src="{{asset('img/Banner 2.png')}}"
-                            class="block h-full w-auto m-auto"
-                            alt="Third Slide" />
-                    </a>
-                    </div>
-                    <!--Fourth item-->
-                    <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
-                    data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 18, 'slug' => 'baraptasan']) }}">
-                        <img
-                            src="{{asset('img/Banner 3.png')}}"
-                            class="block h-full w-auto m-auto"
-                            alt="Fourth Slide" />
-                    </a>
-                    </div>
-                    <!--Fifth item-->
-                    <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
-                    data-te-carousel-item>
-                    <a href="{{ route('entity', ['entity' => 16, 'slug' => 'mebuyans-colony']) }}">
-                        <img
-                            src="{{asset('img/Banner 4.png')}}"
-                            class="block h-full w-auto m-auto"
-                            alt="Fifth Slide" />
-                    </a>
-                    </div>
                     <!--Sixth item-->
                     <!-- <div
                     class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
