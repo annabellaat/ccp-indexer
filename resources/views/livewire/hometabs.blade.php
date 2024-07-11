@@ -39,7 +39,6 @@
   
 
     <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 px-10 lg:px-[3%] pt-6 text-black">
-
         @foreach($random_collections as $collection)
 
         <a href="{{ route('entity', ['entity' => $collection, 'slug' => $collection->slug]) }}" class="flex justify-center">

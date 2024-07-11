@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class Hometabs extends Component
 {
 
+    public $test;
     public $random_collections;
     public $perPage = 8;
     public $activeTab = 'Music';
@@ -29,14 +30,18 @@ class Hometabs extends Component
         $this->perPage = 8;
         $this->sessionRand($request);
         if($activeTab == "Literary Arts") {
-            $this->random_collections = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
-            $this->count = Entity::where('category', 'like', $activeTab)->count();
+            $first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab)->orWhere('category', 'like', $second);
+            $this->count = $first->count();
+            $this->random_collections = $first->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
         } elseif($activeTab == 'Event') {
-            $this->random_collections = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
-            $this->count = Entity::where('category', 'like', $activeTab)->count();
+            $first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third);
+            $this->count = $first->count();
+            $this->random_collections = $first->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+            $this->test = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->get();
         } else {
-            $this->random_collections = Entity::where('category', 'like', $activeTab)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
-            $this->count = Entity::where('category', 'like', $activeTab)->count();
+            $first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab);
+            $this->count = $first->count();
+            $this->random_collections = $first->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
         }
 
     }
@@ -71,9 +76,16 @@ class Hometabs extends Component
     }
 
     public function loadMore(Request $request) {
-        $this->perPage +=4;
+        $this->perPage +=8;
         $this->sessionRand($request);
-        $this->random_collections = Entity::where('category', 'like', $this->activeTab)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+
+        if($this->activeTab == "Literary Arts") {
+            $this->random_collections = Entity::whereNull('collection_id')->where('category', 'like', $this->activeTab)->orWhere('category', 'like', 'Arts Education')->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+        } elseif($this->activeTab == 'Event') {
+            $this->random_collections = Entity::whereNull('collection_id')->where('category', 'like', $this->activeTab)->orWhere('category', 'like', 'Program')->orWhere('category', 'like', 'Festivals')->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+        } else {
+            $this->random_collections = Entity::whereNull('collection_id')->where('category', 'like', $this->activeTab)->inRandomOrder('RAND('.$request->session()->get('session_rand').')')->take($this->perPage)->get();
+        }
         
     }
 

@@ -27,38 +27,6 @@
                         aria-current="true"
                         aria-label="Slide {{$i+1}}"></button>
                     @endfor
-                    <!-- <button
-                    type="button"
-                    data-te-target="#carouselExampleIndicators"
-                    data-te-slide-to="0"
-                    data-te-carousel-active
-                    class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-current="true"
-                    aria-label="Slide 1"></button>
-                    <button
-                    type="button"
-                    data-te-target="#carouselExampleIndicators"
-                    data-te-slide-to="1"
-                    class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 2"></button>
-                    <button
-                    type="button"
-                    data-te-target="#carouselExampleIndicators"
-                    data-te-slide-to="2"
-                    class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 3"></button>
-                    <button
-                    type="button"
-                    data-te-target="#carouselExampleIndicators"
-                    data-te-slide-to="3"
-                    class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 4"></button>
-                    <button
-                    type="button"
-                    data-te-target="#carouselExampleIndicators"
-                    data-te-slide-to="4"
-                    class="mx-[3px] box-content h-[10px] w-[10px] md:h-[15px] md:w-[15px] rounded-full flex-initial cursor-pointer border-solid border-transparent bg-white p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-                    aria-label="Slide 5"></button> -->
                 </div>
 
                 <!--Carousel items-->
@@ -75,7 +43,7 @@
                         data-te-carousel-item>
                         @endif
                             @if($ban->title != null && $ban->description != null)
-                            <div class="z-30 absolute bottom-10 ml-[10%] w-fit bg-gray-800 bg-opacity-45 px-10 py-5">
+                            <div class="z-30 absolute bottom-20 ml-[10%] w-fit bg-gray-800 bg-opacity-45 px-10 py-5">
                                 <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-4">{{$ban->title}}</p>
                                 <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight">{{$ban->description}}</p>
                             </div>
@@ -95,31 +63,23 @@
                             @endif
                         </div>
                     @endforeach
-                    
-                    <!--Sixth item-->
-                    <!-- <div
-                    class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-                    data-te-carousel-item>
-                    <img
-                        src="{{asset('img/Search-6.jpg')}}"
-                        class="block max-h-[101%] md:max-h-[121%] lg:max-h-[151%] md:-mt-12  lg:-mt-40 m-auto"
-                        alt="Sixth Slide" />
-                    </div> -->
                 </div>
             </div>
         </div>
 
         <div class="bg-gray-300 w-full h-72 md:h-36 grid grid-cols-1 md:grid-cols-2 justify-center items-center px-2 font-interbold">
-            <div class="grid-col justify-self-center md:justify-self-end px-10 md:px-5 h-1/3 md:h-fit">
+            <div class="grid-col justify-self-center md:justify-self-end px-5 md:px-5 h-1/3 md:h-fit">
                 <p class="text-slate-800 text-xl sm:text-2xl lg:3xl">Now digitized and <br class="block sm:hidden"> made accessible <br class="block md:hidden">for your discovery.</p>
             </div>
-            <div class="grid-col justify-self-center md:justify-self-start grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-2 h-1/2 md:h-fit pb-20 md:pb-0">
-                <div class="grid-col">
-                    <a href="{{ route('browse') }}" class="rounded-full text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-8 md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Browse collections</a>
+            <!-- <div class="grid-col justify-self-center md:justify-self-start grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-2 h-1/2 md:h-fit pb-20 md:pb-0"> -->
+            <div class="justify-self-center md:justify-self-start pb-2 md:pb-0 md:pl-16">
+                <div class="grid-col hover:-translate-y-1 hover:scale-105 duration-150">
+                    <a href="{{ route('browse') }}" class="rounded-full text-lg text-gray-800 bg-[#d4ab1a] mx-4 px-6 md:text-lg lg:text-xl md:px-24 py-3 hover:text-black  text-nowrap">Browse collections</a>
+                    <!-- <a href="{{ route('browse') }}" class="rounded-full text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-8 md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Browse collections</a> -->
                 </div>
-                <div class="grid-col">
+                <!-- <div class="grid-col">
                     <a href="#" class="rounded-full text-xl text-gray-800 bg-gray-100 mx-4 px-24 md:text-lg lg:text-xl md:px-8 lg:px-24 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Log In</a>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -130,15 +90,6 @@
     <!-- allegories -->
     <div class="bg-white h-full justify-center relative min-h-svh" id="showcase">
           @livewire('hometabs')
-        <!-- <div class="bg-black w-full h-16 grid grid-cols-7 text-nowrap text-sm md:text-md lg:text-xl sticky top-16 place-items-center items-center px-4 sm:px-20 lg:px-40 z-30">
-            <div class="rounded-full px-2 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Music</div>
-            <div class="rounded-full px-3 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Dance</div>
-            <div class="rounded-full px-2 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Theater</div>
-            <div class="rounded-full px-2 sm:px-5 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Visual Arts</div>
-            <div class="rounded-full px-2 sm:px-8 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Film</div>
-            <div class="rounded-full px-2 sm:px-5 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Literature</div>
-            <div class="rounded-full px-2 sm:px-5 py-3 grid-col bg-gradient-to-r hover:from-black hover:via-white/50 hover:via-50% hover:to-black hover:bg">Events</div>
-        </div> -->
 
         <div class="w-full flex justify-center mt-1">
             <div class="w-5/6 sm:w-4/5 md:w-3/5 lg:w-2/5 place-content-center mb-10">
