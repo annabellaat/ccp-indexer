@@ -16,6 +16,7 @@
         <div class="h-max lg:h-[600px] bg-black">
             <div id="carouselExampleIndicators" class="relative h-full flex-auto" data-te-carousel-init data-te-ride="carousel">
                 <!--Carousel indicators-->
+                @if(count($banners) > 1)
                 <div class="absolute bottom-[5%] left-0 right-0 z-40 mx-[15%] mb-4 flex list-none justify-center p-0" data-te-carousel-indicators>
                     @for($i = 0 ; $i < count($banners); $i++)
                         <button
@@ -28,6 +29,7 @@
                         aria-label="Slide {{$i+1}}"></button>
                     @endfor
                 </div>
+                @endif
 
                 <!--Carousel items-->
                 <div class="relative flex h-full w-full overflow-hidden after:clear-both after:block after:content-['']">
