@@ -4,12 +4,13 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\BannerResource\Pages;
 use App\Filament\Admin\Resources\BannerResource\RelationManagers;
-use App\Models\{Banner, Entity};
+use App\Models\{Banner, Entity, Collection};
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Tabs\Tab;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -38,11 +39,34 @@ class BannerResource extends Resource
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('description')
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('entity_id')
-                        ->options(Entity::all()->pluck('title', 'id'))
-                        ->label('Select the entity to be linked')
-                        ->searchable()
-                        ->columnSpanFull(),
+                    Forms\Components\Tabs::make('link_to')
+                    ->tabs([
+                        Tab::make('Link to Entity')
+                        ->schema ([
+                            Forms\Components\Select::make('entity_id')
+                                ->options(Entity::all()->pluck('title', 'id'))
+                                ->label('Select the entity to be linked')
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                                    $set('collection_id', null);
+                                })
+                                ->searchable()
+                                ->columnSpanFull(),
+                        ]),
+                        Tab::make('Link to Collection')
+                        ->schema ([
+                            Forms\Components\Select::make('collection_id')
+                            ->options(Collection::all()->pluck('name', 'id'))
+                            ->label('Select the collection to be linked')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                                $set('entity_id', null);
+                            })
+                            ->searchable()
+                            ->columnSpanFull(),
+                        ]),
+                    ])
+                    ->columnSpanFull(),
                     Forms\Components\FileUpload::make('image')
                         ->panelAspectRatio('3:1')
                         ->image()
@@ -109,6 +133,17 @@ class BannerResource extends Resource
                     })
                     ->searchable()
                     ->label('Entity Linked To'),
+                Tables\Columns\TextColumn::make('collection_id')
+                    ->getStateUsing(function (Banner $record): string {
+                        if($record->collection_id) {
+                            $col = Collection::where('id', $record->collection_id)->first();
+                            return $col->name;
+                        } else {
+                            return '-No collection linked-';
+                        }
+                    })
+                    ->searchable()
+                    ->label('Collection Linked To'),
                 Tables\Columns\ImageColumn::make('image')
                     ->disk('public')
                     ->label('Background Image'),

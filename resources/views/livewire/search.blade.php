@@ -1,5 +1,5 @@
 <div>
-    <div>
+    <div class="text-white hover:-translate-y-0.5 hover:scale-110 duration-150">
         <div class="relative block mr-2 text-sm" x-data="{ show: false, seOp: 'mr-3 pt-7', seCl: 'mr-3' }">
             <div :class="show ? seCl : seOp" class="cursor-pointer" @click="show = !show; $nextTick(() => { $refs.searchForm.focus(); });">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-1">

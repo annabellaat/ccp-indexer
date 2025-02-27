@@ -1,11 +1,11 @@
 <div>
     <div class="bg-red-100/50">
-        <div class="text-md sm:text-lg px-4 sm:px-20 py-4 justify-self-center">
-            <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800 cursor-default">{{ $entity->title }} </h>
+        <div class="text-sm sm:text-lg px-4 sm:px-20 py-2 justify-self-start">
+            <a href="{{ route('home') }}" class="text-red-800">Home </a>/ <a href="{{ route('browse') }}" class="text-red-800">Browse </a>/ <h class="text-red-800/75 cursor-default">{{ $entity->title }} </h>
         </div>
         @if(!is_null($entity->collection_id))
-        <div class="text-md sm:text-md px-4 sm:px-20 pb-2 justify-self-center font-interlight">
-            Under the collection of <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800 text-lg font-inter"> {{ $entity->collection->name }} </a>
+        <div class="text-sm sm:text-md px-4 sm:px-20 pb-2 justify-self-start font-interlight">
+            Under the collection <a href="{{ route('collection', ['collection' => $entity->collection, 'slug' => $entity->collection->slug]) }}" class="text-red-800 text-lg font-inter"> {{ $entity->collection->name }} </a>
         </div>
         @endif
     </div>
@@ -77,7 +77,7 @@
             </div>
 
         </div>
-        <div class="grid-col w-full pt-8 lg:pt-0 pl-10 md:pl-[20%] lg:pl-0 pr-10 lg:pr-48 sm:pr-10 cursor-default">
+        <div class="grid-col w-full pt-8 lg:pt-0 pl-10 md:pl-[10%] md:pr-[10%] lg:pl-0 pr-10 lg:pr-48 sm:pr-10 cursor-default">
             <div class="text-xl md:text-2xl font-bold text-red-800 pb-3">{{ $entity->title }}</div>
             @if($readmore == false)
             <div class="text-sm md:text-md max-h-[220px] overscroll-contain overflow-y-auto">{{ \Illuminate\Support\Str::words($entity->description, 150, '...') }}  
@@ -106,14 +106,14 @@
             <div class="grid grid-cols-4 text-xs sm:text-sm">
                 <div class="col-span-4 text-lg font-bold text-red-800 pt-4 pb-1">Details</div>
                 <div class="font-bold col-span-1 py-1">Date: </div>
-                <div class="col-span-3">{{ !is_null($entity->date) ? $entity->date->format('Y') : "-No date given-" }}</div>
+                <div class="col-span-3">{{ !is_null($entity->date) ? $entity->date->format('M d, Y') : "-No date given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Place: </div>
                 <div class="col-span-3">{{ !is_null($entity->place) ? $entity->place : "-No place given-" }}</div>
                 <div class="font-bold col-span-1 py-1">Material: </div>
                 <div class="col-span-3">{{ $entity->material }}</div>
                 <div class="font-bold col-span-1 py-1">Category: </div>
                 <div class="col-span-3">{{ $entity->category }}</div>
-
+                
                 @foreach($columns as $col)
                     @if($entity->$col)
                     <div class="font-bold col-span-1 py-1">{{ucwords(str_replace("_"," ",$col))}}: </div>

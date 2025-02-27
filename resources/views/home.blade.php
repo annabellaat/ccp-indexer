@@ -10,10 +10,11 @@
 @endpush
 
 @section('content')
-<div class="w-full text-white">
-    <!-- search -->
+<div class="w-full text-white  select-none">
+    <!-- top page -->
     <div class="justify-content-center bg-red-200 h-max" id="search">
-        <div class="h-max lg:h-[600px] bg-black">
+        <!-- carousel -->
+        <div class="h-max lg:h-[600px] bg-black cursor-default">
             <div id="carouselExampleIndicators" class="relative h-full flex-auto" data-te-carousel-init data-te-ride="carousel">
                 <!--Carousel indicators-->
                 @if(count($banners) > 1)
@@ -38,20 +39,27 @@
                         <div
                         class="relative float-left -mr-[100%] w-screen transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                         data-te-carousel-item
-                        data-te-carousel-active>
+                        data-te-carousel-inactive>
                         @else
                         <div
                         class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                         data-te-carousel-item>
                         @endif
                             @if($ban->title != null && $ban->description != null)
-                            <div class="z-30 absolute bottom-20 ml-[10%] w-fit bg-gray-800 bg-opacity-45 px-10 py-5">
-                                <p class="text-[#d4ab1a] font-interbold text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-4">{{$ban->title}}</p>
-                                <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-4 font-interlight">{{$ban->description}}</p>
+                            <div class="z-30 absolute bottom-10 md:bottom-20 ml-[5%] sm:ml-[10%] md:ml-[15%] mr-[20%] w-fit bg-gray-800 bg-opacity-45 px-3 py-2 sm:px-7 sm:py-5">
+                                <p class="text-[#d4ab1a] font-interbold text-sm sm:text-lg md:text-xl lg:text-4xl mb-1 sm:mb-2 md:mb-4">{{$ban->title}}</p>
+                                <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-1 sm:mb-2 md:mb-4 font-interlight">{{$ban->description}}</p>
                             </div>
                             @endif
                             @if($ban->entity_id != null)
                             <a href="{{ route('entity', ['entity' => $ban->entity_id]) }}">
+                            <img
+                                src="{{asset('storage')}}/{{$ban->image}}"
+                                class="block flex h-full w-auto m-auto"
+                                alt="Slide {{$loop->iteration}}" />
+                            </a>
+                            @elseif($ban->collection_id != null)
+                            <a href="{{ route('collection', ['collection' => $ban->collection_id]) }}">
                             <img
                                 src="{{asset('storage')}}/{{$ban->image}}"
                                 class="block flex h-full w-auto m-auto"
@@ -68,13 +76,13 @@
                 </div>
             </div>
         </div>
-
+        <!-- browse collections -->
         <div class="bg-gray-300 w-full h-72 md:h-36 grid grid-cols-1 md:grid-cols-2 justify-center items-center px-2 font-interbold">
             <div class="grid-col justify-self-center md:justify-self-end px-5 md:px-5 h-1/3 md:h-fit">
                 <p class="text-slate-800 text-xl sm:text-2xl lg:3xl">Now digitized and <br class="block sm:hidden"> made accessible <br class="block md:hidden">for your discovery.</p>
             </div>
             <!-- <div class="grid-col justify-self-center md:justify-self-start grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-2 h-1/2 md:h-fit pb-20 md:pb-0"> -->
-            <div class="justify-self-center md:justify-self-start pb-2 md:pb-0 md:pl-16">
+            <div class="justify-self-center md:justify-self-start pb-1 md:pb-0 md:pl-16">
                 <div class="grid-col hover:-translate-y-1 hover:scale-105 duration-150">
                     <a href="{{ route('browse') }}" class="rounded-full text-lg text-gray-800 bg-[#d4ab1a] mx-4 px-6 md:text-lg lg:text-xl md:px-24 py-3 hover:text-black  text-nowrap">Browse collections</a>
                     <!-- <a href="{{ route('browse') }}" class="rounded-full text-xl text-gray-800 bg-[#d4ab1a] mx-4 px-8 md:text-lg lg:text-xl md:px-2 lg:px-8 py-3 hover:text-black hover:bg-amber-400 text-nowrap">Browse collections</a> -->
@@ -89,7 +97,7 @@
 
 
 
-    <!-- allegories -->
+    <!-- rest -->
     <div class="bg-white h-full justify-center relative min-h-svh" id="showcase">
           @livewire('hometabs')
 

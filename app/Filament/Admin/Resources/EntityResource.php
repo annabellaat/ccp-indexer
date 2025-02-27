@@ -50,7 +50,7 @@ class EntityResource extends Resource
                                 'Music' => 'Music',
                                 'Theater' => 'Theater',
                                 'Visual Arts' => 'Visual Arts',
-                                'Arts Eduction' =>'Arts Eduction',
+                                'Arts Education' =>'Arts Education',
                                 'Literary Arts' => 'Literary Arts'
                             ]),
                         Forms\Components\Select::make('work')
@@ -932,6 +932,9 @@ class EntityResource extends Resource
                         ->searchable()
                         ->limit(30)
                         ->tooltip(fn (Model $record): string => "{$record->open_access_link}"),
+                    Tables\Columns\TextColumn::make('category')
+                        ->searchable()
+                        ->sortable(),
                     Tables\Columns\TextColumn::make('created_at')
                         ->dateTime()
                         ->sortable()
@@ -952,6 +955,7 @@ class EntityResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
+            ->defaultSort('date', 'desc')
             ->defaultPaginationPageOption(25)
             ->paginated([10, 25, 50, 100, 'all']);
     }
