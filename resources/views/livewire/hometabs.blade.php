@@ -36,6 +36,9 @@
     </div>
 
 
+    <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex text-slate text-md md:text-xl font-interlight bg-red-900 sticky top-28 h-12 md:h-14 z-20 shadow-[rgba(0,0,15,0.5)_0px_4px_4px_0px] pt-3 md:pt-4">
+        ENTRIES
+    </div>
 
     <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 px-10 lg:px-[3%] pt-6 text-black">
         <!-- output entries on homepage -->
@@ -60,14 +63,14 @@
         @endforeach
         <!-- load more entities button -->
         @if($random_collections->count() < $count)
-        <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex pt-2">
+        <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex py-2 mb-8">
             <button wire:click="loadMore()" class="border border-amber-500/75 rounded-full p-0.5 hover:scale-105 duration-50">
                 
-                <div wire:loading.remove wire:target="loadMore()" class="px-2 py-1 hover:scale-105 duration-50 font-interlight text-sm">Load more entries</div>
+                <div wire:loading.remove wire:target="loadMore()" class="px-2 py-1 hover:scale-105 duration-50 font-interlight text-xs">Load more entries</div>
                 <svg
                     wire:loading
                     wire:target="loadMore()"
-                    class="animate-spin h-12 w-12 text-black"
+                    class="animate-spin h-7 w-7 text-black"
                     xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
 
@@ -81,53 +84,57 @@
             </button>
         </div>
         @endif
-        @if($collection_output != null)
-            <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex py-2 text-slate text-4xl font-interlight mt-10">
-                <!-- Collections -->
-            </div>
-            <!-- output collections on homepage -->
-            @foreach($collection_output as $collection)
-            <a href="{{ route('collection', ['collection' => $collection, 'slug' => $collection->slug]) }}" class="flex justify-center">
-                <div class="container w-full h-full rounded-xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-white  hover:-translate-y-1 hover:scale-105 duration-100">
-                    <div class="flex flex-col items-center w-auto h-[300px] rounded-md bg-slate-950">
-                    @if(!is_null($collection->image) && $collection->image != [])
-                        <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-scale-down scale-95">
-                        
-                    @else
-                        <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-scale-down scale-95">
-                        <!-- No Image Found -->
-                    @endif
-                    </div>
-                    <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
-                            {{ $collection->name }}
-                    </div>
-                </div>
-            </a>
-            @endforeach
-            <!-- load more collections button -->
-            @if($collection_output->count() < $colcount)
-            <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex pt-2">
-                <button wire:click="loadMoreCol()" class="border border-amber-500/75 rounded-full p-0.5 hover:scale-105 duration-50">
+    </div>
+    <!-- Collections -->
+    @if($collection_output != null)
+    <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex text-slate text-md md:text-xl font-interlight bg-red-900 sticky top-28 h-12 md:h-14 z-20 shadow-[rgba(0,0,15,0.5)_0px_4px_4px_0px] pt-3 md:pt-4 mt-8">
+        COLLECTIONS
+    </div>
+    
+    <div class="grid w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 px-10 lg:px-[3%] pt-6 text-black">
+        <!-- output collections on homepage -->
+        @foreach($collection_output as $collection)
+        <a href="{{ route('collection', ['collection' => $collection, 'slug' => $collection->slug]) }}" class="flex justify-center">
+            <div class="container w-full h-full rounded-xl hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-white  hover:-translate-y-1 hover:scale-105 duration-100">
+                <div class="flex flex-col items-center w-auto h-[300px] rounded-md bg-slate-950">
+                @if(!is_null($collection->image) && $collection->image != [])
+                    <img src="{{ asset('/storage/'.$collection->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-scale-down scale-95">
                     
-                    <div wire:loading.remove wire:target="loadMoreCol()" class="px-2 py-1 hover:scale-105 duration-50 font-interlight text-sm">Load more collections</div>
-                    <svg
-                        wire:loading
-                        wire:target="loadMoreCol()"
-                        class="animate-spin h-12 w-12 text-black"
-                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24">
-
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-
-                        <path class="opacity-75" fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                        </path>
-
-                    </svg>
-                </button>
+                @else
+                    <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-scale-down scale-95">
+                    <!-- No Image Found -->
+                @endif
+                </div>
+                <div class="text-sm md:text-md mt-4 flex flex-col text-center align-bottom font-inter container">
+                        {{ $collection->name }}
+                </div>
             </div>
-            @endif
+        </a>
+        @endforeach
+        <!-- load more collections button -->
+        @if($collection_output->count() < $colcount)
+        <div class="col-span-1 sm:col-span-2 lg:col-span-4 w-full justify-center flex py-2">
+            <button wire:click="loadMoreCol()" class="border border-amber-500/75 rounded-full p-0.5 hover:scale-105 duration-50">
+                
+                <div wire:loading.remove wire:target="loadMoreCol()" class="px-2 py-1 hover:scale-105 duration-50 font-interlight text-xs">Load more collections</div>
+                <svg
+                    wire:loading
+                    wire:target="loadMoreCol()"
+                    class="animate-spin h-7 w-7 text-black"
+                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+
+                    <path class="opacity-75" fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+
+                </svg>
+            </button>
+        </div>
         @endif
+    @endif
 
     </div>
 </div>

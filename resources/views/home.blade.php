@@ -39,16 +39,16 @@
                         <div
                         class="relative float-left -mr-[100%] w-screen transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                         data-te-carousel-item
-                        data-te-carousel-inactive>
+                        data-te-carousel-active>
                         @else
                         <div
                         class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[900ms] ease-in-out motion-reduce:transition-none"
                         data-te-carousel-item>
                         @endif
                             @if($ban->title != null && $ban->description != null)
-                            <div class="z-30 absolute bottom-10 md:bottom-20 ml-[5%] sm:ml-[10%] md:ml-[15%] mr-[20%] w-fit bg-gray-800 bg-opacity-45 px-3 py-2 sm:px-7 sm:py-5">
+                            <div class="z-30 absolute bottom-8 md:bottom-14 ml-[5%] sm:ml-[10%] md:ml-[15%] mr-[20%] w-fit bg-black bg-opacity-70 px-3 py-2 sm:px-7 sm:py-5">
                                 <p class="text-[#d4ab1a] font-interbold text-sm sm:text-lg md:text-xl lg:text-4xl mb-1 sm:mb-2 md:mb-4">{{$ban->title}}</p>
-                                <p class="text-gray-200 text-xs sm:text-lg md:text-xl mb-1 sm:mb-2 md:mb-4 font-interlight">{{$ban->description}}</p>
+                                <p class="text-white text-xs sm:text-lg md:text-xl mb-1 sm:mb-2 md:mb-4 font-inter">{{$ban->description}}</p>
                             </div>
                             @endif
                             @if($ban->entity_id != null)

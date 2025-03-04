@@ -11,7 +11,7 @@
                 digitalarchives@culturalcenter.gov.ph
             </div>
             <div class="w-full">
-                <div class="flex flex-row justify-center pt-0 pb-5 lg:pt-20">
+                <div class="flex flex-row justify-center pt-0 pb-5 lg:pt-20 pt-10">
                     <a href="https://www.facebook.com/culturalcenterofthephilippines" role="button" class="mx-5 hover:-translate-y-0.5 hover:scale-110 duration-150">
                         <!-- Facebook -->
                         <svg

@@ -40,9 +40,9 @@
                     <div class="container w-full h-full rounded-md hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 hover:-translate-y-1 hover:scale-105 duration-150">
                         <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md bg-slate-950">
                         @if(!is_null($col->image) && $col->image != [])
-                            <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
+                            <img src="{{ asset('/storage/'.$col->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain scale-95">
                         @else
-                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">
+                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain scale-95">
                             <!-- No Image Found -->
                         @endif
                         </div>
@@ -67,9 +67,9 @@
                     <div class="container w-full h-full rounded-md hover:ring-1 hover:ring-red-700/20 justify-center p-2 bg-gray-100 hover:-translate-y-1 hover:scale-105 duration-150">
                         <div class="flex flex-col items-center w-auto border-2 shadow-lg h-[300px] rounded-md bg-slate-950">
                         @if(!is_null($ent->image) && $ent->image != [])
-                            <img src="{{ asset('/storage/'.$ent->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain">
+                            <img src="{{ asset('/storage/'.$ent->image[0]) }}" alt="showcase Featured Image" class="h-full w-auto rounded-md object-contain scale-95">
                         @else
-                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain">
+                            <img src="{{ asset('img/ccp-default-big.png') }}" alt="Featured Image" class="h-full w-auto rounded-md object-contain scale-95">
                             <!-- No Image Found -->
                         @endif
                         </div>

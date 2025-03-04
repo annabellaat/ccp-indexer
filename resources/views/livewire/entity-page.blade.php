@@ -112,7 +112,11 @@
                 <div class="font-bold col-span-1 py-1">Material: </div>
                 <div class="col-span-3">{{ $entity->material }}</div>
                 <div class="font-bold col-span-1 py-1">Category: </div>
+                @if($entity->category == 'Arts Eduction')
+                <div class="col-span-3">Arts Education</div>
+                @else
                 <div class="col-span-3">{{ $entity->category }}</div>
+                @endif
                 
                 @foreach($columns as $col)
                     @if($entity->$col)

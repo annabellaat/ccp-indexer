@@ -150,7 +150,11 @@ class Hometabs extends Component
     // check if has parent collection
     public function hasParentCol($val) {
         $rcol = Collection::find($val);
-        return $rcol->collection_id != null;
+        if($rcol != null) {
+            return $rcol->collection_id != null;
+        } else {
+            return false;
+        }
             
         // $this->colcount = $val;
     }
