@@ -17,7 +17,7 @@ class BrowseEntity extends Component
     public $query = '';
     public $activeLet = 'all';
     public $totalCount = 0;
-    public $perPage = 150;
+    public $perPage = 25;
     public $numOrLet = 3;
 
     public function mount()
@@ -45,7 +45,7 @@ class BrowseEntity extends Component
 
     public function filterNumber() {
         if($this->activeLet != 'num') {
-            $this->perPage = 150;
+            $this->perPage = 25;
         }
         $this->numOrLet = 1;
         $this->activeLet =  'num';
@@ -58,7 +58,7 @@ class BrowseEntity extends Component
 
     public function filterByLetter($letter) {
         if($this->activeLet != $letter) {
-            $this->perPage = 150;
+            $this->perPage = 25;
         }
         $this->numOrLet = 2;
         $this->activeLet =  $letter;
@@ -76,7 +76,7 @@ class BrowseEntity extends Component
     }
 
     public function loadMore() {
-        $this->perPage +=100;
+        $this->perPage +=25;
         if($this->query != '') {
             $this->filterBySearch();
         } else {

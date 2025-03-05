@@ -1,6 +1,6 @@
 <div>
     <div class="min-h-screen">
-        <div class="grid justify-center items-center pt-12">
+        <div class="grid justify-center items-center pt-12 px-10">
             <div class="relative z-10">
                 <div class="absolute inset-y-0 end-0 flex items-center p-5 rounded-full pointer-events-none bg-gray-700">
                     <svg class="w-6 h-4 text-white dark:text-gray-400" aria-hidden="true"  fill="none" viewBox="0 0 20 20">
@@ -12,18 +12,18 @@
         </div>
         <div class="py-12 pb-24 text-red-800">
             <div class="grid justify-center items-center">
-                <div class="text-lg md:text-3xl lg:text-4xl pb-12">
+                <div class="text-lg md:text-3xl lg:text-4xl pb-12 px-10">
                     <!-- <span 
                     class="{{ $activeLet == 'num' ? 'underline font-bold' : '' }} text-bold cursor-pointer" wire:click="filterNumber()">#</span> -->
                     <span 
-                    class="{{ $activeLet == 'all' ? 'underline font-bold text-3xl' : '' }} text-bold cursor-pointer text-2xl mr-4" wire:click="filterAll()">all</span>
+                    class="{{ $activeLet == 'all' ? 'underline font-bold text-3xl' : '' }} text-bold cursor-pointer text-lg md:text-2xl mr-4" wire:click="filterAll()">all</span>
                 @foreach(range("A","Z") as $let)
                     <span 
-                    class="{{ $activeLet == $let ? 'underline font-bold text-5xl' : '' }} text-bold cursor-pointer" wire:click="filterByLetter('{{ $let }}')">{{$let}}</span>
+                    class="{{ $activeLet == $let ? 'underline font-bold text-2xl md:text-4xl lg:text-5xl' : '' }} text-bold cursor-pointer" wire:click="filterByLetter('{{ $let }}')">{{$let}}</span>
                 @endforeach
                 </div>
             </div>
-            <div class="grid items-center mx-auto w-4/5 md:w-[60%] text-lg sm:text-xl" wire:key="header">
+            <div class="grid items-center mx-auto w-4/5 md:w-[60%] text-md sm:text-xl" wire:key="header">
                 @if($all_browse)
                 @foreach($all_browse as $ent)
                     @if(array_key_exists('archivist', $ent))
