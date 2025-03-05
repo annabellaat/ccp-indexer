@@ -63,7 +63,8 @@ class Hometabs extends Component
             $this->sessionRand($request);
             if($activeTab == "Literary Arts") {
                 // getting arts homepage entities
-                $first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab)->orWhere('category', 'like', $second);
+                //$first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab)->orWhere('category', 'like', $second);
+                $first = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second);
                 $this->count = $first->count();
                 $this->random_collections = $first->orderBy('date', 'DESC')->take($this->perPage)->get();
 
@@ -75,7 +76,8 @@ class Hometabs extends Component
 
             } elseif($activeTab == 'Event') {
                 // getting event homepage entities
-                $first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third);
+                //$first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third);
+                $first = Entity::where('category', 'like', $activeTab)->orWhere('category', 'like', $second)->orWhere('category', 'like', $third);
                 $this->count = $first->count();
                 $this->random_collections = $first->orderBy('date', 'DESC')->take($this->perPage)->get();
 
@@ -87,12 +89,13 @@ class Hometabs extends Component
 
             } else {
                 // getting else homepage entities
-                $first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab);
+                //$first = Entity::whereNull('collection_id')->where('category', 'like', $activeTab);
+                $first = Entity::where('category', 'like', $activeTab);
                 $this->count = $first->count();
                 $this->random_collections = $first->orderBy('date', 'DESC')->take($this->perPage)->get();
 
                 // getting else homepage collections
-                $takingcollections = Entity::where('category', 'like', $activeTab)->whereNotNull('collection_id');
+                $takingcollections = Entity::where('category', 'like', $activeTab);
                 $this->actual_collections = $takingcollections->select('collection_id')->distinct()->get();
 
                 $this->test = $this->actual_collections;
@@ -114,11 +117,14 @@ class Hometabs extends Component
         // }
 
         if($this->activeTab == "Literary Arts") {
-            $this->random_collections = Entity::where('category', 'like', $this->activeTab)->whereNull('collection_id')->orWhere('category', 'like', 'Arts Education')->whereNull('collection_id')->orderBy('date', 'DESC')->take($this->perPage)->get();
+            // $this->random_collections = Entity::where('category', 'like', $this->activeTab)->whereNull('collection_id')->orWhere('category', 'like', 'Arts Education')->whereNull('collection_id')->orderBy('date', 'DESC')->take($this->perPage)->get();
+            $this->random_collections = Entity::where('category', 'like', $this->activeTab)->orWhere('category', 'like', 'Arts Education')->orderBy('date', 'DESC')->take($this->perPage)->get();
         } elseif($this->activeTab == 'Event') {
-            $this->random_collections = Entity::where('category', 'like', $this->activeTab)->whereNull('collection_id')->orWhere('category', 'like', 'Program')->whereNull('collection_id')->orWhere('category', 'like', 'Festivals')->whereNull('collection_id')->orderBy('date', 'DESC')->take($this->perPage)->get();
+            // $this->random_collections = Entity::where('category', 'like', $this->activeTab)->whereNull('collection_id')->orWhere('category', 'like', 'Program')->whereNull('collection_id')->orWhere('category', 'like', 'Festivals')->whereNull('collection_id')->orderBy('date', 'DESC')->take($this->perPage)->get();
+            $this->random_collections = Entity::where('category', 'like', $this->activeTab)->orWhere('category', 'like', 'Program')->orWhere('category', 'like', 'Festivals')->orderBy('date', 'DESC')->take($this->perPage)->get();
         } else {
-            $this->random_collections = Entity::where('category', 'like', $this->activeTab)->whereNull('collection_id')->orderBy('date', 'DESC')->take($this->perPage)->get();
+            // $this->random_collections = Entity::where('category', 'like', $this->activeTab)->whereNull('collection_id')->orderBy('date', 'DESC')->take($this->perPage)->get();
+            $this->random_collections = Entity::where('category', 'like', $this->activeTab)->orderBy('date', 'DESC')->take($this->perPage)->get();
         }
     }
 

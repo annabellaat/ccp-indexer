@@ -23,6 +23,9 @@ class EntityImporter extends Importer
         return [
             ImportColumn::make('archivist')
                 ->rules(['max:255']),
+            //added
+            ImportColumn::make('thumbnail')
+                ->rules(['max:255']),
                 // ->requiredMapping(),
             // ImportColumn::make('thumbnail')
             //     ->label('Legacy Thumbnail')
@@ -41,6 +44,9 @@ class EntityImporter extends Importer
                 ->rules(['max:255']),
             ImportColumn::make('category')
                 ->rules(['max:65535']),
+            ImportColumn::make('tag')
+                ->rules(['max:65535'])
+                ->array(','),
             ImportColumn::make('title')
                 ->rules(['max:255']),
             // ImportColumn::make('slug')
@@ -61,6 +67,9 @@ class EntityImporter extends Importer
                 ->rules(['max:65535'])
                 ->array(','),
                 // separate by comma
+            ImportColumn::make('producer_1')
+                ->label('Producer')
+                ->rules(['max:65535']),
             ImportColumn::make('company')
                 ->rules(['max:65535']),
             ImportColumn::make('series')
@@ -334,6 +343,9 @@ class EntityImporter extends Importer
                 ->rules(['max:65535']),
             ImportColumn::make('publisher')
                 ->rules(['max:65535']),
+            ImportColumn::make('editor_2')
+                ->label('Editor')
+                ->rules(['max:65535']),
             ImportColumn::make('contributing_writer')
                 ->rules(['max:65535']),
             ImportColumn::make('photographer')
@@ -384,6 +396,10 @@ class EntityImporter extends Importer
                 ->rules(['max:65535']),
             ImportColumn::make('notes')
                 ->rules(['max:65535']),
+            ImportColumn::make('parent_collection')
+                ->rules(['max:65535']),
+            ImportColumn::make('child_collection')
+                ->rules(['max:65535']),
             ImportColumn::make('accession_year')
                 // ->rules(['date'])
                 ->ignoreBlankState(),
@@ -410,6 +426,8 @@ class EntityImporter extends Importer
                 ->rules(['max:255']),
             ImportColumn::make('precup')
                 ->rules(['max:255']),
+            ImportColumn::make('inventory')
+                ->rules(['max:65535']),
             // ImportColumn::make('collection')
             //     ->relationship(),
         ];

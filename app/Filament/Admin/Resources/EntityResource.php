@@ -255,6 +255,9 @@ class EntityResource extends Resource
                             ])
                             ->multiple()
                             ->columnSpan(1),
+                        Forms\Components\Textarea::make('producer_1')
+                            ->label('Producer')
+                            ->maxLength(65535),
                     ])
                     ->columns(2)
                     ->collapsible()
@@ -271,16 +274,19 @@ class EntityResource extends Resource
                         ->label('Select the closest parent collection')
                         ->searchable()
                         ->options(Collection::take(10)->get()->pluck('name', 'id')),
+                    ]),
 
-                    Forms\Components\FileUpload::make('image')
-                    ->label('Thumbnails')
-                    ->multiple()
-                    ->reorderable()
-                    ->directory('entity-images')
-                    ->getUploadedFileNameForStorageUsing(
-                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                            ->prepend('Ent-')
-                    ),
+                    Forms\Components\Section::make('Upload Images')
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                        ->label('Thumbnails')
+                        ->multiple()
+                        ->reorderable()
+                        ->directory('entity-images')
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                ->prepend('Ent-')
+                        ),
                     // Forms\Components\Textarea::make('image')
                     //     ->maxLength(65535)
                     //     ->columnSpanFull(),
@@ -454,107 +460,107 @@ class EntityResource extends Resource
                                     ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('executive_producer')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('associate_producer')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('producer')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('production_designer')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('production_supervisor')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('production_manager')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('associate_production_manager')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('deputy_production_manager')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('assistant_production_manager')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('production_coordinator')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('editor')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('visual_effects')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('production_and_costume_consultant')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('set_consultant')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('set_designer')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('set_design_assistant')
-                                    ->maxLength(100)
+                                    ->maxLength(65535)
                                     ->columns(1),
                                 Forms\Components\Textarea::make('costume_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('costume_consultant')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('make_up_artist')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('production_stylist')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('fashion_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('lighting_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('associate_lighting_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('lighting_design_consultant')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('lighting_design_assistant')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('sound_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('assistant_sound_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('sound_engineer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('choreographer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('guest_faculty')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('technical_director')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('assistant_technical_director')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('technical_direction_assistant')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('stage_manager')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('assistant_stage_manager')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('deputy_stage_manager')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('stage_management_assistant')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('audio_visual_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('video_projection_designer')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('video_projection_design_assistant')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('video_operator')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('music_director')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                                 Forms\Components\Textarea::make('assistant_music_director')
-                                    ->maxLength(100),
+                                    ->maxLength(65535),
                             ])
                             ->collapsed()
                             ->columns(2),
@@ -693,6 +699,10 @@ class EntityResource extends Resource
                             Forms\Components\Textarea::make('publisher')
                                 ->maxLength(65535)
                                 ->columns(1),
+                            Forms\Components\Textarea::make('editor_2')
+                                ->label('Editor')
+                                ->maxLength(65535)
+                                ->columns(1),
                             Forms\Components\Textarea::make('contributing_writer')
                                 ->maxLength(65535)
                                 ->columns(1),
@@ -714,7 +724,7 @@ class EntityResource extends Resource
                                 ]),
                             Forms\Components\Textarea::make('shooting_schedule')
                                 ->maxLength(65535)
-                                ->columnSpanFull(),
+                                ->columns(1),
                         ])
                         // ->collapsed()
                         ->columns(2),
@@ -881,11 +891,13 @@ class EntityResource extends Resource
                                     'Restricted' => 'Restricted'])
                                 ->columnSpanFull(),
                             Forms\Components\Textarea::make('citation')
-                                ->maxLength(255),
+                                ->maxLength(65535),
                             Forms\Components\Textarea::make('credit_line')
-                                ->maxLength(255),
+                                ->maxLength(65535),
                             Forms\Components\Textarea::make('precup')
-                                ->maxLength(255),
+                                ->maxLength(65535),
+                            Forms\Components\Textarea::make('inventory')
+                                ->maxLength(65535),
                             ])
                             // ->collapsed()
                             ->columns(2),
