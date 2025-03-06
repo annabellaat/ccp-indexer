@@ -469,11 +469,9 @@ class EntityImporter extends Importer
         // $this->data['language'] = preg_replace('/[\n]/', '", "', $this->data['language']);
     }
 
-    public function resolveRecord(): ?Entity
-    {
-        //$id = Entity::create($this->data)->id;
-
-        $new_entity = Entity::firstOrNew([
+    public function afterCreate(): void 
+    {        
+        $new_entity = Entity::firstWhere([
             'code' => $this->data['code'],
         ]);
 
@@ -493,12 +491,18 @@ class EntityImporter extends Importer
                 }
             }
         }
+    }
+
+    public function resolveRecord(): ?Entity
+    {
+        //$id = Entity::create($this->data)->id;
+
         return Entity::firstOrNew([
             // Update existing records, matching them by `$this->data['column_name']`
             'code' => $this->data['code'],
         ]);
 
-        return new Entity();
+        // return new Entity();
     }
 
     public static function getCompletedNotificationBody(Import $import): string
