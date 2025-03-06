@@ -33,10 +33,20 @@ class EntityResource extends Resource
             ->schema([
                 Forms\Components\Group::make()
                 ->schema([
-                    Forms\Components\TextInput::make('archivist')
-                        ->default(auth()->user()->name)
-                        ->maxLength(255)
-                        ->columnSpanFull(),
+                    Forms\Components\Group::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('archivist')
+                            ->default(auth()->user()->name)
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                        Forms\Components\Checkbox::make('thumbnail')
+                            ->inline()
+                            ->columnSpan(1),
+                        Forms\Components\Checkbox::make('inventory')
+                            ->inline()
+                            ->columnSpan(1),
+                    ])
+                    ->columns(2),
 
                     Forms\Components\Section::make('Classification')
                     ->schema ([
@@ -294,7 +304,7 @@ class EntityResource extends Resource
                 ])
                 ->columnSpan(['lg' => 1]),
 
-                Forms\Components\Group::make()
+                Forms\Components\Section::make('Other Information')
                 ->schema([
 
                     Forms\Components\Tabs::make('Meta (Fill up if applicable)')
@@ -896,8 +906,6 @@ class EntityResource extends Resource
                                 ->maxLength(65535),
                             Forms\Components\Textarea::make('precup')
                                 ->maxLength(65535),
-                            Forms\Components\Textarea::make('inventory')
-                                ->maxLength(65535),
                             ])
                             // ->collapsed()
                             ->columns(2),
@@ -906,6 +914,8 @@ class EntityResource extends Resource
                     // ->compact(),
 
                 ])
+                ->collapsible()
+                ->collapsed()
                 ->columnSpan(['lg' => 3])
             ])
             ->columns(3);

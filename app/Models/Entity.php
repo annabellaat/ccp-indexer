@@ -31,6 +31,7 @@ class Entity extends Model
         'collection_id' => 'integer',
         'language' => 'array',
         'image' => 'array',
+        'tag' => 'array',
     ];
 
     public function requests(): BelongsToMany

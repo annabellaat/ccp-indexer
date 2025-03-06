@@ -3,6 +3,7 @@
 namespace App\Filament\Imports;
 
 use App\Models\Entity;
+use App\Models\Tag;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
@@ -25,7 +26,21 @@ class EntityImporter extends Importer
                 ->rules(['max:255']),
             //added
             ImportColumn::make('thumbnail')
-                ->rules(['max:255']),
+                ->castStateUsing(function (string $state): ?int {
+                    if ($state == 'TRUE') {
+                        return 1;
+                    }else {
+                        return 0;
+                    }
+                }),
+            ImportColumn::make('inventory')
+                ->castStateUsing(function (string $state): ?int {
+                    if ($state == 'TRUE') {
+                        return 1;
+                    }else {
+                        return 0;
+                    }
+                }),
                 // ->requiredMapping(),
             // ImportColumn::make('thumbnail')
             //     ->label('Legacy Thumbnail')
@@ -398,6 +413,8 @@ class EntityImporter extends Importer
                 ->rules(['max:65535']),
             ImportColumn::make('parent_collection')
                 ->rules(['max:65535']),
+            ImportColumn::make('subparent_collection')
+                ->rules(['max:65535']),
             ImportColumn::make('child_collection')
                 ->rules(['max:65535']),
             ImportColumn::make('accession_year')
@@ -426,8 +443,6 @@ class EntityImporter extends Importer
                 ->rules(['max:255']),
             ImportColumn::make('precup')
                 ->rules(['max:255']),
-            ImportColumn::make('inventory')
-                ->rules(['max:65535']),
             // ImportColumn::make('collection')
             //     ->relationship(),
         ];
@@ -456,6 +471,28 @@ class EntityImporter extends Importer
 
     public function resolveRecord(): ?Entity
     {
+        //$id = Entity::create($this->data)->id;
+
+        $new_entity = Entity::firstOrNew([
+            'code' => $this->data['code'],
+        ]);
+
+        if($this->data['tag'] != null) {
+            foreach($this->data['tag'] as $tag_name) {
+                $tag_selected = Tag::query()
+                ->where('name', $tag_name)
+                ->first();
+                if($tag_selected) {
+                    $try = $new_entity->id;
+                    $exists = Tag::where('id', $tag_selected->id)->whereHas('entities', function ($q) use ($try) {
+                        $q->where('id', $try);
+                    })->exists();
+                    if(!$exists) {
+                        $tag_selected->entities()->attach($new_entity->id);
+                    }
+                }
+            }
+        }
         return Entity::firstOrNew([
             // Update existing records, matching them by `$this->data['column_name']`
             'code' => $this->data['code'],
