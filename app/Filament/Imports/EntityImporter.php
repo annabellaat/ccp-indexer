@@ -493,6 +493,30 @@ class EntityImporter extends Importer
         }
     }
 
+    public function afterUpdate(): void 
+    {        
+        $new_entity = Entity::firstWhere([
+            'code' => $this->data['code'],
+        ]);
+
+        if($this->data['tag'] != null) {
+            foreach($this->data['tag'] as $tag_name) {
+                $tag_selected = Tag::query()
+                ->where('name', $tag_name)
+                ->first();
+                if($tag_selected) {
+                    $try = $new_entity->id;
+                    $exists = Tag::where('id', $tag_selected->id)->whereHas('entities', function ($q) use ($try) {
+                        $q->where('id', $try);
+                    })->exists();
+                    if(!$exists) {
+                        $tag_selected->entities()->attach($new_entity->id);
+                    }
+                }
+            }
+        }
+    }
+
     public function resolveRecord(): ?Entity
     {
         //$id = Entity::create($this->data)->id;
