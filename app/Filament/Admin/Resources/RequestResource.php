@@ -100,7 +100,11 @@ class RequestResource extends Resource
                 Tables\Columns\TextColumn::make('entity_id')
                     ->getStateUsing(function (Request $record): string {
                         $ent = Entity::where('id', $record->entity_id)->first();
-                        return $ent->title;
+                        if($ent->title) {
+                            return $ent->title;
+                        } else {
+                            return 'Invalid Entity Title';
+                        }
                     })
                     ->searchable()
                     ->label('Entity Requested'),
