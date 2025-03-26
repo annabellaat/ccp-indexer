@@ -29,7 +29,11 @@ class RequestResource extends Resource
                         ->disabled()
                         ->formatStateUsing(function (Request $record): string {
                             $ent = Entity::where('id', $record->entity_id)->first();
-                            return $ent->title;
+                            if($ent) {
+                                return $ent->title;
+                            } else {
+                                return '-- Entity deleted from list --';
+                            }
                         })
                         ->label('Entity Requested')
                         ->columnSpanFull(),
@@ -100,10 +104,10 @@ class RequestResource extends Resource
                 Tables\Columns\TextColumn::make('entity_id')
                     ->getStateUsing(function (Request $record): string {
                         $ent = Entity::where('id', $record->entity_id)->first();
-                        if($ent->title) {
+                        if($ent) {
                             return $ent->title;
                         } else {
-                            return 'Invalid Entity Title';
+                            return '-- Entity deleted from list --';
                         }
                     })
                     ->searchable()
