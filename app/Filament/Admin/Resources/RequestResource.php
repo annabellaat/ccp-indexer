@@ -10,8 +10,10 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Widgets\RequestWidgetR;
 
 class RequestResource extends Resource
 {
@@ -43,7 +45,7 @@ class RequestResource extends Resource
                                 'New' => 'New'
                             ],
                             'Processing' => [
-                                'Material Available ' => 'Material Available ',
+                                'Material Available' => 'Material Available',
                                 'IPR Cleared' => 'IPR Cleared',
                                 'Paid' => 'Paid',
                             ],
@@ -126,6 +128,16 @@ class RequestResource extends Resource
                     ->label('Date Requested'),
             ])
             ->filters([
+                SelectFilter::make('status')
+                    ->multiple()
+                    ->options([
+                        'New' => 'New',
+                        'Material Available' => 'Material Available',
+                        'IPR Cleared' => 'IPR Cleared',
+                        'Paid' => 'Paid',
+                        'Closed - Material Sent' => 'Closed - Material Sent',
+                        'Closed - Disapproved' => 'Closed - Disapproved'
+                    ]),
                 //
             ])
             ->actions([
@@ -144,6 +156,13 @@ class RequestResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            RequestWidgetR::class,
         ];
     }
 

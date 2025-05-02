@@ -21,6 +21,7 @@ use Filament\Enums\ThemeMode;
 use Filament\Support\Enums\MaxWidth;
 use Filament\Navigation\NavigationGroup;
 use App\Filament\Widgets\RequestWidget;
+// use BezhanSalleh\FilamentGoogleAnalytics\Widgets;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -76,6 +77,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                \BezhanSalleh\FilamentGoogleAnalytics\FilamentGoogleAnalyticsPlugin::make()
             ])
             // ->topNavigation()
             ->spa()
