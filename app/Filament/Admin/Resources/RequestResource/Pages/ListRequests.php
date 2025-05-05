@@ -29,6 +29,8 @@ class ListRequests extends ListRecords
 
     public function updateTableFilters(array $filter): void 
     { 
+        $this->tableFilters = [];
+        // dd($filter);
         foreach($filter as $index=>$x){
             $this->tableFilters['status']['values'][$index] = $x;
         };
