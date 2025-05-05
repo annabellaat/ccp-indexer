@@ -5,7 +5,7 @@ return [
     /**
      * Dashboard Page
      */
-    'dedicated_dashboard' => true,
+    'dedicated_dashboard' => false,
     'dashboard_icon' => 'heroicon-m-chart-bar',
 
     /**
@@ -36,27 +36,27 @@ return [
     ],
 
     'sessions' => [
-        'filament_dashboard' => false,
+        'filament_dashboard' => true,
         'global' => true,
     ],
 
     'sessions_duration' => [
-        'filament_dashboard' => false,
+        'filament_dashboard' => true,
         'global' => true,
     ],
 
     'sessions_by_country' => [
-        'filament_dashboard' => false,
+        'filament_dashboard' => true,
         'global' => true,
     ],
 
     'sessions_by_device' => [
-        'filament_dashboard' => false,
+        'filament_dashboard' => true,
         'global' => true,
     ],
 
     'most_visited_pages' => [
-        'filament_dashboard' => false,
+        'filament_dashboard' => true,
         'global' => true,
     ],
 
