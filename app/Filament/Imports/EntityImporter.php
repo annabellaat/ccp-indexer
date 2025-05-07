@@ -438,11 +438,11 @@ class EntityImporter extends Importer
             ImportColumn::make('access')
                 ->rules(['max:65535']),
             ImportColumn::make('citation')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('credit_line')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             ImportColumn::make('precup')
-                ->rules(['max:255']),
+                ->rules(['max:65535']),
             // ImportColumn::make('collection')
             //     ->relationship(),
         ];
