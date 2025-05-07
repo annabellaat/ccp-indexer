@@ -81,12 +81,13 @@ class RequestResource extends Resource
                         Forms\Components\TextInput::make('project_title')
                             ->disabled()
                             ->label('Project Title'),
-                        Forms\Components\TextInput::make('project_description')
-                            ->disabled()
-                            ->label('Project Description'),
                         Forms\Components\TextInput::make('project_duration')
                             ->disabled()
                             ->label('Project Details'),
+                        Forms\Components\Textarea::make('project_description')
+                            ->disabled()
+                            ->columnSpanFull()
+                            ->label('Project Description'),
                     ])
                     ->columns(2)
                     ->compact()
